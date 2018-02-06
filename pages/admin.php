@@ -6,7 +6,7 @@ $auth = new Auth($session);
 
 if(!$auth->loggedOnly()) {
 	$session->setFlash('danger', 'Vous n\'avez pas le droit d\'acceder à cette page');
-	header('location: index.php');
+	header('location: landing.php');
 	exit();
 }
 

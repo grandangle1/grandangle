@@ -1,3 +1,5 @@
+
+<?php require_once 'bootstrap.php' ?>
 <!DOCTYPE html>
 <html>
 
@@ -35,7 +37,7 @@
   		<div class="collapse navbar-collapse" id="navbarSupportedContent">
     		<ul class="navbar-nav mr-auto">
      		 	<li class="nav-item active">
-        			<a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        			<a class="nav-link" href="landing.php">Home <span class="sr-only">(current)</span></a>
       			</li>
       			<li class="nav-item">
         			<a class="nav-link btn btn-dark" href="#">Link</a>
@@ -43,20 +45,36 @@
       			<li class="nav-item">
         			<a class="nav-link" href="#">Disabled</a>
       			</li>
+            <?php if(!Session::getInstance()->read('auth')): ?>
       			<li class="nav-item dropdown">
         			<a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           			Connexion
         			</a>
         			<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          			<form method="post" id="form-login">
-							     <label for="login" class="connex">Identifiant</label><input type="text" name="identifiant" id="login" maxlength="20" 
-                  value="theo" autofocus/>
-							     <label for="mdp" class="connex">Mot de passe</label><input type="password" name="password" id="mdp" maxlength="20" value="test">
-							     <a href="#" id="misspass">Mot de passe oublié?</a>
-							<input type="submit" name="valid-connexion" value="connexion" />
-						</form>
+                
+            			<form method="post" id="form-login">
+        							     <label for="login" class="connex">Identifiant</label><input type="text" name="identifiant" id="login" maxlength="20" 
+                          value="theo" autofocus/>
+        							     <label for="mdp" class="connex">Mot de passe</label><input type="password" name="password" id="mdp" maxlength="20" value="test">
+        							     <a href="#" id="misspass">Mot de passe oublié?</a>
+        							<input type="submit" name="valid-connexion" value="connexion" />
+        						</form>
         			</div>
       			</li>
+          <?php else: ?>
+            <li class="nav-item">
+              <a class="nav-link" href="../php/logout.php">Se deconnecter</a>
+            </li>
+          <?php endif; ?>
     		</ul>
   		</div>
 	</nav>
+  <div id="flash"> 
+    <?php if(Session::getInstance()->hasFlash()): ?>
+      <ul>
+      <?php foreach (Session::getInstance()->getFlash() as $type => $message): ?> 
+        <li class="<?= $type ?>"><?= $message ?></li>
+       <?php endforeach; ?>
+      </ul>
+    <?php endif; ?>
+  </div>
