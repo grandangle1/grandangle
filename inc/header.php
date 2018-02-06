@@ -21,6 +21,7 @@
 
 
 <body>
+  <div id="php"></div>
 	<header class="row">
         <div class="col-lg-12 text-center">
 		  <h1 class="entete">Grand Angle <img src="../img/header/logo.png" id="logo"> Une experience unique!</h1> 
@@ -48,9 +49,10 @@
         			</a>
         			<div class="dropdown-menu" aria-labelledby="navbarDropdown">
           			<form method="post" id="form-login">
-							<label for="login" class="connex">Identifiant</label><input type="text" name="login" id="login" maxlength="20" autofocus/>
-							<label for="mdp" class="connex">Mot de passe</label><input type="password" name="mdp" id="mdp" maxlength="20" >
-							<a href="#" id="misspass">Mot de passe oublié?</a>
+							     <label for="login" class="connex">Identifiant</label><input type="text" name="identifiant" id="login" maxlength="20" 
+                  value="theo" autofocus/>
+							     <label for="mdp" class="connex">Mot de passe</label><input type="password" name="password" id="mdp" maxlength="20" value="test">
+							     <a href="#" id="misspass">Mot de passe oublié?</a>
 							<input type="submit" name="valid-connexion" value="connexion" />
 						</form>
         			</div>
@@ -58,10 +60,3 @@
     		</ul>
   		</div>
 	</nav>
-	 <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-</body>
-</html>
