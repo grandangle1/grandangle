@@ -1,0 +1,60 @@
+Note : 
+J'utilise les / pour dire "ou"
+Penser a gere l'anglais
+Quid des QR code??
+La generation de PDF
+
+=> Une facon originale d'implementer le compteur de fail ;)
+=> Penser a implemter la div info pour signaler a l'utilisateur des erreurs, etc...
+
+tableau / calendrier 
+	info
+Date de debut / date de fin
+Nom + prenom artiste
+mail de l'artiste 
+tel de l'artiste
+nombre d'oeuvre dans l'expo
+
+	Bouton/icones => fonctionnalités
+Ajouter expo (artiste compris)
+modifier expo
+supprimer expo
+ajouter oeuvre
+modifier / supprimer oeuvre
+revenir a la semaine/l'expo/date du moment
+
+------------------------------------------------------
+
+Formulaire expo => servira aussi a modifier expo
+	artiste
+Nom
+prenom
+addresse
+email
+tel
+ville
+date naissance
+biographie FR
+biographie EN
+	Expo
+a voir comment on gere les jours/semaines
+Une description generale?
+
+------------------------------------------------------
+
+Formulaire ajouter oeuvre => seet aussi a modifier
+fichier
+Legende??
+numero/nom de la salle
+nom de l'oeuvre FR
+nom de l'oeuvre EN
+
+descrption de l'oeuvre FR
+descrption de l'oeuvre EN
+
+--------------------------------------------------
+
+Ajouter un admin
+email
+pseudo
+password
