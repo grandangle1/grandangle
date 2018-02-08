@@ -29,10 +29,15 @@ class Auth {
 	}
 
 	public function loggedOnly() {
-		if($this->session->read('auth')) {
-			return true;
-		} else {
-			return false;
+		if(!$this->session->read('auth')) {
+			$this->session->setFlash('danger', 'Vous n\'avez pas le droit d\'acceder à cette page');
+			header('location: landing.php');
+			exit();
 		}
+	}
+
+	public function incrementFail($bdd) {
+		$currentFail = $bdd->query("SELECT * FROM fail")->fetch();
+		$bdd->query("UPDATE fail SET nbFail = ".($currentFail->nbFail + 1).";");
 	}
 }
