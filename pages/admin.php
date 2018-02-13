@@ -14,6 +14,7 @@ $auth->loggedOnly();
 
 
 <h1 style="text-align: center;">Admin page</h1>
-<a href="addExpo.php">Ajouter une expo</a>
+<a href="addExpo.php">Ajouter une expo</a><br>
+<a href="addOeuvre.php">Ajouter une oeuvre</a>
 
 <?php require '../inc/footer.php' ?>

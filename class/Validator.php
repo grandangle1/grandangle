@@ -57,6 +57,17 @@ class Validator {
 		}
 	}
 
+	public function isValidFormat($field, $acceptedFormat, $errorMsg = "Ce format n'est pas supporté") {
+		$parts = explode("/", $this->getFields($field)['type']);
+		$format = $parts[1];
+		for($i = 0; $i < sizeof($acceptedFormat); $i++) {
+			if($format == $acceptedFormat[$i]) {
+				return true;
+			}
+		}
+		$this->errors[] = [$field, $errorMsg];
+	}
+
 	public function isValid() {
 		return empty($this->errors);
 	}
