@@ -28,3 +28,18 @@ body{
 .text-color{
 	color: white;
 }
+
+/*----------------------------------------------------------------*\
+							ADD OEUVRES
+\*----------------------------------------------------------------*/
+
+.center{
+	text-align: center;
+}
+
+.bold{
+	font-weight: bold;
+}
+.cborder{
+	border-style: 2px solid #424242;
+}
