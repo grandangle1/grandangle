@@ -24,10 +24,11 @@ $validator->isShortEnough('descrArtisteEn', 5000, "La description doit faire moi
 $validator->isShortEnough('generalDescrFr', 5000, "La description doit faire moins de 5000 charactere.");
 $validator->isShortEnough('generalDescrEn', 5000, "La description doit faire moins de 5000 charactere.");
 $validator->isShortEnough('address', 150);
-//var_dump($validator->getErrors());
+
 if($validator->isValid()) {
 
 	$session = Session::getInstance()->setFlash('success', "L'exposition à bien été ajoutée");
+
 	echo "success";
 	exit();
 } else {

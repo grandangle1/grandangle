@@ -50,7 +50,7 @@ function saveExpo(e) {
 			if(xhr.status != 200) {
 				alert("Erreur durant la connexion au serveur");
 			} else {
-				console.log(xhr.responseText);
+				//echo(xhr.responseText);
 				if(xhr.responseText == "success") {
 					window.location = "admin.php";
 				} else {

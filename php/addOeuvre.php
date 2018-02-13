@@ -13,7 +13,7 @@ $validator->isShortEnough("descrOeuvreFr", 5000);
 $validator->isShortEnough("descrOeuvreEn", 5000);
 $validator->isLongEnough("descrOeuvreFr", 10);
 $validator->isLongEnough("descrOeuvreEn", 10);
-
+var_dump($_POST);
 if($validator->isValid() && $validatorFile->isValid()) {
 	$session = Session::getInstance();
 	$session->setFlash('success', "L'oeuvre à bien été ajouter à l'exposition!");
@@ -23,7 +23,6 @@ if($validator->isValid() && $validatorFile->isValid()) {
 	echo "false";
 }
 
-//var_dump($_POST);
 
 
 
