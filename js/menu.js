@@ -1,13 +1,9 @@
-
-
 function echo(data) {
 	document.querySelector('#php').innerHTML += data;
 }
 
-
 function login(e) {
 	e.preventDefault();
-	
 	var xhr = new XMLHttpRequest();
 
 	xhr.onreadystatechange = function() {
@@ -32,7 +28,10 @@ function login(e) {
 
 }
 
-document.querySelector('#form-login').addEventListener('submit', login);
+if(document.querySelector('#form-login') !=  null) {
+	document.querySelector('#form-login').addEventListener('submit', login);
+}
+
 
 
 

@@ -1,9 +1,11 @@
+<?php require_once 'bootstrap.php' ?>
+
 <!DOCTYPE html>
 <html>
 
 <head>
 
-	<!-- Required meta tags -->
+  <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -21,18 +23,21 @@
 
 
 <body>
-	<header class="row">
+  <header class="row">
         <div class="col-lg-12 text-center">
-		  <h1 class="entete">Grand Angle <img src="../img/header/logo.png" id="logo"> Une experience unique!</h1> 
+      <h1 class="entete">Grand Angle <img src="../img/header/logo.png" id="logo"> Une experience unique!</h1> 
         </div>
-	</header>
-    <nav class="navbar navbar-expand-lg navbar-light bg-navbar">
-  		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-   			<span class="navbar-toggler-icon"></span>
-  		</button>
+  </header>
 
+<div class="container-fluid">
+  <nav class="navbar navbar-expand-lg navbar-light bg-navbar drop-shadow">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+<<<<<<< HEAD
   		<div class="collapse navbar-collapse" id="navbarSupportedContent">
-    		<ul class="navbar-nav mr-auto">
+   		<ul class="navbar-nav mr-auto">
      		 	<li class="nav-item active">
         			<a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
       			</li>
@@ -58,3 +63,62 @@
     		</ul>
   		</div>
 	</nav>
+=======
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="hover-link nav-link text-light pr-3 pl-3" href="landing.php">ACCUEIL</a>
+        </li>
+        <li class="nav-item">
+          <a class="hover-link nav-link text-light pr-3 pl-3" href="#">CALENDRIER</a>
+        </li>
+        <li class="nav-item">
+          <a class="hover-link nav-link text-light pr-3 pl-3" href="#">ACTUELLEMENT</a>
+        </li>
+       <div class="nav-item dropdown lang">
+        <a class="hover-link nav-link dropdown-toggle text-light pr-3 pl-3" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">LANGUE</a>
+        <div class="dropdown-menu mt-2 bg-custom">
+          <a href="#" >Français</a>
+          <br/>
+          <a href="#" >Anglais</a>
+        </div>
+      </div>
+      <?php if(Session::getInstance()->read('auth')): ?>
+        <li class="nav-item dropdown">
+          <a class="hover-link nav-link text-light pr-3 pl-3" href="admin.php">ADMINISTRATEUR</a>
+        </li>
+      <?php endif; ?>
+       </ul>
+      <?php if(!Session::getInstance()->read('auth')): ?>
+      <div class="nav-item dropdown">
+        <a class="hover-link nav-link dropdown-toggle text-light pr-5 pl-5" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">CONNEXION</a>
+        
+        <div class="dropdown-menu mt-2 bg-custom">
+          <form method="post" id="form-login">
+            <label for="login" class="connex">Identifiant</label><input type="text" name="identifiant" id="login" maxlength="50" autofocus value="theo" />
+            <label for="mdp" class="connex">Mot de passe</label><input type="password" name="password" id="mdp" maxlength="50" value="test">
+            <a href="#">Mot de passe oublié?</a>
+            <input type="submit" name="valid-connexion" value="connexion" />
+          </form>
+        </div>
+      </div>
+      <?php else: ?>
+            <div class="nav-item">
+              <a class="nav-link text-light" href="../php/logout.php">Se deconnecter</a>
+      <?php endif; ?>
+    </div>
+  </nav>
+</div>
+<div id="php">
+  <?php if(Session::getInstance()->hasFlash()): ?>
+    <?php foreach(Session::getInstance()->getFlash() as $type => $message): ?>
+      <div class="alert alert-<?= $type ?> fade show m-3" role="alert">     
+          <strong><?= $message ?></strong> 
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    <?php endforeach; ?>
+  <?php endif; ?>
+</div>
+>>>>>>> flav
