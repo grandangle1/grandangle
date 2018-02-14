@@ -13,8 +13,12 @@ $validator->isShortEnough("descrOeuvreFr", 5000);
 $validator->isShortEnough("descrOeuvreEn", 5000);
 $validator->isLongEnough("descrOeuvreFr", 10);
 $validator->isLongEnough("descrOeuvreEn", 10);
-var_dump($_POST);
+
 if($validator->isValid() && $validatorFile->isValid()) {
+	$insert = new Insert();
+	$idOeuvre = $insert->insertNewOeuvre($bdd, $_POST);
+	$insert->writeFile($_FILES, $idOeuvre, $bdd);
+
 	$session = Session::getInstance();
 	$session->setFlash('success', "L'oeuvre à bien été ajouter à l'exposition!");
 	echo "success";

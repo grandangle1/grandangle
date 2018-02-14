@@ -21,6 +21,10 @@ class Database {
 		return $response;
 	}
 
+	public function getLastInsertId() {
+		return $this->bdd->lastInsertId();
+	}
+
 }
 
 

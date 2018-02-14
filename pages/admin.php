@@ -17,4 +17,6 @@ $auth->loggedOnly();
 <a href="addExpo.php">Ajouter une expo</a><br>
 <a href="addOeuvre.php">Ajouter une oeuvre</a>
 
+<?php Getter::getAdminPage(); ?>
+
 <?php require '../inc/footer.php' ?>

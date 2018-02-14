@@ -1,5 +1,5 @@
 function echo(data) {
-	document.querySelector('#php').innerHTML += data;
+	document.querySelector('#php').innerHTML = data;
 }
 
 var methods = {
@@ -50,7 +50,6 @@ function saveExpo(e) {
 			if(xhr.status != 200) {
 				alert("Erreur durant la connexion au serveur");
 			} else {
-				//echo(xhr.responseText);
 				if(xhr.responseText == "success") {
 					window.location = "admin.php";
 				} else {

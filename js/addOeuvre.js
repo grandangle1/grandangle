@@ -1,4 +1,4 @@
-var idExpo = 1;
+var idExpo = 8;
 function echo(data) {
 	document.querySelector('#php').innerHTML = data;
 }

@@ -26,9 +26,10 @@ $validator->isShortEnough('generalDescrEn', 5000, "La description doit faire moi
 $validator->isShortEnough('address', 150);
 
 if($validator->isValid()) {
-
+	
+	$insert = new Insert();
+	$insert->insertExpo($bdd, $_POST);
 	$session = Session::getInstance()->setFlash('success', "L'exposition à bien été ajoutée");
-
 	echo "success";
 	exit();
 } else {

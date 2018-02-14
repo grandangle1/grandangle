@@ -9,4 +9,8 @@ class Getter {
 	static function getFormExpo() {
 		require '../php/htmlContent/formExpo.php';
 	}
+
+	static function getAdminPage() {
+		require '../php/htmlContent/adminPage.php';
+	}
 }
