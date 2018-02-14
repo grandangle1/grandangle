@@ -18,7 +18,7 @@
 			<form class="form-oeuvre">
 				<ul>
 					<li class="list-group bold"><label>Nom de l'oeuvre</label></li>
-					<li class="list-group"><input type="text" name="nomOeuvre"></li><br>
+					<li class="list-group"><input class="form-control" type="text" name="nomOeuvre"></li><br>
 					<li class="list-group bold"><label>Emplacement de l'exposition :</label></li>
 					<li class="list-inline">
 						<div class="list-inline">
@@ -35,10 +35,11 @@
 					</div>
 					</li><br>
 					<li class="list-group bold"><label>Description de l'oeuvre en Français</label></li>
-					<li class="list-group"><textarea  name="descrOeuvreFr" rows="5" cols="50"></textarea></li>
-					<li class="list-group bold"><label>Description de l'oeuvre en Anglais</label></li><br>
-					<li class="list-group"><textarea  name="descrOeuvreEn" rows="5" cols="50"></textarea></li>
-					<li class="list-group"><button class="btn btn-dark mt-4">Envoyer</button></li>
+					<li class="list-group"><textarea class="form-control" name="descrOeuvreFr" rows="5" cols="50"></textarea></li>
+					<br/>
+					<li class="list-group bold"><label>Description de l'oeuvre en Anglais</label></li>
+					<li class="list-group"><textarea class="form-control" name="descrOeuvreEn" rows="5" cols="50"></textarea></li>
+					<li class="list-group"><button class="btn btn-dark btn-lg btn-block mt-4">Envoyer</button></li>
 				</ul>
 			</form>
 		</li>

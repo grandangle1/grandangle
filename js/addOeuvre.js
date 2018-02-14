@@ -8,11 +8,11 @@ var methods = {
 		var inputs = document.querySelectorAll('input');
 		
 		for (var ii = 0; ii < inputs.length; ii++) {
-			inputs[ii].classList.remove('bg-danger');
+			inputs[ii].classList.remove('bg-invalid');
 		}
 		var textarea = document.querySelectorAll('textarea');
 		for (var kk = 0; kk < textarea.length; kk++) {
-			textarea[kk].classList.remove('bg-danger');
+			textarea[kk].classList.remove('bg-invalid');
 		}
 
 		var alerts = document.querySelectorAll('.alert');
@@ -23,7 +23,7 @@ var methods = {
 	}, 
 	showError: function(data) {
 		for(var errorNum = 0; errorNum < data.length; errorNum++ ) {
-			document.querySelector('[name="' + data[errorNum][0] + '"]').classList.add('bg-danger');
+			document.querySelector('[name="' + data[errorNum][0] + '"]').classList.add('bg-invalid');
 			var alert = document.querySelector('.alert.' + data[errorNum][0] + '');
 			alert.innerHTML = data[errorNum][1];
 			alert.style.display = "block";
