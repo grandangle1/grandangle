@@ -36,7 +36,7 @@
 					</li><br>
 					<li class="list-group bold"><label>Description de l'oeuvre en Français</label></li>
 					<li class="list-group"><textarea  name="descrOeuvreFr" rows="5" cols="50"></textarea></li>
-					<li class="list-group bold"><label>Description de l'oeuvre En</label></li><br>
+					<li class="list-group bold"><label>Description de l'oeuvre en Anglais</label></li><br>
 					<li class="list-group"><textarea  name="descrOeuvreEn" rows="5" cols="50"></textarea></li>
 					<li class="list-group"><button class="btn btn-dark mt-4">Envoyer</button></li>
 				</ul>
