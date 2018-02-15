@@ -1,0 +1,15 @@
+
+	Operation sur les semaines => jours
+$date = explode("-W", $_POST['week']);
+$gendate = new DateTime();
+$gendate->setISODate($date[0], $date[1]); //year , week num , day
+$start = $gendate->format('Y/m/d');
+$end = strtotime(date("Y-m-d", strtotime($start)) . " +6 day");
+$end = date('Y/m/d', $end);
+echo "start ".$start."  end : ".$end;
+
+	Gestion des semaines
+L'utilisateur rentre une semaine, le php convertit cette date en semaine
+
+	FormOeuvrê
+Bloquer l'envoie du form s'il n'y pas de fichier selectionner
