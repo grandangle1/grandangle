@@ -6,7 +6,11 @@ class Getter {
 		 require '../php/htmlContent/formOeuvre.php';
 	}
 
-	static function getFormExpo() {
+	static function getFormExpo($data = "") {
+		$date = new DateTime();
+		$parts = explode("-", $data['expo']->week);
+		$date->setISODate($parts[0], $parts[1]);
+		$date = $date->format("Y-m-d");
 		require '../php/htmlContent/formExpo.php';
 	}
 

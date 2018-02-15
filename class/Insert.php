@@ -21,12 +21,18 @@ class Insert {
 		$bdd->query("UPDATE `contact` SET `idExpo` = $idExpo WHERE `contact`.`idContact` = $idContact;");
 	}
 
+	public function updateExpo($bdd, $data, $idExpo) {
+		$bdd->query("UPDATE `exposition` SET `week` = ?, `generalDescrFR` = ?, `generalDescrEN` = ? WHERE `exposition`.`idExpo` = ?;", []);
+	}
+
 	public function insertNewOeuvre($bdd, $data, $idExpo) {
 		$bdd->query("INSERT INTO `oeuvre` (`nomOeuvre`, `descrArtistFR`, `descrArtistEN`, `salle`, `idExpo`) VALUES ( ?, ?, ?, ?, ?);", [$data['nomOeuvre'], $data['descrOeuvreFr'], $data['descrOeuvreEn'], $data['salle'], $idExpo]);
 		return $bdd->getLastInsertId();
 	}
 
 	public function updateOeuvre($bdd, $data, $id) {
+		$date = new DateTime($data['week']);
+		$week = $date->format("Y-W");
 		$bdd->query("UPDATE `oeuvre` SET `nomOeuvre` = ?, `descrArtistFR` = ?, `descrArtistEN` = ?, `salle` = ? WHERE `oeuvre`.`idOeuvre` = ?;", [$data['nomOeuvre'], $data['descrOeuvreFr'], $data['descrOeuvreEn'], $data['salle'], $id]);
 	}
 

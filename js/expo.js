@@ -53,9 +53,10 @@ function saveExpo(e) {
 				if(xhr.responseText == "success") {
 					window.location = "admin.php";
 				} else {
-					var data = JSON.parse(xhr.responseText);
+					/*var data = JSON.parse(xhr.responseText);
 					methods.clearErrors();
-					methods.showError(data);
+					methods.showError(data);*/
+					echo(xhr.responseText);
 				}
 			}
 		}
@@ -64,6 +65,7 @@ function saveExpo(e) {
 
 	var form = document.querySelector('#form-expo');
 	var data = new FormData(form);
+	data.append('action', form.querySelector('button').getAttribute('action'));
 	xhr.send(data);
 }
 
