@@ -36,6 +36,22 @@ class Auth {
 		}
 	}
 
+	public function idAndTypeRequired($key, $type,$message = 'Vous n\'avez pas le droit d\'acceder à cette page') {
+		if(!$this->session->read($key) || $this->session->read($key)[1] != $type) {
+			$this->session->setFlash('danger', $message);
+			header('location: admin.php');
+			exit();
+		}
+	}
+
+	public function fieldRequire($field, $message ="Vous devez selectionner une oeuvre!") {
+		if(!$this->session->read($field)) {
+			$this->session->setFlash('danger', $message);
+			header('location: admin.php');
+			exit();
+		}
+	}
+
 	public function incrementFail($bdd) {
 		$currentFail = $bdd->query("SELECT * FROM fail")->fetch();
 		$bdd->query("UPDATE fail SET nbFail = ".($currentFail->nbFail + 1).";");

@@ -3,6 +3,7 @@
 class App {
 
 	static $bdd;
+	static $oeuvrePerPage = 2;
 
 	static function getDatabase() {
 
@@ -27,5 +28,22 @@ class App {
 			$data['contact'] = [$contact->nameContact, $contact->telephone, $contact->email];
 		}
 		return $data;
-	}	
+	}
+
+	static function getWeeks($week) {
+		$date = [];
+		for($i = 0; $i < 4; $i++) {
+			$now = new DateTime();
+			$offset = $week + $i;
+			$offset < 0 ? $now->sub(new DateInterval('P'.abs($offset).'W')) : $now->add(new DateInterval('P'.$offset.'W')); 
+			$now = $now->Format("Y-W");
+			$date[] = $now;
+		}
+		return $date;
+	}
+
+	static function getNbOeuvre($bdd, $idExpo) {
+		$nb = $bdd->query("SELECT COUNT(*) AS nb FROM `oeuvre` WHERE idExpo = ?", [$idExpo])->fetch();
+		return $nb->nb;
+	}
 }

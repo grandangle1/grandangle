@@ -30,17 +30,32 @@ var utils = {
     	for(var yu = 0; yu < array.length; yu++) {
     		array[yu].removeEventListener(type, action);
     	}
-    }
+    },
+   	echoMessage: function(message, type) {
+		var popup = 
+		'<div class="alert alert-' + type + ' fade show m-3" role="alert"> ' +    
+	        '<strong>' + message + '</strong>' +
+	        	'<button type="button" class="close" data-dismiss="alert" aria-label="Close">' +
+	          	'<span aria-hidden="true">&times;</span>' +
+	        '</button>' +
+	    '</div>';
+		echo(popup);
+	}
 }
 
 
 var adminMethods =  {
 	currentOffset: 0,
 	idExpos: ["" , "", "", ""],
-	newExpo: function(e) {
-		//console.log(e);
+	newExpo: function() {
+		window.location = 'addExpo.php';
 	},
-	deleteExpo: function() {
+	getIdExpo: function(e, attr) {
+		var type = e.srcElement.attributes[1].nodeValue;
+		return adminMethods.idExpos[e.srcElement.attributes[attr].nodeValue];
+	},
+	deleteExpo: function(e) {
+		var idExpo = adminMethods.getIdExpo(e, 2);
 		var confirmDelete = confirm("Press a button!");
 		if (confirmDelete == true) {
 		    var xhr = utils.getXHR();
@@ -49,18 +64,26 @@ var adminMethods =  {
 				if(xhr.status != 200) {
 					alert("fail");
 				} else {
-					
+					if(xhr.responseText == "success") {
+						adminMethods.loadWeek(adminMethods.currentOffset);
+						var message = "L'exposition et son contenu à bien été supprimée";
+						utils.echoMessage(message, 'success');
+					} else {
+						alert("fail");
+					}
 				}
 			}
 		}
-		xhr.open('POST', '', true);
-		xhr.send();
+		xhr.open('POST', '../php/deleteExpo.php', true);
+		var data = new FormData();
+		data.append('idExpo', idExpo);
+		xhr.send(data);
 		}
 	},
 	actionModif: function(e) {
 		var xhr = utils.getXHR();
 		var type = e.srcElement.attributes[1].nodeValue;
-		var idExpo = adminMethods.idExpos[e.srcElement.attributes[3].nodeValue];
+		var idExpo = adminMethods.getIdExpo(e, 3);
 		    xhr.onreadystatechange = function() {
 			if(xhr.readyState == 4) {
 				if(xhr.status != 200) {
@@ -77,9 +100,11 @@ var adminMethods =  {
 		xhr.open('POST', '../php/setId.php', true);
 		var data = new FormData();
 		data.append('idExpo', idExpo);
+		data.append('type', type);
 		xhr.send(data);
 	},
 	loadWeek: function(weekOffset) {
+		adminMethods.currentOffset = weekOffset;
 		var xhr = utils.getXHR();
 		xhr.onreadystatechange = function() {
 			if(xhr.readyState == 4) {
@@ -87,18 +112,22 @@ var adminMethods =  {
 					alert("fail");
 				} else {
 					var data = JSON.parse(xhr.responseText);
+
 					//utils.echo(xhr.responseText);
 					//console.log(xhr.responseText);
-					for(var iu = 0; iu < data.length; iu++) {
+					console.log(weekOffset);
+					for(var iu = 0; iu < 4; iu++) {
 						var cell = document.querySelector('#cell' + iu);
 						var tools = cell.querySelector('.exist').querySelectorAll('[spec="link"]');
+						cell.querySelector('.date').innerHTML = "Expotion de la semaine " + data.weeks[iu];
+
 						if(data[iu] != false) {
 							utils.listener(tools, 'click', adminMethods.actionModif);
 							cell.querySelector('.deleteExpo').addEventListener('click', adminMethods.deleteExpo);	
 							cell.querySelector('.newExpo').style.display = "none";
 							cell.querySelector('.newExpo').removeEventListener('click', adminMethods.newExpo);
-							cell.querySelector('.date').innerHTML = "Expotion de la semaine " + data[iu].expo.week;
 							cell.querySelector('.nbOeuvre').innerHTML = data[iu].nbOeuvre;
+							cell.querySelector('.exist').style.display = "inline";
 							var contacts = cell.querySelectorAll('.contact');
 							adminMethods.idExpos[iu] = data[iu].expo.idExpo;
 							for(var ik = 0; ik < 3; ik++) {
@@ -115,7 +144,6 @@ var adminMethods =  {
 							cell.querySelector('.exist').style.display = "none";
 							cell.querySelector('.newExpo').style.display = "inline";
 							cell.querySelector('.newExpo').addEventListener('click', adminMethods.newExpo);
-							cell.querySelector('.date').innerHTML = "Il n'y a pas encore d'expositon à cette date.";
 
 							var infos = cell.querySelectorAll('.info');
 							for(var io = 0; io < infos.length; io++) {
@@ -132,7 +160,7 @@ var adminMethods =  {
 		xhr.send(data);
 	},
 	changePage: function(e) {
-		console.log(e.srcElement.attributes[2].nodeValue);
+		adminMethods.loadWeek((parseInt(e.srcElement.attributes[2].nodeValue) + adminMethods.currentOffset));
 	},
 	reset: function() {
 		adminMethods.loadWeek(0);

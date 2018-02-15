@@ -21,9 +21,13 @@ class Insert {
 		$bdd->query("UPDATE `contact` SET `idExpo` = $idExpo WHERE `contact`.`idContact` = $idContact;");
 	}
 
-	public function insertNewOeuvre($bdd, $data) {
-		$bdd->query("INSERT INTO `oeuvre` (`nomOeuvre`, `descrArtistFR`, `descrArtistEN`, `idExpo`) VALUES ( ?, ?, ?, ?);", [$data['nomOeuvre'], $data['descrOeuvreFr'], $data['descrOeuvreEn'], $data['idExpo']]);
+	public function insertNewOeuvre($bdd, $data, $idExpo) {
+		$bdd->query("INSERT INTO `oeuvre` (`nomOeuvre`, `descrArtistFR`, `descrArtistEN`, `salle`, `idExpo`) VALUES ( ?, ?, ?, ?, ?);", [$data['nomOeuvre'], $data['descrOeuvreFr'], $data['descrOeuvreEn'], $data['salle'], $idExpo]);
 		return $bdd->getLastInsertId();
+	}
+
+	public function updateOeuvre($bdd, $data, $id) {
+		$bdd->query("UPDATE `oeuvre` SET `nomOeuvre` = ?, `descrArtistFR` = ?, `descrArtistEN` = ?, `salle` = ? WHERE `oeuvre`.`idOeuvre` = ?;", [$data['nomOeuvre'], $data['descrOeuvreFr'], $data['descrOeuvreEn'], $data['salle'], $id]);
 	}
 
 	public function writeFile($file, $idOeuvre, $bdd) {
@@ -33,5 +37,9 @@ class Insert {
 		if(move_uploaded_file($file['file']['tmp_name'], $path.$idFile)){
 			$bdd->query("UPDATE `oeuvre` SET `urlFile` = ? WHERE `idOeuvre` = ?;", [$path.$idFile, $idOeuvre]);
 		}
+	}
+
+	public function deleteExpo($bdd, $idExpo) {
+		
 	}
 }

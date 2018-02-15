@@ -48,13 +48,17 @@ function addOeuvre(e) {
 		}
 	}
 
-	xhr.open('POST', '../php/addOeuvre.php', true);
+	xhr.open('POST', '../php/actionOeuvre.php', true);
 
 	var form = document.querySelector('.form-oeuvre');
 	var file = document.querySelector('#file-oeuvre').files;
 	var data = new FormData(form);
 	data.append('file', file[0]);
-	data.append('idExpo', idExpo);
+	if(form.querySelector('button').classList.contains('edit')) {
+		data.append('action', 'edit');
+	} else {
+		data.append('action', 'add');
+	}
 	xhr.send(data);
 }
 

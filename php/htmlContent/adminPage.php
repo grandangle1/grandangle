@@ -4,8 +4,8 @@
 <table style="margin: 50px auto;">
 	<tr><td colspan="2">Tableau des expositions</td></tr>
 	<tr>
-		<td><img src="../img/admin/previousPage32.png" class="pagination" dir="prev">Previous week </td>
-		<td>Next week <img src="../img/admin/nextPage32.png" class="pagination" dir="next"></td>
+		<td><img src="../img/admin/previousPage32.png" class="pagination" dir="-1">Previous week </td>
+		<td>Next week <img src="../img/admin/nextPage32.png" class="pagination" dir="1"></td>
 	</tr>
 	<tr>
 		<td id="cell0">
@@ -16,7 +16,7 @@
 				<li><img src="../img/admin/deleteExpo.png" class="deleteExpo" cell="0">enlever expo</li>
 				<li><img src="../img/admin/addOeuvre.png" class="addOeuvre" spec="link" cell="0">Ajouter oeuvre</li>
 				<li><img src="../img/admin/editExpo.png" class="editExpo" spec="link" cell="0">Editer expo</li>
-				<li><img src="../img/admin/gear32.png" class="editOeuvre" spec="link" cell="0">Editer oeuvre</li>
+				<li><img src="../img/admin/gear32.png" class="listOeuvre" spec="link" cell="0">Editer oeuvre</li>
 			</ul>
 			<p class="newExpo"><img src="../img/admin/newExpo.png">Ajouter une expo</p>
 		</td>
@@ -28,7 +28,7 @@
 				<li><img src="../img/admin/deleteExpo.png" class="deleteExpo" cell="1">enlever expo</li>
 				<li><img src="../img/admin/addOeuvre.png" class="addOeuvre" spec="link" cell="1">Ajouter oeuvre</li>
 				<li><img src="../img/admin/editExpo.png" class="editExpo" spec="link" cell="1">Editer expo</li>
-				<li><img src="../img/admin/gear32.png" class="editOeuvre" spec="link" cell="1">Editer oeuvre</li>
+				<li><img src="../img/admin/gear32.png" class="listOeuvre" spec="link" cell="1">Editer oeuvre</li>
 			</ul>
 			<p class="newExpo"><img src="../img/admin/newExpo.png">Ajouter une expo</p>
 		</td>
@@ -42,7 +42,7 @@
 				<li><img src="../img/admin/deleteExpo.png" class="deleteExpo" cell="2">enlever expo</li>
 				<li><img src="../img/admin/addOeuvre.png" class="addOeuvre" spec="link" cell="2">Ajouter oeuvre</li>
 				<li><img src="../img/admin/editExpo.png" class="editExpo" spec="link" cell="2">Editer expo</li>
-				<li><img src="../img/admin/gear32.png" class="editOeuvre" spec="link" cell="2">Editer oeuvre</li>
+				<li><img src="../img/admin/gear32.png" class="listOeuvre" spec="link" cell="2">Editer oeuvre</li>
 			</ul>
 			<p class="newExpo"><img src="../img/admin/newExpo.png">Ajouter une expo</p>
 		</td>
@@ -54,7 +54,7 @@
 				<li><img src="../img/admin/deleteExpo.png" class="deleteExpo" cell="3">enlever expo</li>
 				<li><img src="../img/admin/addOeuvre.png" class="addOeuvre" spec="link" cell="3">Ajouter oeuvre</li>
 				<li><img src="../img/admin/editExpo.png" class="editExpo" spec="link" cell="3">Editer expo</li>
-				<li><img src="../img/admin/gear32.png" class="editOeuvre" spec="link" cell="3">Editer oeuvre</li>
+				<li><img src="../img/admin/gear32.png" class="listOeuvre" spec="link" cell="3">Editer oeuvre</li>
 			</ul>
 			<p class="newExpo"><img src="../img/admin/newExpo.png">Ajouter une expo</p>
 		</td>
