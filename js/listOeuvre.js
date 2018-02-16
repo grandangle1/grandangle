@@ -50,6 +50,7 @@ var utils = {
 		    '<p class="mb-1">' + descrEn +'</p>'+ 
 		    '<img src="'+ url +'" height="50" width="50">' +
 		    '<button class="edit"  pos="'+pos+'">Modifier</button>'+
+		    '<button class="delete" pos="'+pos+'">Supprimer</button>'+
 		 '</a>';
 
 		 return test;
@@ -61,6 +62,27 @@ var methodsList = {
 	currentOffset: 0,
 	maxPage: 0,
 	idOeuvres: [],
+	deleteOeuvre: function(e) {
+		e.preventDefault();
+		var idOeuvre = methodsList.idOeuvres[e.srcElement.attributes[1].nodeValue];
+		var xhr = utils.getXHR();
+		xhr.onreadystatechange = function() {
+			if(xhr.readyState == 4) {
+				if(xhr.status != 200) {
+					alert("fail");
+				} else {
+					if(xhr.responseText == "success") {
+						//window.location = 'editOeuvre.php';
+					}
+				}
+			}
+		}
+		
+		xhr.open('POST', '../php/deleteOeuvre.php', true);
+		var data = new FormData();
+		data.append('idOeuvre', idOeuvre);
+		xhr.send(data);
+	},
 	editOeuvre: function(e) {
 		e.preventDefault();
 		var idOeuvre = methodsList.idOeuvres[e.srcElement.attributes[1].nodeValue];
@@ -97,7 +119,9 @@ var methodsList = {
 						methodsList.idOeuvres.push(data[pl].idOeuvre);
 					}
 					var oeuvres = document.querySelectorAll('.edit');
+					var deletes = document.querySelectorAll('.edit');
 					utils.listener(oeuvres, 'click', methodsList.editOeuvre);
+					utils.listener(deletes, 'click', methodsList.deleteOeuvre);
 				}
 			}
 		}

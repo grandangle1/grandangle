@@ -1,6 +1,10 @@
 <div class="container pt-5">
 	<div class="center cborder">
-		<h2 class="center p-4">SAISIR UNE NOUVELLE OEUVRE</h2>
+		<?php if(empty($data)): ?>
+			<h2 class="center p-4">SAISIR UNE NOUVELLE OEUVRE</h2>
+		<?php else: ?>
+			<h2 class="center p-4">MODIFIER UNE OEUVRE</h2>
+		<?php endif; ?>
 	</div>
 	<ul class= "col-lg-12 list-group">
 		<li class="list-group-item pl-5"><input type="file" name="file" id="file-oeuvre"></li><br>

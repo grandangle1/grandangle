@@ -31,8 +31,6 @@ class Insert {
 	}
 
 	public function updateOeuvre($bdd, $data, $id) {
-		$date = new DateTime($data['week']);
-		$week = $date->format("Y-W");
 		$bdd->query("UPDATE `oeuvre` SET `nomOeuvre` = ?, `descrArtistFR` = ?, `descrArtistEN` = ?, `salle` = ? WHERE `oeuvre`.`idOeuvre` = ?;", [$data['nomOeuvre'], $data['descrOeuvreFr'], $data['descrOeuvreEn'], $data['salle'], $id]);
 	}
 
