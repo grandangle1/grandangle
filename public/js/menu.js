@@ -33,7 +33,7 @@ var methods = {
 					if(xhr.responseText == "success") {
 						window.location = "?p=admin.index.calendar";
 					} else {
-						console.log(xhr.responseText);
+						//console.log(xhr.responseText);
 						//utilsMenu.echoMessage(xhr.responseText);
 						utilsMenu.echoMessage(JSON.parse(xhr.responseText), 'danger');
 					}

@@ -1,4 +1,3 @@
-
 var utils = {
 	echo: function(data) {
 		document.querySelector('#php').innerHTML = data;
@@ -69,7 +68,7 @@ var adminMethods =  {
 						var message = "L'exposition et son contenu à bien été supprimée";
 						utils.echoMessage(message, 'success');
 					} else {
-						alert("Erreur, veuillez contacter un dev -_-");
+						utils.echo(xhr.responseText);
 					}
 				}
 			}
@@ -89,8 +88,9 @@ var adminMethods =  {
             window.location = "?p=admin.oeuvre.add&id=" + idExpo;
 		} else if(type == "listOeuvre") {
 			window.location = "?p=admin.oeuvre.liste&page=1&id=" + idExpo;
+		} else if(type == "pdfExpo") {
+            window.open('?p=admin.expo.pdf&id=' + idExpo, '_blank');
 		}
-
 	},
 	loadWeek: function(weekOffset) {
 		adminMethods.currentOffset = weekOffset;
@@ -154,10 +154,16 @@ var adminMethods =  {
 	reset: function() {
 		adminMethods.loadWeek(0);
 	},
+    deleteType: function (e) {
+		if(confirm("Voulez vous vraiment supprimer ce type d'eauvre?")) {
+            window.location = "?p=admin.type.delete&id=" + e.srcElement.id;
+		}
+    },
 	launch: function() {
 		var pagination = document.querySelectorAll('.pagination');
 		utils.listener(pagination, 'click', adminMethods.changePage);
 		document.querySelector('.now').addEventListener('click', adminMethods.reset);
+		utils.listener(document.querySelectorAll('.deleteType'), "click", adminMethods.deleteType);
 
 		adminMethods.loadWeek(0);
 	},

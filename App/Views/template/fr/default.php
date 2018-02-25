@@ -39,7 +39,10 @@
                     <a class="hover-link nav-link text-light pr-3 pl-3" href="index.php">ACCUEIL</a>
                 </li>
                 <li class="nav-item">
-                    <a class="hover-link nav-link text-light pr-3 pl-3" href="">CALENDRIER</a>
+                    <a class="hover-link nav-link text-light pr-3 pl-3" href="?p=guest.planning&m=<?php
+                    $week = new DateTime();
+                    echo $week->format("Y-m");
+                    ?>">CALENDRIER</a>
                 </li>
                 <li class="nav-item">
                     <a class="hover-link nav-link text-light pr-3 pl-3" href="?p=guest.today">ACTUELLEMENT</a>

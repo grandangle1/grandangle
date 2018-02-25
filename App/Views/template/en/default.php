@@ -39,7 +39,10 @@
                     <a class="hover-link nav-link text-light pr-3 pl-3" href="index.php">HOME</a>
                 </li>
                 <li class="nav-item">
-                    <a class="hover-link nav-link text-light pr-3 pl-3" href="">PLANNING</a>
+                    <a class="hover-link nav-link text-light pr-3 pl-3" href="?p=guest.planning&m=<?php
+                    $week = new DateTime();
+                    echo $week->format("Y-m");
+                    ?>">PLANNING</a>
                 </li>
                 <li class="nav-item">
                     <a class="hover-link nav-link text-light pr-3 pl-3" href="?p=guest.today">CURRENTLY</a>
@@ -73,7 +76,11 @@
                 </div>
             <?php else: ?>
             <div class="nav-item">
-                <a class="nav-link text-light" href="?p=admin.index.logOut">Se deconnecter</a>
+                <?php if (\Core\Auth\Session::getSession()->read('langue') == "en"): ?>
+                        <a class="nav-link text-light" href="?p=admin.index.logOut">Disconnect</a>
+                    <?php else: ?>
+                        <a class="nav-link text-light" href="?p=admin.index.logOut">Se deconnecter</a>
+                    <?php endif; ?>
                 <?php endif; ?>
             </div>
     </nav>

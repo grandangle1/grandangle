@@ -26,5 +26,14 @@ class ParentGuestController extends Controller {
 
     }
 
+    /**
+     * Use while trying to force an url and disconnected
+     */
+    protected function error() {
+        $this->session->setFlash('info', "N'essayez pas de forcer les urls...");
+        header('location: index.php');
+        exit();
+    }
+
 
 }

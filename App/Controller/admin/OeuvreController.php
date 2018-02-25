@@ -7,6 +7,7 @@
  */
 namespace App\Controller\Admin;
 
+use App\Entity\OeuvreEntity;
 use App\Utils;
 use Core\Auth\Session;
 
@@ -18,8 +19,17 @@ class OeuvreController extends AdminController {
     public function add() {
         $expoT = Utils::getTable('Exposition');
         $expoT->findWithId($_GET['id']) ? true : $this->error();
+        $data["types"] = Utils::getTable('Type')->query("SELECT id, typeFr FROM typeoeuvre");
 
-        $this->render('admin.oeuvre');
+        $this->render('admin.oeuvre', $data);
+    }
+
+    public function edit() {
+        $oeuvreT = Utils::getTable('Oeuvre');
+        $data["oeuvre"] = $oeuvreT->query("SELECT * FROM oeuvre WHERE idOeuvre = ?", [$_GET['id']], true);
+        $data["types"] = Utils::getTable('Type')->query("SELECT id, typeFr FROM typeoeuvre");
+
+        $this->render('admin.oeuvre', $data);
     }
 
     public function liste() {
@@ -36,6 +46,7 @@ class OeuvreController extends AdminController {
         $currentPage = $_GET['page'];
         $data["focus"] = $currentPage;
         $nbPage = $data["nbPage"];
+
         if($currentPage <= 3) {
             $data["pages"] = [1, 2, 3, 4, 5];
         } else if($currentPage >= ($nbPage - 2)){
@@ -52,20 +63,22 @@ class OeuvreController extends AdminController {
         $this->render('admin.listOeuvre', $data);
     }
 
-    public function edit() {
-        $oeuvreT = Utils::getTable('Oeuvre');
-        $data["oeuvre"] = $oeuvreT->query("SELECT * FROM oeuvre WHERE idOeuvre = ?", [$_GET['id']], true);
-
-        $this->render('admin.oeuvre', $data);
-    }
-
     public function delete() {
         $oeuvreT = Utils::getTable('Oeuvre');
-        $oeuvreT->delete(['idOeuvre'], [$_GET['id']]);
+
+        $oeuvreT->deleteOeuvre($_GET['id']);
         $exist = $oeuvreT->query("SELECT COUNT(*) AS nb FROM oeuvre WHERE idExpo = ?", [$_GET['expo']], true);
         $sesssion = Session::getSession();
         $sesssion->setFlash('success', "L'oeuvre à bien été supprimée.");
         $exist->nb > 0 ? header('location: ?p=admin.oeuvre.liste&page=1&id='.$_GET['expo']) : header('location: ?p=admin.index.calendar');
+    }
+
+    /**
+     * Show qr code on the screen
+     */
+    public function code() {
+        OeuvreEntity::createQrCode($_GET['id'], true);
+
     }
 
 }

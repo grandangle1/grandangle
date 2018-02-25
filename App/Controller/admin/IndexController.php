@@ -14,8 +14,10 @@ class IndexController extends AdminController {
      * Render the admin  calendar
      */
     public function calendar(){
-        Utils::getTable('User');
-        $this->render('admin.calendar');
+        $data["fail"] = Utils::getTable('User')->query("SELECT nbFail FROM fail ", null, true);
+        $data["types"] = Utils::getTable('User')->query("SELECT * FROM typeoeuvre ");
+
+        $this->render('admin.calendar', $data);
     }
 
     /**

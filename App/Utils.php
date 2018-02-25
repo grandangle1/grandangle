@@ -99,11 +99,22 @@ class Utils {
         define('ROOT', dirname(__DIR__));
     }
 
-    public static function weekToDay($date) {
+    /**
+     * Return the first day of a week
+     * @param $date
+     * @param bool $fr format('d-m-Y') or format('Y-m-d')
+     * @return string
+     */
+    public static function weekToDay($date, $fr = false) {
         $gendate = new \DateTime();
         $parts = explode("-", $date);
         $gendate->setISODate($parts[0], $parts[1],1);
-        $day =  $gendate->format('Y-m-d');
+        $fr ? $day =  $gendate->format('d-m-Y') : $day =  $gendate->format('Y-m-d');
         return $day;
     }
+
+    public static function getLangue() {
+        return Session::getSession()->read('langue') == "en" ? "en" : "fr";
+    }
+
 }

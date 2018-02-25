@@ -67,7 +67,8 @@ function saveExpo(e) {
     var file = document.querySelector('#file-artist').files;
 
 	var data = new FormData(form);
-    data.append('file', file[0]);
+	data.append('file', file[0]);
+
 	var action = form.querySelector('button').getAttribute('action');
 	if(action == "edit") {
         var url = new URL(window.location.href);

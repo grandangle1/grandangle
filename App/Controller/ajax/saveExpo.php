@@ -35,23 +35,26 @@ $validator->isShortEnough('generalDescrFr', 5000, "La description doit faire moi
 $validator->isShortEnough('generalDescrEn', 5000, "La description doit faire moins de 5000 charactere.");
 $validator->isShortEnough('address', 150);
 $validatorFile = Utils::getValidator($_FILES);
-if(!empty($_FILES)) {
-    $validatorFile->isValidFormat('file', ["png", "jpg", "jpeg"], "Seul les formats png, jpg, jpeg sont accepter.");
+
+if(!empty($_FILES['urlImg'][0])) {
+    $validatorFile->isValidFormat('file', ["image"], "Seul les images sont accéptés.");
 }
 
 if($validator->isValid() && $validatorFile->isValid()) {
     $expoT = Utils::getTable('Exposition');
 	if($_POST['action'] == "add" ){
+
         $expoT->createExpo($_POST, $_FILES);
 		$session->setFlash('success', "L'exposition a bien été enregistrée");
 	} else if($_POST['action'] == "edit") {
-        $expoT->updateExpo($_POST);
+
+        $expoT->updateExpo($_POST, $_FILES);
         $session->setFlash('success', "L'exposition a bien été modifiée");
 	}
 
 	echo "success";
 	exit();
 } else {
-	echo json_encode($validator->getErrors());
+	echo json_encode([$validator->getErrors(), $validatorFile->getErrors()]);
 }
 

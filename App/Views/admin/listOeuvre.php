@@ -10,10 +10,16 @@
                     </div>
                 <p class="mb-1"><?= $oeuvre->descrOeuvreFr; ?><span style="float: right;"><?= $oeuvre->salle; ?></span></p>
                 <?php if (isset($oeuvre->urlFile)): ?>
-                    <img src="<?= $oeuvre->urlFile ?>" height="50" width="50">
+                    <?php if(!empty($oeuvre->urlFile)): ?>
+                        <?php if ($oeuvre->getFormat() == "image"): ?><li><img src="<?= $oeuvre->urlFile ?>" height="200px"></li>
+                        <?php elseif($oeuvre->getFormat() == "video"): ?><li><video controls src="<?= $oeuvre->urlFile ?>" height="200px"><video ></li>
+                        <?php elseif ($oeuvre->getFormat() == "audio"): ?><li><audio controls src="<?= $oeuvre->urlFile ?>"></audio></li><?php endif; ?>
+
+                    <?php endif; ?>
                 <?php else: ?>
                     <span>Il n'y a pas de photo pour cette oeuvre</span>
                 <?php endif; ?>
+                <a class="btn btn-light" href="?p=admin.oeuvre.code&id=<?= $oeuvre->idOeuvre; ?>">Generer un QrCode</a>
                 <a class="btn btn-primary" href="?p=admin.oeuvre.edit&id=<?= $oeuvre->idOeuvre; ?>">Modifier</a>
                 <a class="btn btn-warning" href="?p=admin.oeuvre.delete&id=<?= $oeuvre->idOeuvre; ?>&expo=<?= $oeuvre->idExpo ?>">supprimer</a>
             </a>
