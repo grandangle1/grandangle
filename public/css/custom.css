@@ -98,6 +98,13 @@ body{
 	color: rgb(124,125,124);
 }
 
+.custom-toggler .navbar-toggler-icon {
+	background-image: url("../img/home/menuicon.png");
+}
+
+.custom-toggler.navbar-toggler {
+	border-color: white;
+}
 /*----------------------------------------------home--------------------*/
 
 .home{
