@@ -23,7 +23,7 @@ if($user) {
 	$session->setFlash('danger', "Ne divulger PAS votre mot de passe ($pass)");
 	echo "success";
 } else {
-	//$auth->incrementFail($bdd);
+	$userT->query("UPDATE fail SET nbFail = nbFail  + 1");
 	echo json_encode("Identifiant ou mot de passe incorrect");
 }
 

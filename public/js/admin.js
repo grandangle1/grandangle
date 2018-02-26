@@ -1,4 +1,3 @@
-
 var utils = {
 	echo: function(data) {
 		document.querySelector('#php').innerHTML = data;
@@ -40,7 +39,11 @@ var utils = {
 	        '</button>' +
 	    '</div>';
 		this.echo(popup);
-	}
+	},
+    get: function(field) {
+        var url = new URL(window.location.href);
+        return url.searchParams.get(field);
+    }
 }
 
 
@@ -69,7 +72,7 @@ var adminMethods =  {
 						var message = "L'exposition et son contenu à bien été supprimée";
 						utils.echoMessage(message, 'success');
 					} else {
-						alert("Erreur, veuillez contacter un dev -_-");
+						utils.echo(xhr.responseText);
 					}
 				}
 			}
@@ -81,16 +84,18 @@ var adminMethods =  {
 		}
 	},
 	actionModif: function(e) {
+		console.log();
         var type = e.srcElement.attributes[1].nodeValue;
         var idExpo = adminMethods.getIdExpo(e, 3);
-		if(type == "editExpo") {
+		if(e.srcElement.classList.contains('editExpo')) {
 			window.location = "?p=admin.expo.edit&id=" + idExpo;
-		} else if(type == "addOeuvre") {
+		} else if(e.srcElement.classList.contains('addOeuvre')) {
             window.location = "?p=admin.oeuvre.add&id=" + idExpo;
-		} else if(type == "listOeuvre") {
+		} else if(e.srcElement.classList.contains("listOeuvre")) {
 			window.location = "?p=admin.oeuvre.liste&page=1&id=" + idExpo;
+		} else if(e.srcElement.classList.contains("pdfExpo")) {
+            window.open('?p=admin.expo.pdf&id=' + idExpo, '_blank');
 		}
-
 	},
 	loadWeek: function(weekOffset) {
 		adminMethods.currentOffset = weekOffset;
@@ -108,7 +113,7 @@ var adminMethods =  {
 					for(var iu = 0; iu < 4; iu++) {
 						var cell = document.querySelector('#cell' + iu);
 						var tools = cell.querySelector('.exist').querySelectorAll('[spec="link"]');
-						cell.querySelector('.date').innerHTML = "Expotion de la semaine " + data.weeks[iu];
+						cell.querySelector('.date').innerHTML = "Exposition de la semaine " + data.weeks[iu];
 
 						if(data[iu] != false) {
 							utils.listener(tools, 'click', adminMethods.actionModif);
@@ -154,10 +159,16 @@ var adminMethods =  {
 	reset: function() {
 		adminMethods.loadWeek(0);
 	},
+    deleteType: function (e) {
+		if(confirm("Voulez vous vraiment supprimer ce type d'eauvre?")) {
+            window.location = "?p=admin.type.delete&id=" + e.srcElement.id;
+		}
+    },
 	launch: function() {
 		var pagination = document.querySelectorAll('.pagination');
 		utils.listener(pagination, 'click', adminMethods.changePage);
 		document.querySelector('.now').addEventListener('click', adminMethods.reset);
+		utils.listener(document.querySelectorAll('.deleteType'), "click", adminMethods.deleteType);
 
 		adminMethods.loadWeek(0);
 	},

@@ -8,6 +8,7 @@
 namespace App\Controller\Admin;
 
 
+use App\Entity\ExpositionEntity;
 use App\Utils;
 
 class ExpoController extends AdminController {
@@ -36,6 +37,10 @@ class ExpoController extends AdminController {
         $data['exposition']->week = $day;
 
         $this->render('admin.expo', $data);
+    }
+
+    public function pdf() {
+        ExpositionEntity::createPdf();
     }
 
 }

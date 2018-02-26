@@ -99,11 +99,51 @@ class Utils {
         define('ROOT', dirname(__DIR__));
     }
 
-    public static function weekToDay($date) {
+    /**
+     * Return the first day of a week
+     * @param $date
+     * @param bool $fr format('d-m-Y') or format('Y-m-d')
+     * @return string
+     */
+    public static function weekToDay($date, $fr = false) {
         $gendate = new \DateTime();
         $parts = explode("-", $date);
         $gendate->setISODate($parts[0], $parts[1],1);
-        $day =  $gendate->format('Y-m-d');
+        $fr ? $day =  $gendate->format('d-m-Y') : $day =  $gendate->format('Y-m-d');
         return $day;
+    }
+
+    public static function getLangue() {
+        return Session::getSession()->read('langue') == "en" ? "en" : "fr";
+    }
+
+    /**
+     * @param $index 1 to 12
+     * @return month Fr written
+     */
+    public static function getMonthWrittenFr($index) {
+        $monthsFr = ["" ,"Janvier", "Fevrier", "Mars", "Avril", "Mai", "Juin", "Juillet", "Aout", "Septembre", "Octobre", "Novembre", "Decembre"];
+        return $monthsFr[$index];
+    }
+
+    public static function getDateFromDatetime($rowDate) {
+        $date = new DateTime($rowDate);
+        return $date->format("d")." ". self::getMonthWrittenFr(intval($date->format("m")))." à ".$date->format("H:i");
+    }
+
+    /**
+     * @param $action
+     */
+    public static function translateAction($action) {
+        if($action == "create") {
+            return "Création";
+        } else if($action == "edit") {
+            return "Modification";
+        } else if($action == "qr-code") {
+            return "Création du Qr-code";
+        } else if($action == "delete") {
+            return "Suppression";
+        }
+
     }
 }

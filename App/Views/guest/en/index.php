@@ -19,12 +19,16 @@
         </div>
         <div class="col-lg-4 mt-1">
             <div class="card text-center text-light ht pt-1">
-                <div class="card-body">
-                    <h3 class="pb-5">Grand Angle on a year, it's: </h3>
-                    <div class="float-left ml-2 mr-4"><p class="font-italic"><span class="fsize">22 500</span><br>visits</p></div>
-                    <div class="float-left ml-5"><p class="font-italic"><span class="fsize">44</span><br>artists</p></div>
-                    <div class="float-right mr-2 ml-4"><p class="font-italic"><span class="fsize">570</span><br>works</p></div>
-                    <div class="float-right mr-5"><p class="font-italic"><span class="fsize">12917</span><br> sq ft of exposure</p></div>
+                <div class="card-body text-center">
+                    <h3 class="pb-4">Grand Angle on a year, it's: </h3>
+                    <div class="float-left">
+                        <div class="ml-5 pl-3"><p class="font-italic"><span class="fsize">22 500</span><br>visits</p></div>
+                        <div class="ml-5 pl-3"><p class="font-italic"><span class="fsize">44</span><br>artists</p></div>
+                    </div>
+                    <div class="float-right">
+                        <div class="mr-5 pr-3"><p class="font-italic"><span class="fsize">570</span><br>works</p></div>
+                        <div class="mr-5 pr-3"><p class="font-italic"><span class="fsize">12917</span><br> sq ft of exposure</p></div>
+                    </div>
                 </div>
             </div>
         </div>

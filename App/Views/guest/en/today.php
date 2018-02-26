@@ -1,5 +1,13 @@
-<h1>Currently</h1>
-<h3 style="text-align: center;">Powered by <a href="?p=guest.artist&id=<?= $artist->idArtist; ?>"><?= $artist->nameArtist;?> <?= $artist->surnameArtist; ?></a></h3>
+<h1 style="text-align: center;">Cuurenlty on display : <?= $exposition->themeEn ?></h1>
+<h3 style="text-align: center;">From <a href="?p=guest.artist&id=<?= $artist->idArtist; ?>"><?= $artist->nameArtist;?> <?= $artist->surnameArtist; ?></a></h3>
+<p><?= $exposition->generalDescrEN ?></p>
+
+<ul style="list-style: none;">
+    <li><h3>interrested in : </h3></li>
+    <?php foreach ($types as $type): ?>
+        <li><a href="?p=guest.type&id=<?= $type->id ?>"><?= $type->typeEn ?></a></li>
+    <?php endforeach; ?>
+</ul>
 
 <div class="svg-container" style="width: 100%; display: flex; justify-content: center;">
     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1080px" height="480px" viewBox="0 0 1080 480" preserveAspectRatio="xMidYMid meet" >
@@ -21,79 +29,83 @@
 <?php if(!empty($oeuvres)) : ?>
     <div class="oeuvre-container salle1">
         <h2>Salle Picasso</h2>
-        <div class="list-group">
+        <ul style="display: flex; flex-wrap: wrap; list-style: none; justify-content: space-around;">
+
             <?php foreach ($oeuvres as $oeuvre): ?>
                 <?php if($oeuvre->salle == "salle1"): ?>
-
-                    <a href="?p=guest.oeuvre&id=<?= $oeuvre->idOeuvre ?>" class="list-group-item list-group-item-action flex-column align-items-start">
-                        <div class="d-flex w-100 justify-content-between">
-                            <h5 class="mb-1"><?= $oeuvre->nomOeuvre; ?></h5>
-                            <small>Vues : <?= $oeuvre->vues; ?></small>
-                        </div>
-                        <p class="mb-1"><?= $oeuvre->descrOeuvreFr; ?></p>
-                        <small>Donec id elit non mi porta.</small>
-                    </a>
-
+                    <li style="width: 48%;">
+                        <a href="?p=guest.oeuvre&id=<?= $oeuvre->idOeuvre ?>" class="list-group-item list-group-item-action flex-column align-items-start">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1"><?= $oeuvre->nomOeuvre; ?></h5>
+                                <small>Vues : <?= $oeuvre->vues; ?></small>
+                            </div>
+                            <p class="mb-1"><?= $oeuvre->getExtrait(); ?></p>
+                            <small class="text-info">More</small>
+                        </a>
+                    </li>
                 <?php endif; ?>
             <?php endforeach; ?>
-        </div>
+        </ul>
     </div>
     <div class="oeuvre-container salle2">
         <h2>Salle Léonardo da Vonca</h2>
-        <div class="list-group">
+        <ul style="display: flex; flex-wrap: wrap; list-style: none; justify-content: space-around;">
+
             <?php foreach ($oeuvres as $oeuvre): ?>
                 <?php if($oeuvre->salle == "salle2"): ?>
-
-                    <a href="?p=guest.oeuvre&id=<?= $oeuvre->idOeuvre ?>" class="list-group-item list-group-item-action flex-column align-items-start">
-                        <div class="d-flex w-100 justify-content-between">
-                            <h5 class="mb-1"><?= $oeuvre->nomOeuvre; ?></h5>
-                            <small>Vues : <?= $oeuvre->vues; ?></small>
-                        </div>
-                        <p class="mb-1"><?= $oeuvre->descrOeuvreFr; ?></p>
-                        <small>Donec id elit non mi porta.</small>
-                    </a>
-
+                    <li style="width: 48%;">
+                        <a href="?p=guest.oeuvre&id=<?= $oeuvre->idOeuvre ?>" class="list-group-item list-group-item-action flex-column align-items-start">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1"><?= $oeuvre->nomOeuvre; ?></h5>
+                                <small>Vues : <?= $oeuvre->vues; ?></small>
+                            </div>
+                            <p class="mb-1"><?= $oeuvre->getExtrait(); ?></p>
+                            <small class="text-info">More</small>
+                        </a>
+                    </li>
                 <?php endif; ?>
             <?php endforeach; ?>
-        </div>
+        </ul>
     </div>
     <div class="oeuvre-container couloir">
         <h2>Galerie des arts appliqués</h2>
-        <div class="list-group">
+        <ul style="display: flex; flex-wrap: wrap; list-style: none; justify-content: space-around;">
+
             <?php foreach ($oeuvres as $oeuvre): ?>
                 <?php if($oeuvre->salle == "couloir"): ?>
-
-                    <a href="?p=guest.oeuvre&id=<?= $oeuvre->idOeuvre ?>" class="list-group-item list-group-item-action flex-column align-items-start">
-                        <div class="d-flex w-100 justify-content-between">
-                            <h5 class="mb-1"><?= $oeuvre->nomOeuvre; ?></h5>
-                            <small>Vues : <?= $oeuvre->vues; ?></small>
-                        </div>
-                        <p class="mb-1"><?= $oeuvre->descrOeuvreFr; ?></p>
-                        <small>Donec id elit non mi porta.</small>
-                    </a>
-
+                    <li style="width: 48%;">
+                        <a href="?p=guest.oeuvre&id=<?= $oeuvre->idOeuvre ?>" class="list-group-item list-group-item-action flex-column align-items-start">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1"><?= $oeuvre->nomOeuvre; ?></h5>
+                                <small>Vues : <?= $oeuvre->vues; ?></small>
+                            </div>
+                            <p class="mb-1"><?= $oeuvre->getExtrait(); ?></p>
+                            <small class="text-info">More</small>
+                        </a>
+                    </li>
                 <?php endif; ?>
             <?php endforeach; ?>
-        </div>
+        </ul>
     </div>
     <div class="oeuvre-container hall">
         <h2>Hall principal</h2>
-        <div class="list-group">
+        <ul style="display: flex; flex-wrap: wrap; list-style: none; justify-content: space-around;">
+
             <?php foreach ($oeuvres as $oeuvre): ?>
                 <?php if($oeuvre->salle == "hall"): ?>
-
-                    <a href="?p=guest.oeuvre&id=<?= $oeuvre->idOeuvre ?>" class="list-group-item list-group-item-action flex-column align-items-start">
-                        <div class="d-flex w-100 justify-content-between">
-                            <h5 class="mb-1"><?= $oeuvre->nomOeuvre; ?></h5>
-                            <small>Vues : <?= $oeuvre->vues; ?></small>
-                        </div>
-                        <p class="mb-1"><?= $oeuvre->descrOeuvreFr; ?></p>
-                        <small>Donec id elit non mi porta.</small>
-                    </a>
-
+                    <li style="width: 48%;">
+                        <a href="?p=guest.oeuvre&id=<?= $oeuvre->idOeuvre ?>" class="list-group-item list-group-item-action flex-column align-items-start">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1"><?= $oeuvre->nomOeuvre; ?></h5>
+                                <small>Vues : <?= $oeuvre->vues; ?></small>
+                            </div>
+                            <p class="mb-1"><?= $oeuvre->getExtrait(); ?></p>
+                            <small class="text-info">More</small>
+                        </a>
+                    </li>
                 <?php endif; ?>
             <?php endforeach; ?>
-        </div>
+        </ul>
     </div>
 <?php else: ?>
     <div>Il n'y a pas d'expo en ce moment</div>

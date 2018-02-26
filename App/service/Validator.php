@@ -58,7 +58,7 @@ class Validator {
 		$week = $week->Format("Y-W");
 		$now = new DateTime();
 		$now = $now->Format("Y-W");
-		if($now < $week) {
+		if($now <= $week) {
 			$exist = $this->bdd->prepare("SELECT * FROM exposition WHERE week = ?", [$week]);
 			if($exist && !is_null($idExpo)) {
 			    return $exist[0]->idExpo == $idExpo ? true : $this->errors[] = [$field, $errorMsg[1]];
@@ -71,16 +71,21 @@ class Validator {
 		}
 	}
 
-	public function isValidFormat($field, $acceptedFormat, $errorMsg = "Ce format n'est pas supporté") {
-        if(empty($this->getFields($field)['type'])){ return $this->errors[] = [$field, "Votre fichier est trop lourd!"];}
-		$parts = explode("/", $this->getFields($field)['type']);
-		$format = $parts[1];
-		for($i = 0; $i < sizeof($acceptedFormat); $i++) {
-			if($format == $acceptedFormat[$i]) {
-				return true;
-			}
-		}
-		$this->errors[] = [$field, $errorMsg];
+    /**
+     * Check the format of file according to accepted format in the array passed as paramater
+     * @param $field file
+     * @param $acceptedFormats array
+     * @param string $errorMsg
+     * @return array|bool
+     */
+	public function isValidFormat($field, $acceptedFormats, $errorMsg = "Ce format n'est pas supporté") {
+	    $parts  = explode("/",$this->getFields($field)['type']);
+        foreach($acceptedFormats as $acccepted) {
+            if ($parts[0] == $acccepted) {
+                return true;
+            }
+        }
+        return $this->errors[] = [$field, $errorMsg];
 	}
 
 	public function isValid() {

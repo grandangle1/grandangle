@@ -41,11 +41,12 @@
                         <input type="file" id="file-artist" class="list-inline-item form-control" name="urlImg">
                         <span class="alert urlImg"></span>
                     </li>
-                    <?php if(!empty($data) && isset($urlImg)): ?>
-                        <li>
-                            
+                    <?php if(!empty($data) && isset($artist->urlImg)): ?>
+                        <li class="list-inline m-3">
+                            <p>Image courante</p>
+                            <img src="<?= $artist->urlImg; ?>" height="100">
                         </li>
-                        <?= $data['artist']->descrArtistEN ?>
+
                     <?php endif; ?>
 				</ul>
 			</li>
@@ -85,6 +86,16 @@
 			</li>
 			<li class="list-group-item bold mt-5"></label>Informations concernant l'exposition</label></li>
 				<ul class="list-group-item">
+                    <li class="list-inline m-3">
+                        <label class="list-inline-item">Thème de l'exposition en Francais</label>
+                        <input <?php if(!empty($data)): ?> value="<?= $data['exposition']->themeFr ?>" <?php endif; ?> class="list-inline-item form-control" type="text" name="themeFr" required>
+                        <span class="alert theme"></span>
+                    </li>
+                    <li class="list-inline m-3">
+                        <label class="list-inline-item">Thème de l'exposition en Anglais</label>
+                        <input <?php if(!empty($data)): ?> value="<?= $data['exposition']->themeEn ?>" <?php endif; ?> class="list-inline-item form-control" type="text" name="themeEn" required>
+                        <span class="alert theme"></span>
+                    </li>
 					<li class="list-inline m-3">
 						<label class="list-inline-item">Choisir un jour correspondant à la semaine de l'exposition. La semaine sera alors entièrement dediée à cette exposition</label>
 						<input <?php if(!empty($data)): ?> value="<?= $data['exposition']->week ?>" <?php endif; ?> class="list-inline-item form-control" type="date" name="week">

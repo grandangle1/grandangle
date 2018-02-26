@@ -29,7 +29,7 @@
 
 <div class="container-fluid">
     <nav class="navbar navbar-expand-lg navbar-light bg-navbar drop-shadow">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler custom-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
@@ -38,8 +38,11 @@
                 <li class="nav-item active">
                     <a class="hover-link nav-link text-light pr-3 pl-3" href="index.php">ACCUEIL</a>
                 </li>
-                <li class="nav-item">
-                    <a class="hover-link nav-link text-light pr-3 pl-3" href="">CALENDRIER</a>
+               <li class="nav-item">
+                    <a class="hover-link nav-link text-light pr-3 pl-3" href="?p=guest.planning&m=<?php
+                    $week = new DateTime();
+                    echo $week->format("Y-m");
+                    ?>">CALENDRIER</a>
                 </li>
                 <li class="nav-item">
                     <a class="hover-link nav-link text-light pr-3 pl-3" href="?p=guest.today">ACTUELLEMENT</a>

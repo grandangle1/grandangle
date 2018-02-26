@@ -1,5 +1,7 @@
 <?php
 namespace App\Controller\Ajax;
+use App\Entity\OeuvreEntity;
+use App\Service\Validator;
 use App\Table\UserTable;
 use App\Utils;
 use Core\Auth\Auth;
@@ -12,11 +14,11 @@ $session = Session::getSession();
 $auth = new Auth($session);
 $auth->loggedOnly();
 
-
-$validatorFile = Utils::getValidator($_FILES);
+$validatorFile =  Utils::getValidator($_FILES);
 if(!empty($_FILES)) {
-	$validatorFile->isValidFormat('file', ["png", "jpg", "jpeg"], "Seul les formats png, jpg, jpeg sont accepter.");
+    $validatorFile->isValidFormat('file', ["image", "audio", "video"], "Seul les fichiers image, vidoe et audio sont accéptés.");
 }
+
 
 $validator = Utils::getValidator($_POST);
 $validator->isShortEnough("nomOeuvre", 30);
@@ -36,18 +38,23 @@ if($validator->isValid() && $validatorFile->isValid()) {
 		}
 
 		$session->setFlash('success', "L'oeuvre à bien été modifiée!");
+        Utils::getTable('Activity')->createAction("edit", ["idOeuvre" => $idOeuvre]);
+        echo json_encode(["resp" => "modified"]);
 	} else {
 	    $bdd = Utils::getDb();
 	    $oeuvreT->insert(["nomOeuvre" => $nomOeuvre, "salle" => $salle, "descrOeuvreFr" => $descrOeuvreFr, "descrOeuvreEn" => $descrOeuvreEn, "idType" => $idType, "idExpo" => $idExpo]);
         $idOeuvre = $bdd->getLastId();
         $oeuvreT->writeFile($_FILES, $idOeuvre) ? true : $session->setFlash('danger', "Erreur durant l'ecriture du fichier! Veuillez contacter un dev :/");
+        $session->setFlash('success', "L'oeuvre à bien été ajouter à l'exposition!");
+        OeuvreEntity::createQrCode($idOeuvre);
+        Utils::getTable('Activity')->createAction("create", ["idOeuvre" => $idOeuvre]);
 
-		$session->setFlash('success', "L'oeuvre à bien été ajouter à l'exposition!");
+        echo json_encode(["resp" => "added"]);
 	}
-	echo "success";
+
 	exit();
 } else {
-	echo json_encode(["text" => $validator->getErrors(), "file" => $validatorFile->getErrors()]);
+	echo json_encode(["text" => $validator->getErrors(), $validatorFile->getErrors()]);
 }
 
 

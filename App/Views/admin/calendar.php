@@ -112,5 +112,42 @@
     </div>
 </div>
 
+
+<h2>Administration des type de d'oeuvres</h2>
+<table class="table">
+    <thead>
+    <tr>
+        <td>ID</td>
+        <td>Titre</td>
+        <td>Desciption Francaise</td>
+        <td>Desciption Anglaise</td>
+        <td>Actions</td>
+    </tr>
+    </thead>
+    <tbody>
+    <?php foreach ($types as $type): ?>
+        <tr>
+            <td><?= $type->id; ?> - </td>
+            <td>Fr : <?= $type->typeFr ?> En : <?= $type->typeEn ?></td>
+            <td><?= $type->descriptionFr ?></td>
+            <td><?= $type->descriptionEn ?></td>
+            <td>
+                <a href="?p=admin.type.edit&id=<?= $type->id ?>" class="btn btn-primary"> Editer</a>
+                <a class="btn btn-danger deleteType" id="<?= $type->id ?>">Supprimer</a>
+            </td>
+        </tr>
+    <?php endforeach; ?>
+    <tr>
+        <td colspan="5" style="text-align: center;"><a href="?p=admin.type.add" class="btn btn-success">Ajouter un type</a></td>
+    </tr>
+    </tbody>
+</table>
+
 <script type="text/javascript" src="js/admin.js"></script>
+
+
+
+
+
+
 

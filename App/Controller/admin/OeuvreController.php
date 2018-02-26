@@ -7,6 +7,7 @@
  */
 namespace App\Controller\Admin;
 
+use App\Entity\OeuvreEntity;
 use App\Utils;
 use Core\Auth\Session;
 
@@ -18,8 +19,17 @@ class OeuvreController extends AdminController {
     public function add() {
         $expoT = Utils::getTable('Exposition');
         $expoT->findWithId($_GET['id']) ? true : $this->error();
+        $data["types"] = Utils::getTable('Type')->query("SELECT id, typeFr FROM typeoeuvre");
 
-        $this->render('admin.oeuvre');
+        $this->render('admin.oeuvre', $data);
+    }
+
+    public function edit() {
+        $oeuvreT = Utils::getTable('Oeuvre');
+        $data["oeuvre"] = $oeuvreT->query("SELECT * FROM oeuvre WHERE idOeuvre = ?", [$_GET['id']], true);
+        $data["types"] = Utils::getTable('Type')->query("SELECT id, typeFr FROM typeoeuvre");
+
+        $this->render('admin.oeuvre', $data);
     }
 
     public function liste() {
@@ -36,6 +46,13 @@ class OeuvreController extends AdminController {
         $currentPage = $_GET['page'];
         $data["focus"] = $currentPage;
         $nbPage = $data["nbPage"];
+
+        foreach ($data['oeuvres'] as $oeuvre) {
+            $idsOeuvres[] = $oeuvre->idOeuvre;
+        }
+
+        $data["oeuvres"] ? $data['activities'] = Utils::getTable('Activity')->getListOeuvreActivity($idsOeuvres) : false;
+
         if($currentPage <= 3) {
             $data["pages"] = [1, 2, 3, 4, 5];
         } else if($currentPage >= ($nbPage - 2)){
@@ -52,20 +69,31 @@ class OeuvreController extends AdminController {
         $this->render('admin.listOeuvre', $data);
     }
 
-    public function edit() {
-        $oeuvreT = Utils::getTable('Oeuvre');
-        $data["oeuvre"] = $oeuvreT->query("SELECT * FROM oeuvre WHERE idOeuvre = ?", [$_GET['id']], true);
-
-        $this->render('admin.oeuvre', $data);
-    }
-
     public function delete() {
         $oeuvreT = Utils::getTable('Oeuvre');
-        $oeuvreT->delete(['idOeuvre'], [$_GET['id']]);
+        $idOeuvre = $_GET['id'];
+        $oeuvreT->deleteOeuvre($idOeuvre);
         $exist = $oeuvreT->query("SELECT COUNT(*) AS nb FROM oeuvre WHERE idExpo = ?", [$_GET['expo']], true);
-        $sesssion = Session::getSession();
-        $sesssion->setFlash('success', "L'oeuvre à bien été supprimée.");
+
+        Session::getSession()->setFlash('success', "L'oeuvre à bien été supprimée.");
+        Utils::getTable('Activity')->createAction("delete", ["idOeuvre" => $idOeuvre]);
         $exist->nb > 0 ? header('location: ?p=admin.oeuvre.liste&page=1&id='.$_GET['expo']) : header('location: ?p=admin.index.calendar');
+    }
+
+    /**
+     * Show qr code on the screen
+     */
+    public function code() {
+        Utils::getTable('Activity')->createAction("qr-code", ["idOeuvre" => $_GET['id']]);
+        OeuvreEntity::createQrCode($_GET['id'], true);
+
+    }
+
+    public function activity() {
+        $idOeuvre = $_GET['id'];
+        $data["infos"] = Utils::getTable('Activity')->getActivity($idOeuvre, "oeuvre");
+
+        $this->render('admin.oeuvre-activity', $data);
     }
 
 }

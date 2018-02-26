@@ -26,16 +26,18 @@ class ExpositionTable extends Table {
         $contactId = $this->bdd->getLastId();
         $date = new DateTime($data['week']);
         $week = $date->format("Y-W");
-        $this->insert(["week" => $week, "generalDescrFR" => $generalDescrFr, "generalDescrEN" => $generalDescrEn, "idContact" => $contactId]);
+        $this->insert(["themeEn" => $themeEn, "themeFr" => $themeFr, "week" => $week, "generalDescrFR" => $generalDescrFr, "generalDescrEN" => $generalDescrEn, "idContact" => $contactId]);
         $idExpo = $this->bdd->getLastId();
         $artistT->insert(["nameArtist" => $nameArtist, "surnameArtist" => $surnameArtist, "birthDate" => $birthDate, "descrArtistFR" => $descrArtistFr,
             "descrArtistEN" => $descrArtisteEn, "idExpo" => $idExpo]);
         $idArtist = $this->bdd->getLastId();
-        if(!empty($_FILES)) {
+
+        if(!empty($_FILES['file'])) {
             $artistT->writeFile($_FILES, $idArtist) ? true : Session::getSession()->setFlash('danger', "Erreur durant l'ecriture du fichier! Veuillez contacter un dev :/");
         }
         $this->bdd->query("UPDATE contact SET idExpo = $idExpo WHERE idContact = $contactId");
         $this->bdd->query("UPDATE exposition SET idArtist = $idArtist WHERE idExpo = $idExpo");
+        Utils::getTable('Activity')->createAction("create", ["idExpo" => $idExpo]);
     }
 
     /**
@@ -58,7 +60,7 @@ class ExpositionTable extends Table {
      * Update an expo (expo + contact + artist)
      * @param $data array
      */
-    public function updateExpo($data) {
+    public function updateExpo($data, $file) {
         extract($data);
         $contactT = Utils::getTable('Contact');
         $artistT = Utils::getTable('Artist');
@@ -71,9 +73,29 @@ class ExpositionTable extends Table {
         $artistT->update(["nameArtist" => $nameArtist, "surnameArtist" => $surnameArtist, "birthDate" => $birthDate, "descrArtistFR" => $descrArtistFr,
             "descrArtistEN" => $descrArtisteEn],
             ["idExpo" => $idExpo]);
-        $this->update(["week" => $week, "generalDescrFR" => $generalDescrFr, "generalDescrEN" => $generalDescrEn],
+        $this->update(["themeEn" => $themeEn, "themeFr" => $themeFr, "week" => $week, "generalDescrFR" => $generalDescrFr, "generalDescrEN" => $generalDescrEn],
             ["idExpo" => $idExpo]);
+        $idArtist = $this->query("SELECT idArtist AS id FROM artist WHERE idExpo = ?", [$data['idExpo']], true);
 
+        if(!empty($_FILES['file'])) {
+            $artistT->writeFile($_FILES, $idArtist->id) ? true : Session::getSession()->setFlash('danger', "Erreur durant l'ecriture du fichier! Veuillez contacter un dev :/");
+        }
+    }
+
+    public function deleteExpo($id) {
+        $ids = $this->query("SELECT idOeuvre, urlFile AS url FROM oeuvre WHERE idExpo = ?", [$id]);
+        $oeuvreT = Utils::getTable('Oeuvre');
+        foreach ($ids as $url) {
+            $oeuvreT->deleteOeuvre($url->idOeuvre, $url);
+        }
+        $idArtist = $this->query("SELECT idArtist FROM artist WHERE idExpo = ?", [$id], true);
+        $url = glob(ROOT."/public/img/file_artist/image".$idArtist->idArtist.".*");
+        $urls = str_replace("\\", "/", $url);
+        foreach ($urls as $url) {
+            unlink($url);
+        }
+
+        return $this->delete(['idExpo'], [$id]);
     }
 
     /**
