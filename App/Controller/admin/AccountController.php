@@ -62,6 +62,7 @@ class AccountController extends AdminController {
         $_POST['password'] = sha1($_POST['password']);
         Utils::getTable('User')->insert($_POST);
         Session::getSession()->setFlash('success', "Le compte à bien été créé");
+        Utils::getTable('Activity')->createAction("create");
         header('location: index.php?p=admin.account.show');
     }
 

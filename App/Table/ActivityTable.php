@@ -7,6 +7,7 @@
  */
 namespace App\Table;
 
+use App\Utils;
 use Core\Auth\Session;
 
 class ActivityTable extends Table {
@@ -17,12 +18,13 @@ class ActivityTable extends Table {
      * @param $libelle Type of action
      * @param $idType id0euvre / idExpo  + value of id
      */
-    public function createAction($libelle, $type) {
-        $idAdmin = Session::getSession()->read('auth')->id;
+    public function createAction($libelle, $type = false) {
+        $type ? $idAdmin = Session::getSession()->read('auth')->id : $idAdmin = Utils::getDb()->getLastId();
         $now = date("Y-m-d H:i:s");
-
-        $this->query("INSERT INTO `activity` (`id`, `libelle`, `heure`, `idAdmin`, `".array_keys($type)[0]."`) VALUES (?, ?, ?, ?, ?);",
-            [NULL, $libelle, $now, $idAdmin, $type[array_keys($type)[0]]]);
+        $type ? $vals = [NULL, $libelle, $now, $idAdmin, $type[array_keys($type)[0]]] : $vals = [NULL, $libelle, $now, $idAdmin];
+        $type ? $req = "INSERT INTO `activity` (`id`, `libelle`, `heure`, `idAdmin`, `".array_keys($type)[0]."`) VALUES (?, ?, ?, ?, ?);" :
+                $req = "INSERT INTO `activity` (`id`, `libelle`, `heure`, `idAdmin`) VALUES (?, ?, ?, ?);";
+        $this->query($req, $vals);
     }
 
     /**
