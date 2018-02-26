@@ -16,7 +16,7 @@ $auth->loggedOnly();
 $expoT = Utils::getTable('Exposition');
 $resp = $expoT->deleteExpo($_POST['idExpo']);
 if($resp) {
-    Utils::getTable('Activity')->createAction("delete", ["idExpo" => $_POST['idExpo']]);
+    Utils::getTable('Activity')->createAction("delete", ["exposition" => $_POST['idExpo']]);
     echo "success";
 } else {
     echo "fail";

@@ -2,16 +2,15 @@
 
 <ul>
 <?php foreach ($activities as $a): ?>
-    <?php if(!is_null($a->idExpo)) {
-        $type = "de l'exposition $a->idExpo";
-    } else if(!is_null($a->idOeuvre)){
-        $type = "de l'oeuvre $a->idOeuvre";
-    } else {
-        $type = " du type $a->idType";
-    } ?>
     <li>
-        <span><?= \App\Utils::translateAction($a->libelle)." $type le ".\App\Utils::getDateFromDatetime($a->heure)." par ".$admin->surname ?></span>
+        <span><?= \App\Utils::translateAction($a->libelle)." ".$a->translate()." le ".\App\Utils::getDateFromDatetime($a->heure)." par ".$admin->surname ?></span>
     </li>
-
 <?php endforeach; ?>
 </ul>
+
+<?php if($pagination['current'] > 1): ?>
+    <a href="index.php?p=admin.account.activity&page=<?= (intval($pagination["current"]) - 1) ?>&id=<?= $admin->id ?>">precedent</a>
+<?php endif; ?>
+<?php if($pagination['max'] > $pagination['current']): ?>
+    <a href="index.php?p=admin.account.activity&page=<?= (intval($pagination["current"]) + 1) ?>&id=<?= $admin->id ?>">suivant</a>
+<?php endif; ?>

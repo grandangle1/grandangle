@@ -7,6 +7,7 @@
  */
 namespace App\Controller\Admin;
 use App\Controller\Controller;
+use Core\Auth\Session;
 
 class AdminController extends Controller {
 
@@ -17,5 +18,11 @@ class AdminController extends Controller {
     public function __construct() {
         parent::__construct();
         $this->auth->logged() ? true : $this->forbidden();
+    }
+
+    public function notFound($message) {
+        $this->session->setFlash("warning", $message);
+        header('location: index.php?p=admin.index.calendar');
+        exit();
     }
 }

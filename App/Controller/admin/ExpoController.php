@@ -26,10 +26,10 @@ class ExpoController extends AdminController {
      * Create a day from the week saved in the DB
      */
     public function edit() {
-        isset($_GET['id']) ? true : $this->error();
         $expoT = Utils::getTable('Exposition');
         $data = $expoT->getExpo($_GET['id']);
-        !empty($data['exposition']) ? true : $this->error();
+        !empty($data['exposition']) ? true : $this->notFound("Cette exposition n'existe plus");
+
         $gendate = new \DateTime();
         $parts = explode("-", $data['exposition']->week);
         $gendate->setISODate($parts[0], $parts[1],1);

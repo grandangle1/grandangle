@@ -46,7 +46,16 @@
     <?php foreach ($admins as $admin): ?>
             <tr>
                 <th class="info" scope="row"><?= $admin->id ?></th>
-                <td><?= $admin->identifiant ?><a href="index.php?p=admin.account.activity&page=1&id=<?= $admin->id ?>"><span class="badge badge-primary badge-pill"><?= $admin->actions ?></span></a></td>
+                <td><?= $admin->identifiant ?>
+                    <a href="index.php?p=admin.account.activity&page=1&id=<?= $admin->id ?>">
+                        <span class="badge badge-primary badge-pill">
+                            <?php if (isset($admin->actions)):  ?>
+                                <?= $admin->actions ?></span>
+                            <?php else: ?>
+                                0
+                            <?php endif; ?>
+                    </a>
+                </td>
                 <td class="info"><?= $admin->name ?></td>
                 <td class="info"><?= $admin->surname ?></td>
                 <td class="info"><?= $admin->email ?></td>

@@ -16,15 +16,13 @@ class ActivityTable extends Table {
 
     /**
      * @param $libelle Type of action
-     * @param $idType id0euvre / idExpo  + value of id
+     * @param table name + id
      */
-    public function createAction($libelle, $type = false) {
-        $type ? $idAdmin = Session::getSession()->read('auth')->id : $idAdmin = Utils::getDb()->getLastId();
+    public function createAction($libelle, $target) {
+        $idAdmin = Session::getSession()->read('auth')->id;
         $now = date("Y-m-d H:i:s");
-        $type ? $vals = [NULL, $libelle, $now, $idAdmin, $type[array_keys($type)[0]]] : $vals = [NULL, $libelle, $now, $idAdmin];
-        $type ? $req = "INSERT INTO `activity` (`id`, `libelle`, `heure`, `idAdmin`, `".array_keys($type)[0]."`) VALUES (?, ?, ?, ?, ?);" :
-                $req = "INSERT INTO `activity` (`id`, `libelle`, `heure`, `idAdmin`) VALUES (?, ?, ?, ?);";
-        $this->query($req, $vals);
+
+        $this->insert(["libelle" => $libelle, "heure" => $now, "idAdmin" => $idAdmin, "target" => array_keys($target)[0], "idTarget" => $target[array_keys($target)[0]]]);
     }
 
     /**
@@ -36,14 +34,14 @@ class ActivityTable extends Table {
         $conds = [];
         $vals = [];
         foreach ($idsOeuvre as $idOeuvre) {
-            $conds[] = "activity.idOeuvre = ?";
+            $conds[] = "activity.idTarget = ?";
             $vals[] = $idOeuvre;
         }
         $conds = implode(" OR ", $conds);
 
-        $req = "SELECT activity.idOeuvre, activity.libelle, MAX(activity.heure) AS heure, administrateur.name, administrateur.surname 
+        $req = "SELECT activity.idTarget, activity.libelle, MAX(activity.heure) AS heure, administrateur.name, administrateur.surname 
         FROM activity, administrateur 
-        WHERE ($conds) AND administrateur.id = activity.idAdmin GROUP BY activity.idOeuvre;";
+        WHERE ($conds) AND administrateur.id = activity.idAdmin AND target = 'oeuvre' GROUP BY activity.idTarget;";
 
         return $this->query($req, $vals);
     }
@@ -53,11 +51,23 @@ class ActivityTable extends Table {
      * @param $type oeuvre / expo / type
      * @return list of activity
      */
-    public function getActivity($id, $type) {
+    public function getActivity($id, $target) {
         $req = "SELECT activity.id, activity.libelle, activity.heure, administrateur.surname, administrateur.name 
         FROM activity, administrateur
-        WHERE activity.id".ucfirst($type)." = ? AND administrateur.id = activity.idAdmin 
+        WHERE activity.target = ? AND activity.idTarget = ? AND administrateur.id = activity.idAdmin 
         ORDER BY heure DESC";
-        return $this->query($req, [$id]);
+        return $this->query($req, [$target, $id]);
+    }
+
+    /**
+     * @param $vals array id-admin
+     */
+    public function selOr($vals) {
+        foreach ($vals as $val) {
+            $conds[] = " activity.idAdmin = $val ";
+        }
+        $conds = implode(" OR ", $conds);
+        $req = "SELECT COUNT(activity.id) AS actions, activity.idAdmin FROM activity WHERE $conds GROUP BY activity.idAdmin";
+        return $this->query($req, $vals);
     }
 }

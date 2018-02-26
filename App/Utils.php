@@ -144,6 +144,38 @@ class Utils {
         } else if($action == "delete") {
             return "Suppression";
         }
+    }
 
+    public static function extractObj($key, $objs) {
+        $arr = [];
+        foreach($objs as $obj) {
+            $arr[] = $obj->$key;
+        }
+        return $arr;
+    }
+
+    /**
+     * fuse to array in the 1 first array when there a match on the two values specified
+     * @param $arrays 2 arrays of obj
+     * @param $compt value to match
+     * @return array first array in the parrams
+     */
+    public static function fuseOnMatch($arrays, $compt, $addCompt = false) {
+        $comp1 = $compt[0];
+        $comp2 = $compt[1];
+        foreach ($arrays[0] as $arr) {
+            foreach ($arrays[1] as $arr2) {
+                if($arr->$comp1 == $arr2->$comp2) {
+                    foreach ($arr2 as $key => $arr2val) {
+                        if($addCompt) {
+                            $arr->$key = $arr2val;
+                        } else {
+                            $key == $comp2 ? false : $arr->$key = $arr2val;
+                        }
+                    }
+                }
+            }
+        }
+        return $arrays[0];
     }
 }

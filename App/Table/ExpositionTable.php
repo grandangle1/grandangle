@@ -37,7 +37,7 @@ class ExpositionTable extends Table {
         }
         $this->bdd->query("UPDATE contact SET idExpo = $idExpo WHERE idContact = $contactId");
         $this->bdd->query("UPDATE exposition SET idArtist = $idArtist WHERE idExpo = $idExpo");
-        Utils::getTable('Activity')->createAction("create", ["idExpo" => $idExpo]);
+        Utils::getTable('Activity')->createAction("create", ["exposition" => $idExpo]);
     }
 
     /**

@@ -51,7 +51,7 @@ class OeuvreController extends AdminController {
             $idsOeuvres[] = $oeuvre->idOeuvre;
         }
 
-        $data['activities'] = Utils::getTable('Activity')->getListOeuvreActivity($idsOeuvres);
+        $data["oeuvres"] ? $data['activities'] = Utils::getTable('Activity')->getListOeuvreActivity($idsOeuvres) : false;
 
         if($currentPage <= 3) {
             $data["pages"] = [1, 2, 3, 4, 5];
@@ -76,7 +76,7 @@ class OeuvreController extends AdminController {
         $exist = $oeuvreT->query("SELECT COUNT(*) AS nb FROM oeuvre WHERE idExpo = ?", [$_GET['expo']], true);
 
         Session::getSession()->setFlash('success', "L'oeuvre à bien été supprimée.");
-        Utils::getTable('Activity')->createAction("delete", ["idOeuvre" => $idOeuvre]);
+        Utils::getTable('Activity')->createAction("delete", ["oeuvre" => $idOeuvre]);
         $exist->nb > 0 ? header('location: ?p=admin.oeuvre.liste&page=1&id='.$_GET['expo']) : header('location: ?p=admin.index.calendar');
     }
 
@@ -84,11 +84,14 @@ class OeuvreController extends AdminController {
      * Show qr code on the screen
      */
     public function code() {
-        Utils::getTable('Activity')->createAction("qr-code", ["idOeuvre" => $_GET['id']]);
+        Utils::getTable('Activity')->createAction("qr-code", ["oeuvre" => $_GET['id']]);
         OeuvreEntity::createQrCode($_GET['id'], true);
 
     }
 
+    /**
+     * Show all the modification on an art work
+     */
     public function activity() {
         $idOeuvre = $_GET['id'];
         $data["infos"] = Utils::getTable('Activity')->getActivity($idOeuvre, "oeuvre");

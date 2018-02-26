@@ -86,13 +86,13 @@ var adminMethods =  {
 	actionModif: function(e) {
         var type = e.srcElement.attributes[1].nodeValue;
         var idExpo = adminMethods.getIdExpo(e, 3);
-		if(type == "editExpo") {
+		if(e.srcElement.classList.contains("editExpo")) {
 			window.location = "?p=admin.expo.edit&id=" + idExpo;
-		} else if(type == "addOeuvre") {
+		} else if(e.srcElement.classList.contains("addOeuvre")) {
             window.location = "?p=admin.oeuvre.add&id=" + idExpo;
-		} else if(type == "listOeuvre") {
+		} else if(e.srcElement.classList.contains("listOeuvre")) {
 			window.location = "?p=admin.oeuvre.liste&page=1&id=" + idExpo;
-		} else if(type == "pdfExpo") {
+		} else if(e.srcElement.classList.contains("pdfExpo")) {
             window.open('?p=admin.expo.pdf&id=' + idExpo, '_blank');
 		}
 	},

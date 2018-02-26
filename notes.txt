@@ -28,16 +28,22 @@ ajout de la page en et fr pour le visionnage des types
 ajout mois au dessus planning
 
 activity :
-    - edit oeuvre
+    - create account
+    - create type oeuvre
+    - edit type
+    - delete type
     - delete oeuvre
     - create oeuvre
-    - qr-code
-    - delete expo
-    - add expo
-    - edit expo
+    - edit oeuvre
+    - create exposition
+    - edit exposition
+    - delete exposition
+
 
 Today, prise en compte du fait qu'il n'y ait pas d'expo a la date et du fait qu'aucune oeuvre ne soit renseigner
 account.show limite le count au action durant le mois précédent
+Amelioration de l'affichage des admins and admin.account.show
+Lors du visionnage des actions des d'un admin, un liens pour avoir accès la target en question
 
 
 

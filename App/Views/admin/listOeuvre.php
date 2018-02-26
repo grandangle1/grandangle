@@ -16,7 +16,7 @@
                     <h5 class="mb-1"><?= $oeuvre->nomOeuvre ?></h5>
                     <small class="link-activity" id="index.php?p=admin.oeuvre.activity&id=<?= $oeuvre->idOeuvre ?>">
                         <?php foreach ($activities as $activity): ?>
-                            <?php if ($activity->idOeuvre == $oeuvre->idOeuvre): ?>
+                            <?php if ($activity->idTarget == $oeuvre->idOeuvre): ?>
                                 Derniere modification le <?php $date = new DateTime($activity->heure); echo $date->format("d")." ".
                                     \App\Utils::getMonthWrittenFr(intval($date->format("m")))." à ".$date->format("H:i");?>
                             <?php endif; ?>

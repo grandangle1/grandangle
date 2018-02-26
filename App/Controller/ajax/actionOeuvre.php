@@ -38,7 +38,7 @@ if($validator->isValid() && $validatorFile->isValid()) {
 		}
 
 		$session->setFlash('success', "L'oeuvre à bien été modifiée!");
-        Utils::getTable('Activity')->createAction("edit", ["idOeuvre" => $idOeuvre]);
+        Utils::getTable('Activity')->createAction("edit", ["oeuvre" => $idOeuvre]);
         echo json_encode(["resp" => "modified"]);
 	} else {
 	    $bdd = Utils::getDb();
@@ -47,7 +47,7 @@ if($validator->isValid() && $validatorFile->isValid()) {
         $oeuvreT->writeFile($_FILES, $idOeuvre) ? true : $session->setFlash('danger', "Erreur durant l'ecriture du fichier! Veuillez contacter un dev :/");
         $session->setFlash('success', "L'oeuvre à bien été ajouter à l'exposition!");
         OeuvreEntity::createQrCode($idOeuvre);
-        Utils::getTable('Activity')->createAction("create", ["idOeuvre" => $idOeuvre]);
+        Utils::getTable('Activity')->createAction("create", ["oeuvre" => $idOeuvre]);
 
         echo json_encode(["resp" => "added"]);
 	}
