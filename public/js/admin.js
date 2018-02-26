@@ -39,7 +39,11 @@ var utils = {
 	        '</button>' +
 	    '</div>';
 		this.echo(popup);
-	}
+	},
+    get: function(field) {
+        var url = new URL(window.location.href);
+        return url.searchParams.get(field);
+    }
 }
 
 

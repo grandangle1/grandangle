@@ -37,10 +37,8 @@
         <div class="col-lg-12 text-center text-light mt-3 mg-3">
             <div class="card bg-dark">
                 <div class="card-body bg-dark">
-                    <h3>10 bonnes raisons de venir visiter nos expositions </h3>
-                    <p>
-                        Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression
-                    </p>
+                    <h3>Ce qui est à découvrir dans notre musée</h3>
+
                 </div>
 
             </div>

@@ -50,6 +50,7 @@ if($validator->isValid() && $validatorFile->isValid()) {
 
         $expoT->updateExpo($_POST, $_FILES);
         $session->setFlash('success', "L'exposition a bien été modifiée");
+        Utils::getTable('Activity')->createAction("edit", ["idExpo" => $_POST['idExpo']]);
 	}
 
 	echo "success";

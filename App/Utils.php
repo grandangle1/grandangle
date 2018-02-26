@@ -117,4 +117,33 @@ class Utils {
         return Session::getSession()->read('langue') == "en" ? "en" : "fr";
     }
 
+    /**
+     * @param $index 1 to 12
+     * @return month Fr written
+     */
+    public static function getMonthWrittenFr($index) {
+        $monthsFr = ["" ,"Janvier", "Fevrier", "Mars", "Avril", "Mai", "Juin", "Juillet", "Aout", "Septembre", "Octobre", "Novembre", "Decembre"];
+        return $monthsFr[$index];
+    }
+
+    public static function getDateFromDatetime($rowDate) {
+        $date = new DateTime($rowDate);
+        return $date->format("d")." ". self::getMonthWrittenFr(intval($date->format("m")))." à ".$date->format("H:i");
+    }
+
+    /**
+     * @param $action
+     */
+    public static function translateAction($action) {
+        if($action == "create") {
+            return "Création";
+        } else if($action == "edit") {
+            return "Modification";
+        } else if($action == "qr-code") {
+            return "Création du Qr-code";
+        } else if($action == "delete") {
+            return "Suppression";
+        }
+
+    }
 }

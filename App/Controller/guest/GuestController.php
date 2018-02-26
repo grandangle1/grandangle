@@ -34,10 +34,16 @@ class GuestController extends ParentGuestController {
         $oeuvreT = Utils::getTable('Oeuvre');
         $expoT = Utils::getTable('Exposition');
         $idExpo = $oeuvreT->query("SELECT idExpo AS id FROM exposition WHERE week = ?", [$week], true);
-        $data["oeuvres"] = $oeuvreT->query("SELECT * FROM oeuvre WHERE idExpo = ?", [$idExpo->id]);
-        $data['artist'] = $oeuvreT->query("SELECT nameArtist, surnameArtist, idArtist FROM artist WHERE idExpo = ?", [$data["oeuvres"][0]->idExpo], true);
-        $data["exposition"] = $expoT->query("SELECT idExpo, themeFr, themeEn, week, generalDescrFR, generalDescrEN FROM exposition WHERE idExpo = ?", [$idExpo->id], true);
-        $data["types"] = Utils::getTable('Type')->query("SELECT typeoeuvre.type".ucfirst($this->curentLanguage).", typeoeuvre.id FROM typeoeuvre, oeuvre WHERE typeoeuvre.id = oeuvre.idType AND oeuvre.idExpo = ? GROUP BY typeoeuvre.id", [$idExpo->id]);
+        if($idExpo) {
+            $data["exist"] = true;
+            $data["oeuvres"] = $oeuvreT->query("SELECT * FROM oeuvre WHERE idExpo = ?", [$idExpo->id]);
+            $data['artist'] = $oeuvreT->query("SELECT nameArtist, surnameArtist, idArtist FROM artist WHERE idExpo = ?", [$data["oeuvres"][0]->idExpo], true);
+            $data["exposition"] = $expoT->query("SELECT idExpo, themeFr, themeEn, week, generalDescrFR, generalDescrEN FROM exposition WHERE idExpo = ?", [$idExpo->id], true);
+            $data["types"] = Utils::getTable('Type')->query("SELECT typeoeuvre.type".ucfirst($this->curentLanguage).", typeoeuvre.id FROM typeoeuvre, oeuvre WHERE typeoeuvre.id = oeuvre.idType AND oeuvre.idExpo = ? GROUP BY typeoeuvre.id", [$idExpo->id]);
+        } else {
+            $data["exist"] = false;
+        }
+
 
         $this->render("guest.{$this->curentLanguage}.today", $data);
     }
@@ -76,6 +82,10 @@ class GuestController extends ParentGuestController {
 
     public function planning() {
         $parts = explode("-", $_GET['m']);
+        $monthsFr = ["", "Janvier", "Fevrier", "Mars", "Avril", "Mai", "Juin", "Juillet", "Aout", "Septembre", "Octobre", "Novembre", "Decembre"];
+        $monthsEn = ["", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+        $this->curentLanguage == "en" ? $data['month'] = $monthsEn[intval($parts[1])] : $data['month'] = $monthsFr[intval($parts[1])];
+        $data["year"] = $parts[0];
 
         $data["calendar"] = Calendar::createCalendar($parts[1], $parts[0]);
         $this->render("guest.{$this->curentLanguage}.planning", $data);

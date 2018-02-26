@@ -1,4 +1,3 @@
-<h1>Plnning fr</h1>
 <style>
     table {
         width: 70%;
@@ -57,6 +56,15 @@
         background-color: red !important;
     }
 </style>
+<h1>Plnning pour le mois de <?= $month; ?> <?= $year ?></h1>
+
 <?= $calendar ?>
+
+<h3>Chosissez un mois</h3>
+<form method="POST" class="choose-month">
+    <div class="error-month"></div>
+    <input type="month" name="month">
+    <button type="submit" class="btn btn-primary">Voir les expositions</button>
+</form>
 
 <script src="js/calendar.js"></script>

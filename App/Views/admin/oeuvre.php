@@ -13,8 +13,9 @@
 			<li class="list-group-item">
 				<div>
                     <?php if(isset($oeuvre->urlFile)): ?>
-                        <img src="<?= $oeuvre->urlFile ?>" width="70px" height="70px">
-                        <span id="url"><?= $oeuvre->urlFile; ?></span>
+                        <?php if ($oeuvre->getFormat() == "image"): ?><img src="<?= $oeuvre->urlFile ?>" height="100px">
+                        <?php elseif($oeuvre->getFormat() == "video"): ?><video controls src="<?= $oeuvre->urlFile ?>" height="100px"><video >
+                        <?php elseif ($oeuvre->getFormat() == "audio"): ?><audio controls src="<?= $oeuvre->urlFile ?>"></audio><?php endif; ?>
                     <?php else: ?>
                         <span>Il n'y a pas de fichier associé à cette ouevre</span>
                     <?php endif; ?>

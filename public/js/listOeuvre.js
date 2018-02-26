@@ -72,9 +72,13 @@ var methodsList = {
 		}
 
 	},
+    showActivity: function (e) {
+		window.location = e.srcElement.id;
+    },
 	launch: function () {
 		utils.listener(document.querySelectorAll('.pagi'), "click", this.changePage);
        	maxPage = document.querySelector('.pagination').getAttribute('max');
+       	utils.listener(document.querySelectorAll('.link-activity'), "click", methodsList.showActivity);
     }
 }
 methodsList.launch();

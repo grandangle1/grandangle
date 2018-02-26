@@ -112,8 +112,10 @@ class Table  {
         $cols = [];
         $vals = [];
         foreach ($fields as $k => $v) {
-            $cols[] = " $k = ?";
-            $vals[] = $v;
+            if($k != "id") {
+                $cols[] = " $k = ?";
+                $vals[] = $v;
+            }
         }
         $cond = array_keys($condition)[0]." = ?";
         $cols = implode(",", $cols);

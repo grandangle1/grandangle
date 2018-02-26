@@ -1,15 +1,24 @@
-<h1 style="text-align: center;">En ce moment : <?= $exposition->themeFr ?></h1>
-<h3 style="text-align: center;">De l'artiste <a href="?p=guest.artist&id=<?= $artist->idArtist; ?>"><?= $artist->nameArtist;?> <?= $artist->surnameArtist; ?></a></h3>
+<style>
+    h1 {
+        text-align: center;
+    }
+</style>
+<?php if ($exist): ?>
+    <h1 style="text-align: center;">En ce moment : <?= $exposition->themeFr ?></h1>
+    <h3 style="text-align: center;">De l'artiste <a href="?p=guest.artist&id=<?= $artist->idArtist; ?>"><?= $artist->nameArtist;?> <?= $artist->surnameArtist; ?></a></h3>
 
 
-<p><?= $exposition->generalDescrFR ?></p>
+    <p><?= $exposition->generalDescrFR ?></p>
 
-<ul style="list-style: none;">
-    <li><h3>Ca vous interesse : </h3></li>
-    <?php foreach ($types as $type): ?>
-    <li><a href="?p=guest.type&id=<?= $type->id ?>&w=<?= $exposition->week; ?>"><?= $type->typeFr ?></a></li>
-    <?php endforeach; ?>
-</ul>
+    <ul style="list-style: none;">
+        <li><h3>Ca vous interesse : </h3></li>
+        <?php foreach ($types as $type): ?>
+        <li><a href="?p=guest.type&id=<?= $type->id ?>&w=<?= $exposition->week; ?>"><?= $type->typeFr ?></a></li>
+        <?php endforeach; ?>
+    </ul>
+<?php else: ?>
+    <h1>Il n'y a pas d'exposition à cette date</h1>
+<?php endif; ?>
 
 <div class="svg-container" style="width: 100%; display: flex; justify-content: center;">
     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1080px" height="480px" viewBox="0 0 1080 480" preserveAspectRatio="xMidYMid meet" >
@@ -110,7 +119,9 @@
         </ul>
     </div>
 <?php else: ?>
-    <div>Il n'y a pas d'expo en ce moment</div>
+    <?php if ($exist): ?>
+        <h1>Aucune oeuvre n'a encore été renseigner pour cette exposition</h1>
+    <?php endif; ?>
 <?php endif; ?>
 
 

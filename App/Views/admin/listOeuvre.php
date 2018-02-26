@@ -1,3 +1,11 @@
+<style>
+    .link-activity {
+        cursor: pointer;
+    }
+    .link-activity:hover {
+        color: dodgerblue;
+    }
+</style>
 <h1 id="php">Liste des oeuvres de l'expo du <?php echo $date ?></h1>
 
 <div class="list-oeuvre-container" style="width: 50%; margin: auto;">
@@ -6,7 +14,14 @@
             <a style="z-index=2;" class="list-group-item list-group-item-action flex-column align-items-start oeuvre" id="<?= $oeuvre->idOeuvre ?>">
                 <div class="d-flex w-100 justify-content-between">
                     <h5 class="mb-1"><?= $oeuvre->nomOeuvre ?></h5>
-                    <small>3 days ago</small>
+                    <small class="link-activity" id="index.php?p=admin.oeuvre.activity&id=<?= $oeuvre->idOeuvre ?>">
+                        <?php foreach ($activities as $activity): ?>
+                            <?php if ($activity->idOeuvre == $oeuvre->idOeuvre): ?>
+                                Derniere modification le <?php $date = new DateTime($activity->heure); echo $date->format("d")." ".
+                                    \App\Utils::getMonthWrittenFr(intval($date->format("m")))." à ".$date->format("H:i");?>
+                            <?php endif; ?>
+                        <?php endforeach; ?>
+                    </small>
                     </div>
                 <p class="mb-1"><?= $oeuvre->descrOeuvreFr; ?><span style="float: right;"><?= $oeuvre->salle; ?></span></p>
                 <?php if (isset($oeuvre->urlFile)): ?>

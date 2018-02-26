@@ -29,7 +29,7 @@ class Controller {
      */
     protected function render($view ,$data = []) {
         ob_start();
-        extract($data);
+        !empty($data) ? extract($data) : false;
         require($this->viewpath.str_replace('.', '/', $view).'.php');
         $content = ob_get_clean();
         require $this->viewpath.'/template/'.$this->template.'.php';

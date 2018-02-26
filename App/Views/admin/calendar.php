@@ -10,6 +10,7 @@
 </style>
 
 <h1>Espace d'administration</h1>
+<a href="index.php?p=admin.account.show">Admnistration des comptes administrateurs</a>
 <div><?= $fail->nbFail; ?> personnes ont raté leur mot de passe</div>
 <table style="margin: 50px auto;">
 	<tr><td colspan="2">Tableau des expositions</td></tr>

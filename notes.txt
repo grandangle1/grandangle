@@ -1,7 +1,7 @@
 
 To do :
 
-planning visiteur
+remove CSS from html => admin.account.show, list oeuvre admin, todayfr
 
 
 
@@ -10,7 +10,7 @@ Done :
     - Ajouter compteur de ratés
     - QR code
     - Generer une version PDF des oeuvres
-
+    - planning visiteur
 
 Fait
 
@@ -25,6 +25,19 @@ Genration du pdf avec liste des oeuvres + leurs qr code + resumé expo
 Ajpaut de la gestion des type d'oauvre, dans les forms et espace d'admin
 ajout dans la partie visiteur de la possiblité de voir les oeuvres en fonction de leur type
 ajout de la page en et fr pour le visionnage des types
+ajout mois au dessus planning
+
+activity :
+    - edit oeuvre
+    - delete oeuvre
+    - create oeuvre
+    - qr-code
+    - delete expo
+    - add expo
+    - edit expo
+
+Today, prise en compte du fait qu'il n'y ait pas d'expo a la date et du fait qu'aucune oeuvre ne soit renseigner
+account.show limite le count au action durant le mois précédent
 
 
 

@@ -30,7 +30,7 @@ var utils = {
             array[yu].removeEventListener(type, action);
         }
     },
-    echoMessage: function(message, type) {
+    echoMessage: function(message, type, div) {
         var popup =
             '<div class="alert alert-' + type + ' fade show m-3" role="alert"> ' +
             '<strong>' + message + '</strong>' +
@@ -38,7 +38,12 @@ var utils = {
             '<span aria-hidden="true">&times;</span>' +
             '</button>' +
             '</div>';
-        this.echo(popup);
+        if(div != undefined) {
+            div.innerHTML += popup;
+        } else {
+            this.echo(popup);
+        }
+
     }
 }
 
@@ -52,10 +57,20 @@ var methodCalendar = {
     showrow: function(e){
         e.srcElement.parentElement.classList.remove("noEmphasize");
     },
+    changeMonth: function(e) {
+      e.preventDefault();
+      var month = document.querySelector('[name="month"]').value;
+      if(month != "") {
+          window.location = "index.php?p=guest.planning&m=" +month;
+      } else {
+          utils.echoMessage("Veuillez choisir un mois.", "warning", document.querySelector('.error-month'));
+      }
+
+    },
     launch: function () {
         utils.listener(document.querySelectorAll('.impossible'), 'mouseover', this.hideRow);
         utils.listener(document.querySelectorAll('.impossible'), 'mouseout', this.showrow);
-
+        document.querySelector('.choose-month').addEventListener('submit', methodCalendar.changeMonth);
     }
 }
 
