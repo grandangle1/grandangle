@@ -1,46 +1,19 @@
+﻿EN MODE VISITEUR
 
-To do :
+Coté Anglais
 
-remove CSS from html => admin.account.show, list oeuvre admin, todayfr
+-Le bouton planning n'entraine aucune réaction du site
+-je n'ai rien modifié concernant le bouton ACTUELLEMENT donc toujours les messages d'erreurs (je vais au plus vite)
 
+Francais 
 
-
-Done :
-    - re sortir descrExpo dans today
-    - Ajouter compteur de ratés
-    - QR code
-    - Generer une version PDF des oeuvres
-    - planning visiteur
-
-Fait
-
-Gestion format audio video image + validator
-Lors de la suppression d'une oeuvre, l'image associé est supprimée
-lors de la suppression d'une exposition, les images d'oeuvres sont supprimées ainsi que l'image de l'artiste
-ajout du champ "theme dans expo"
-affichage des info de l'expo dans la page "today"
-implémentation des raté de mdp
-ecriture / suppression Qr-code
-Genration du pdf avec liste des oeuvres + leurs qr code + resumé expo
-Ajpaut de la gestion des type d'oauvre, dans les forms et espace d'admin
-ajout dans la partie visiteur de la possiblité de voir les oeuvres en fonction de leur type
-ajout de la page en et fr pour le visionnage des types
-ajout mois au dessus planning
-
-activity :
-    - edit oeuvre
-    - delete oeuvre
-    - create oeuvre
-    - qr-code
-    - delete expo
-    - add expo
-    - edit expo
-
-Today, prise en compte du fait qu'il n'y ait pas d'expo a la date et du fait qu'aucune oeuvre ne soit renseigner
-account.show limite le count au action durant le mois précédent
+RAS 
 
 
 
+MODE ADMIN
 
+Bouton administrateur: génération de pdf qui ne fonctionne pas
 
+Compte admisnistrateur : pasde formulaire quand j'ajoute un compte
 

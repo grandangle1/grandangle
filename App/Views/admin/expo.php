@@ -1,16 +1,16 @@
  <div class="container pt-5">
 	<div class="center cborder">
 		<?php if(empty($data)): ?>
-			<h2 class="center p-4">SAISIR UNE NOUVELLE EXPOSITION</h2>
+			<h2 class="center p-4 bold">Saisir une nouvelle exposition</h2>
 		<?php else: ?>
-			<h2 class="center p-4">MODIFIER UNE EXPOSITION</h2>
+			<h2 class="center p-4 bold">Modifier une exposition</h2>
 		<?php endif; ?>
 	</div>
 	<form id="form-expo" class="form-group">
-		<ul class="col-lg-12 ">
-			<li class="list-group-item bold"><label>Informations sur l'artiste</label></li>
+		<ul class="col-lg-12">
+			<li class="list-group-item bold text-center"><label>INFORMATION DE L'ARTISTE</label></li>
 				<ul class="list-group-item">
-					<li class="list-inline m-3">
+					<li class="list-inline m-3 ">
 						<label class="list-inline-item">Nom : </label>
 						<input <?php if(!empty($data)): ?> value="<?= $data['artist']->nameArtist ?>" <?php endif; ?> class="list-inline-item form-control" type="text" name="nameArtist">
 						<span class="alert nameArtist"></span>
@@ -50,7 +50,7 @@
                     <?php endif; ?>
 				</ul>
 			</li>
-			<li class="list-group-item bold mt-5"></label>Contact</label></li>
+			<li class="list-group-item bold mt-5 bold text-center"></label>CONTACT</label></li>
 				<ul class="list-group-item">
 					<li class="list-inline m-3">
 						<label class="list-inline-item">Nom : </label>
@@ -84,7 +84,7 @@
 					</li>
 				</ul>
 			</li>
-			<li class="list-group-item bold mt-5"></label>Informations concernant l'exposition</label></li>
+			<li class="list-group-item bold mt-5 bold text-center"></label>INFORMATIONS CONCERNANT L'EXPOSITION</label></li>
 				<ul class="list-group-item">
                     <li class="list-inline m-3">
                         <label class="list-inline-item">Thème de l'exposition en Francais</label>

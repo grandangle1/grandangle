@@ -147,8 +147,20 @@ body{
 	background-color: #FFA0A0;
 }
 
+.paginer{
+	display: flex;
+	justify-content: center;
+}
+
+ .link-activity {
+	 cursor: pointer;
+ }
+.link-activity:hover {
+	color: dodgerblue;
+}
+
 /*---------------------------------------------------------------
-						en ce moment
+						ACTUELLEMENT
 -----------------------------------------------------------------*/
 
 .salle {
@@ -169,4 +181,28 @@ body{
 
 .prenext {
 	margin-top: 5px;
+}
+
+.tdn{
+	text-decoration: none;
+}
+
+/*----------------------------------------------------------------*\
+							ADMIN ACCOUNT
+\*----------------------------------------------------------------*/
+
+.table-container {
+	width: 70%;
+	margin: auto;
+}
+
+.edit-form {
+	display: none;
+}
+.mdp-form {
+	display: none;
+}
+.badge-pill {
+	float: right;
+	cursor: pointer;
 }

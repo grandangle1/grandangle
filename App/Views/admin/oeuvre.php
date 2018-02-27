@@ -1,9 +1,9 @@
 <div class="container pt-5">
 	<div class="center cborder">
         <?php if(!isset($data["oeuvre"])): ?>
-			<h2 class="center p-4">SAISIR UNE NOUVELLE OEUVRE</h2>
+			<h2 class="center p-4 bold">Saisir une nouvelle oeuvre</h2>
 		<?php else: ?>
-			<h2 class="center p-4">MODIFIER UNE OEUVRE</h2>
+			<h2 class="center p-4 bold">Modifier une oeuvre</h2>
 		<?php endif; ?>
 	</div>
 	<ul class= "col-lg-12 list-group">
@@ -17,7 +17,7 @@
                         <?php elseif($oeuvre->getFormat() == "video"): ?><video controls src="<?= $oeuvre->urlFile ?>" height="100px"><video >
                         <?php elseif ($oeuvre->getFormat() == "audio"): ?><audio controls src="<?= $oeuvre->urlFile ?>"></audio><?php endif; ?>
                     <?php else: ?>
-                        <span>Il n'y a pas de fichier associé à cette ouevre</span>
+                        <span>Il n'y a pas de fichier associé à cette oeuvre</span>
                     <?php endif; ?>
 				</div>
 			</li>
@@ -31,7 +31,7 @@
 							value="<?= $oeuvre->nomOeuvre ?>"
 						<?php endif; ?>
 							></li><br>
-                    <li class="list-group">
+                    <li class="list-group bold">
                         <label>Type de l'oeuvre : </label>
                         <select>
                             <option value="none"></option>
@@ -40,7 +40,7 @@
                             <?php endforeach; ?>
                         </select>
                     </li>
-					<li class="list-group bold"><label>Emplacement de l'exposition :</label></li>
+					<li class="list-group bold mt-2"><label>Emplacement de l'exposition :</label></li>
 					<li class="list-inline">
 						<div class="list-inline">
 						<input <?php if(isset($data["oeuvre"]) && $oeuvre->salle == "salle1"): ?>checked="checked"<?php endif; ?>  type="radio" name="salle" value="salle1" radio="1" class="list-inline-item" id="salle1"><label for="salle1">Salle 1</label>
