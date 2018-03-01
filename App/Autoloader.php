@@ -14,6 +14,8 @@ class  Autoloader {
     }
 
     public static function myloader($class) {
-        require ROOT.'/'.$class.'.php';
+
+        $path = str_replace("\\", "/",ROOT.'/'.$class.'.php');
+        require $path;
     }
 }

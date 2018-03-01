@@ -21,7 +21,7 @@ class OeuvreController extends AdminController {
         $expoT->findWithId($_GET['id']) ? true : $this->error();
         $data["types"] = Utils::getTable('Type')->query("SELECT id, typeFr FROM typeoeuvre");
 
-        $this->render('admin.oeuvre', $data);
+        $this->render('Admin.oeuvre', $data);
     }
 
     public function edit() {
@@ -29,7 +29,7 @@ class OeuvreController extends AdminController {
         $data["oeuvre"] = $oeuvreT->query("SELECT * FROM oeuvre WHERE idOeuvre = ?", [$_GET['id']], true);
         $data["types"] = Utils::getTable('Type')->query("SELECT id, typeFr FROM typeoeuvre");
 
-        $this->render('admin.oeuvre', $data);
+        $this->render('Admin.oeuvre', $data);
     }
 
     public function liste() {
@@ -66,7 +66,7 @@ class OeuvreController extends AdminController {
             $data["pages"] = [$currentPage - 2, $currentPage -1, $currentPage, $currentPage + 1, $currentPage + 2];
         }
 
-        $this->render('admin.listOeuvre', $data);
+        $this->render('Admin.listOeuvre', $data);
     }
 
     public function delete() {
@@ -77,7 +77,7 @@ class OeuvreController extends AdminController {
 
         Session::getSession()->setFlash('success', "L'oeuvre à bien été supprimée.");
         Utils::getTable('Activity')->createAction("delete", ["oeuvre" => $idOeuvre]);
-        $exist->nb > 0 ? header('location: ?p=admin.oeuvre.liste&page=1&id='.$_GET['expo']) : header('location: ?p=admin.index.calendar');
+        $exist->nb > 0 ? header('location: ?p=Admin.oeuvre.liste&page=1&id='.$_GET['expo']) : header('location: ?p=Admin.index.calendar');
     }
 
     /**
@@ -96,7 +96,7 @@ class OeuvreController extends AdminController {
         $idOeuvre = $_GET['id'];
         $data["infos"] = Utils::getTable('Activity')->getActivity($idOeuvre, "oeuvre");
 
-        $this->render('admin.oeuvre-activity', $data);
+        $this->render('Admin.oeuvre-activity', $data);
     }
 
 }

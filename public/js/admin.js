@@ -51,14 +51,14 @@ var adminMethods =  {
 	currentOffset: 0,
 	idExpos: ["" , "", "", ""],
 	newExpo: function() {
-		window.location = 'index.php?p=admin.expo.add';
+		window.location = 'index.php?p=Admin.expo.add';
 	},
-	getIdExpo: function(e, attr) {
-		var type = e.srcElement.attributes[1].nodeValue;
-		return adminMethods.idExpos[e.srcElement.attributes[attr].nodeValue];
+	getIdExpo: function(e) {
+		var index = parseInt(e.srcElement.getAttribute('cell'), 10);
+		return adminMethods.idExpos[parseInt(e.srcElement.getAttribute('cell'), 10)];
 	},
 	deleteExpo: function(e) {
-		var idExpo = adminMethods.getIdExpo(e, 2);
+		var idExpo = adminMethods.getIdExpo(e);
 		var confirmDelete = confirm("Press a button!");
 		if (confirmDelete == true) {
 		    var xhr = utils.getXHR();
@@ -84,17 +84,19 @@ var adminMethods =  {
 		}
 	},
 	actionModif: function(e) {
-        var type = e.srcElement.attributes[1].nodeValue;
-        var idExpo = adminMethods.getIdExpo(e, 3);
+        var idExpo = adminMethods.getIdExpo(e);
 		if(e.srcElement.classList.contains("editExpo")) {
-			window.location = "?p=admin.expo.edit&id=" + idExpo;
+			window.location = "?p=Admin.expo.edit&id=" + idExpo;
 		} else if(e.srcElement.classList.contains("addOeuvre")) {
-            window.location = "?p=admin.oeuvre.add&id=" + idExpo;
+            window.location = "?p=Admin.oeuvre.add&id=" + idExpo;
 		} else if(e.srcElement.classList.contains("listOeuvre")) {
-			window.location = "?p=admin.oeuvre.liste&page=1&id=" + idExpo;
+			window.location = "?p=Admin.oeuvre.liste&page=1&id=" + idExpo;
 		} else if(e.srcElement.classList.contains("pdfExpo")) {
-            window.open('?p=admin.expo.pdf&id=' + idExpo, '_blank');
-		}
+            window.open('?p=Admin.expo.pdf&id=' + idExpo, '_blank');
+		} else if(e.srcElement.classList.contains("artist")) {
+            window.location = 'index.php?p=Admin.expo.artist&id=' + idExpo;
+        }
+
 	},
 	loadWeek: function(weekOffset) {
 		adminMethods.currentOffset = weekOffset;
@@ -160,7 +162,7 @@ var adminMethods =  {
 	},
     deleteType: function (e) {
 		if(confirm("Voulez vous vraiment supprimer ce type d'eauvre?")) {
-            window.location = "?p=admin.type.delete&id=" + e.srcElement.id;
+            window.location = "?p=Admin.type.delete&id=" + e.srcElement.id;
 		}
     },
 	launch: function() {

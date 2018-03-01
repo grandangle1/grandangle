@@ -143,6 +143,10 @@ class Utils {
             return "Création du Qr-code";
         } else if($action == "delete") {
             return "Suppression";
+        } else if($action == "addArtist") {
+            return "Ajout d'un artiste à";
+        } else if($action == "remove" || $action == "participate") {
+            return null;
         }
     }
 
@@ -177,5 +181,19 @@ class Utils {
             }
         }
         return $arrays[0];
+    }
+
+    /**
+     * @param $fields
+     * @param $eq typically = !=
+     * @param $sep Separator typically OR/AND
+     * @return array|string
+     */
+    public static function assemble($fields, $eq, $sep) {
+        foreach ($fields as $k => $v) {
+            $req[] = "$k $eq ?";
+        }
+        $req = implode($sep, $req);
+        return$req;
     }
 }

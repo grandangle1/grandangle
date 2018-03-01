@@ -1,31 +1,499 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="923abfcf-2779-4f22-a39e-e03d9495face" name="Default" comment="" />
+    <list default="true" id="923abfcf-2779-4f22-a39e-e03d9495face" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/App/Autoloader.php" afterPath="$PROJECT_DIR$/App/Autoloader.php" />
+      <change beforePath="$PROJECT_DIR$/App/Controller/Controller.php" afterPath="$PROJECT_DIR$/App/Controller/Controller.php" />
+      <change beforePath="$PROJECT_DIR$/App/Controller/admin/AccountController.php" afterPath="$PROJECT_DIR$/App/Controller/admin/AccountController.php" />
+      <change beforePath="$PROJECT_DIR$/App/Controller/admin/AdminController.php" afterPath="$PROJECT_DIR$/App/Controller/admin/AdminController.php" />
+      <change beforePath="$PROJECT_DIR$/App/Controller/admin/ArtistController.php" afterPath="$PROJECT_DIR$/App/Controller/admin/ArtistController.php" />
+      <change beforePath="$PROJECT_DIR$/App/Controller/admin/ExpoController.php" afterPath="$PROJECT_DIR$/App/Controller/admin/ExpoController.php" />
+      <change beforePath="$PROJECT_DIR$/App/Controller/admin/IndexController.php" afterPath="$PROJECT_DIR$/App/Controller/admin/IndexController.php" />
+      <change beforePath="$PROJECT_DIR$/App/Controller/admin/OeuvreController.php" afterPath="$PROJECT_DIR$/App/Controller/admin/OeuvreController.php" />
+      <change beforePath="$PROJECT_DIR$/App/Controller/admin/TypeController.php" afterPath="$PROJECT_DIR$/App/Controller/admin/TypeController.php" />
+      <change beforePath="$PROJECT_DIR$/App/Controller/guest/GuestController.php" afterPath="$PROJECT_DIR$/App/Controller/guest/GuestController.php" />
+      <change beforePath="$PROJECT_DIR$/App/Entity/ActivityEntity.php" afterPath="$PROJECT_DIR$/App/Entity/ActivityEntity.php" />
+      <change beforePath="$PROJECT_DIR$/App/Table/ActivityTable.php" afterPath="$PROJECT_DIR$/App/Table/ActivityTable.php" />
+      <change beforePath="$PROJECT_DIR$/App/Views/admin/account-activity.php" afterPath="$PROJECT_DIR$/App/Views/admin/account-activity.php" />
+      <change beforePath="$PROJECT_DIR$/App/Views/admin/account.php" afterPath="$PROJECT_DIR$/App/Views/admin/account.php" />
+      <change beforePath="$PROJECT_DIR$/App/Views/admin/add-account.php" afterPath="$PROJECT_DIR$/App/Views/admin/add-account.php" />
+      <change beforePath="$PROJECT_DIR$/App/Views/admin/artist.php" afterPath="$PROJECT_DIR$/App/Views/admin/artist.php" />
+      <change beforePath="$PROJECT_DIR$/App/Views/admin/calendar.php" afterPath="$PROJECT_DIR$/App/Views/admin/calendar.php" />
+      <change beforePath="$PROJECT_DIR$/App/Views/admin/expo-artist.php" afterPath="$PROJECT_DIR$/App/Views/admin/expo-artist.php" />
+      <change beforePath="$PROJECT_DIR$/App/Views/admin/expo-list-artist.php" afterPath="$PROJECT_DIR$/App/Views/admin/expo-list-artist.php" />
+      <change beforePath="$PROJECT_DIR$/App/Views/admin/expo.php" afterPath="$PROJECT_DIR$/App/Views/admin/expo.php" />
+      <change beforePath="$PROJECT_DIR$/App/Views/admin/oeuvre.php" afterPath="$PROJECT_DIR$/App/Views/admin/oeuvre.php" />
+      <change beforePath="$PROJECT_DIR$/App/Views/admin/type.php" afterPath="$PROJECT_DIR$/App/Views/admin/type.php" />
+      <change beforePath="$PROJECT_DIR$/App/Views/guest/en/artist.php" afterPath="$PROJECT_DIR$/App/Views/guest/en/artist.php" />
+      <change beforePath="$PROJECT_DIR$/App/Views/guest/en/index.php" afterPath="$PROJECT_DIR$/App/Views/guest/en/index.php" />
+      <change beforePath="$PROJECT_DIR$/App/Views/guest/en/oeuvre.php" afterPath="$PROJECT_DIR$/App/Views/guest/en/oeuvre.php" />
+      <change beforePath="$PROJECT_DIR$/App/Views/guest/en/planning.php" afterPath="$PROJECT_DIR$/App/Views/guest/en/planning.php" />
+      <change beforePath="$PROJECT_DIR$/App/Views/guest/en/today.php" afterPath="$PROJECT_DIR$/App/Views/guest/en/today.php" />
+      <change beforePath="$PROJECT_DIR$/App/Views/guest/en/type.php" afterPath="$PROJECT_DIR$/App/Views/guest/en/type.php" />
+      <change beforePath="$PROJECT_DIR$/App/Views/guest/fr/artist.php" afterPath="$PROJECT_DIR$/App/Views/guest/fr/artist.php" />
+      <change beforePath="$PROJECT_DIR$/App/Views/guest/fr/index.php" afterPath="$PROJECT_DIR$/App/Views/guest/fr/index.php" />
+      <change beforePath="$PROJECT_DIR$/App/Views/guest/fr/oeuvre.php" afterPath="$PROJECT_DIR$/App/Views/guest/fr/oeuvre.php" />
+      <change beforePath="$PROJECT_DIR$/App/Views/guest/fr/planning.php" afterPath="$PROJECT_DIR$/App/Views/guest/fr/planning.php" />
+      <change beforePath="$PROJECT_DIR$/App/Views/guest/fr/today.php" afterPath="$PROJECT_DIR$/App/Views/guest/fr/today.php" />
+      <change beforePath="$PROJECT_DIR$/App/Views/guest/fr/type.php" afterPath="$PROJECT_DIR$/App/Views/guest/fr/type.php" />
+      <change beforePath="$PROJECT_DIR$/App/Views/template/en/default.php" afterPath="$PROJECT_DIR$/App/Views/template/en/default.php" />
+      <change beforePath="$PROJECT_DIR$/App/Views/template/fr/default.php" afterPath="$PROJECT_DIR$/App/Views/template/fr/default.php" />
+      <change beforePath="$PROJECT_DIR$/App/service/Calendar.php" afterPath="$PROJECT_DIR$/App/service/Calendar.php" />
+      <change beforePath="$PROJECT_DIR$/App/service/Pdf_Generator/fpdf.php" afterPath="$PROJECT_DIR$/App/service/Pdf_Generator/fpdf.php" />
+      <change beforePath="$PROJECT_DIR$/App/service/Pdf_Generator/tutorial/tuto1.php" afterPath="$PROJECT_DIR$/App/service/Pdf_Generator/tutorial/tuto1.php" />
+      <change beforePath="$PROJECT_DIR$/App/service/Pdf_Generator/tutorial/tuto2.php" afterPath="$PROJECT_DIR$/App/service/Pdf_Generator/tutorial/tuto2.php" />
+      <change beforePath="$PROJECT_DIR$/App/service/Pdf_Generator/tutorial/tuto3.php" afterPath="$PROJECT_DIR$/App/service/Pdf_Generator/tutorial/tuto3.php" />
+      <change beforePath="$PROJECT_DIR$/App/service/Pdf_Generator/tutorial/tuto4.php" afterPath="$PROJECT_DIR$/App/service/Pdf_Generator/tutorial/tuto4.php" />
+      <change beforePath="$PROJECT_DIR$/App/service/Pdf_Generator/tutorial/tuto5.php" afterPath="$PROJECT_DIR$/App/service/Pdf_Generator/tutorial/tuto5.php" />
+      <change beforePath="$PROJECT_DIR$/App/service/Pdf_Generator/tutorial/tuto6.php" afterPath="$PROJECT_DIR$/App/service/Pdf_Generator/tutorial/tuto6.php" />
+      <change beforePath="$PROJECT_DIR$/App/service/Pdf_Generator/tutorial/tuto7.php" afterPath="$PROJECT_DIR$/App/service/Pdf_Generator/tutorial/tuto7.php" />
+      <change beforePath="$PROJECT_DIR$/config/config.php" afterPath="$PROJECT_DIR$/config/config.php" />
+      <change beforePath="$PROJECT_DIR$/core/Auth/Session.php" afterPath="$PROJECT_DIR$/core/Auth/Session.php" />
+      <change beforePath="$PROJECT_DIR$/notes.txt" afterPath="$PROJECT_DIR$/notes.txt" />
+      <change beforePath="$PROJECT_DIR$/public/css/custom.css" afterPath="$PROJECT_DIR$/public/css/custom.css" />
+      <change beforePath="$PROJECT_DIR$/public/img/admin/artist.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/img/file_artist/audio21.wav" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/img/file_artist/audio24.mp3" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/img/file_artist/image.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/img/file_artist/image14.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/img/file_artist/image19.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/img/file_artist/image22.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/img/file_artist/image25.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/img/qr_code_oeuvre/code_oeuvre100.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/img/qr_code_oeuvre/code_oeuvre101.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/img/qr_code_oeuvre/code_oeuvre102.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/img/qr_code_oeuvre/code_oeuvre103.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/img/qr_code_oeuvre/code_oeuvre104.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/img/qr_code_oeuvre/code_oeuvre105.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/img/qr_code_oeuvre/code_oeuvre106.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/img/qr_code_oeuvre/code_oeuvre109.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/img/qr_code_oeuvre/code_oeuvre110.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/img/qr_code_oeuvre/code_oeuvre111.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/img/qr_code_oeuvre/code_oeuvre112.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/img/qr_code_oeuvre/code_oeuvre113.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/img/qr_code_oeuvre/code_oeuvre114.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/img/qr_code_oeuvre/code_oeuvre120.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/img/qr_code_oeuvre/code_oeuvre62.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/img/qr_code_oeuvre/code_oeuvre74.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/img/qr_code_oeuvre/code_oeuvre75.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/img/qr_code_oeuvre/code_oeuvre76.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/img/qr_code_oeuvre/code_oeuvre77.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/img/qr_code_oeuvre/code_oeuvre78.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/img/qr_code_oeuvre/code_oeuvre80.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/img/qr_code_oeuvre/code_oeuvre81.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/img/qr_code_oeuvre/code_oeuvre82.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/img/qr_code_oeuvre/code_oeuvre83.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/img/qr_code_oeuvre/code_oeuvre84.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/img/qr_code_oeuvre/code_oeuvre85.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/img/qr_code_oeuvre/code_oeuvre86.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/img/qr_code_oeuvre/code_oeuvre87.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/img/qr_code_oeuvre/code_oeuvre88.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/img/qr_code_oeuvre/code_oeuvre89.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/img/qr_code_oeuvre/code_oeuvre90.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/img/qr_code_oeuvre/code_oeuvre91.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/img/qr_code_oeuvre/code_oeuvre97.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/img/qr_code_oeuvre/code_oeuvre98.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/img/qr_code_oeuvre/code_oeuvre99.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/index.php" afterPath="$PROJECT_DIR$/public/index.php" />
+      <change beforePath="$PROJECT_DIR$/public/js/account.js" afterPath="$PROJECT_DIR$/public/js/account.js" />
+      <change beforePath="$PROJECT_DIR$/public/js/add-artist.js" afterPath="$PROJECT_DIR$/public/js/add-artist.js" />
+      <change beforePath="$PROJECT_DIR$/public/js/admin.js" afterPath="$PROJECT_DIR$/public/js/admin.js" />
+      <change beforePath="$PROJECT_DIR$/public/js/artist-expo.js" afterPath="$PROJECT_DIR$/public/js/artist-expo.js" />
+      <change beforePath="$PROJECT_DIR$/public/js/expo.js" afterPath="$PROJECT_DIR$/public/js/expo.js" />
+      <change beforePath="$PROJECT_DIR$/public/js/list-artist-expo.js" afterPath="$PROJECT_DIR$/public/js/list-artist-expo.js" />
+      <change beforePath="$PROJECT_DIR$/public/js/listOeuvre.js" afterPath="$PROJECT_DIR$/public/js/listOeuvre.js" />
+      <change beforePath="$PROJECT_DIR$/public/js/menu.js" afterPath="$PROJECT_DIR$/public/js/menu.js" />
+      <change beforePath="$PROJECT_DIR$/public/js/oeuvre.js" afterPath="$PROJECT_DIR$/public/js/oeuvre.js" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file leaf-file-name="account-activity.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/App/Views/admin/account-activity.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="46">
+              <caret line="2" column="41" lean-forward="false" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="41" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="add-account.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/App/Views/admin/add-account.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="713">
+              <caret line="31" column="83" lean-forward="false" selection-start-line="31" selection-start-column="83" selection-end-line="31" selection-end-column="83" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="oeuvre-activity.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/App/Views/admin/oeuvre-activity.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="230">
+              <caret line="10" column="12" lean-forward="true" selection-start-line="10" selection-start-column="12" selection-end-line="10" selection-end-column="12" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="artist.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/App/Views/admin/artist.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="69">
+              <caret line="3" column="28" lean-forward="false" selection-start-line="3" selection-start-column="28" selection-end-line="3" selection-end-column="28" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="type.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/App/Views/admin/type.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="345">
+              <caret line="15" column="10" lean-forward="true" selection-start-line="15" selection-start-column="10" selection-end-line="15" selection-end-column="10" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="oeuvre.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/App/Views/admin/oeuvre.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="483">
+              <caret line="45" column="253" lean-forward="false" selection-start-line="45" selection-start-column="253" selection-end-line="45" selection-end-column="253" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="expo-artist.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/App/Views/admin/expo-artist.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="23">
+              <caret line="1" column="37" lean-forward="false" selection-start-line="1" selection-start-column="8" selection-end-line="1" selection-end-column="37" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="listOeuvre.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/App/Views/admin/listOeuvre.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="expo-list-artist.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/App/Views/admin/expo-list-artist.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="414">
+              <caret line="18" column="108" lean-forward="false" selection-start-line="18" selection-start-column="108" selection-end-line="18" selection-end-column="108" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="account.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/App/Views/admin/account.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="23">
+              <caret line="1" column="37" lean-forward="false" selection-start-line="1" selection-start-column="8" selection-end-line="1" selection-end-column="37" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/public/css/custom.css" />
+        <option value="$PROJECT_DIR$/App/Views/admin/account.php" />
+        <option value="$PROJECT_DIR$/App/Views/admin/account-activity.php" />
+        <option value="$PROJECT_DIR$/App/Views/admin/expo-artist.php" />
+        <option value="$PROJECT_DIR$/App/Views/admin/add-account.php" />
+        <option value="$PROJECT_DIR$/App/Views/admin/type.php" />
+        <option value="$PROJECT_DIR$/App/Views/admin/artist.php" />
+        <option value="$PROJECT_DIR$/App/Views/admin/expo-list-artist.php" />
+        <option value="$PROJECT_DIR$/App/Views/admin/oeuvre.php" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="1260" />
+    <option name="y" value="739" />
+    <option name="width" value="1068" />
+    <option name="height" value="1047" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="grandangle" type="b2602c69:ProjectViewProjectNode" />
+              <item name="grandangle" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="grandangle" type="b2602c69:ProjectViewProjectNode" />
+              <item name="grandangle" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="App" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="grandangle" type="b2602c69:ProjectViewProjectNode" />
+              <item name="grandangle" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="App" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Views" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="grandangle" type="b2602c69:ProjectViewProjectNode" />
+              <item name="grandangle" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="App" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Views" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="admin" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="grandangle" type="b2602c69:ProjectViewProjectNode" />
+              <item name="grandangle" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="public" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="grandangle" type="b2602c69:ProjectViewProjectNode" />
+              <item name="grandangle" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="public" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="css" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scratches" />
+      <pane id="Scope" />
+    </panes>
+  </component>
   <component name="PropertiesComponent">
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
   </component>
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
   </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
+      <changelist id="923abfcf-2779-4f22-a39e-e03d9495face" name="Default" comment="" />
       <created>1519147735077</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1519147735077</updated>
+      <workItem from="1519845040661" duration="11501000" />
     </task>
     <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="11501000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-20" y="1072" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
     <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/App/Table/ArtistTable.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/App/Table/ContactTable.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/css/custom.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1061">
+          <caret line="287" column="0" lean-forward="true" selection-start-line="287" selection-start-column="0" selection-end-line="287" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/App/Views/admin/calendar.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="532">
+          <caret line="163" column="155" lean-forward="false" selection-start-line="163" selection-start-column="53" selection-end-line="163" selection-end-column="155" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/App/Views/admin/account-activity.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="46">
+          <caret line="2" column="41" lean-forward="false" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/App/Views/admin/add-account.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="713">
+          <caret line="31" column="83" lean-forward="false" selection-start-line="31" selection-start-column="83" selection-end-line="31" selection-end-column="83" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/App/Views/admin/type.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="15" column="10" lean-forward="true" selection-start-line="15" selection-start-column="10" selection-end-line="15" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/App/Views/admin/account.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="23">
+          <caret line="1" column="37" lean-forward="false" selection-start-line="1" selection-start-column="8" selection-end-line="1" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/App/Views/admin/expo-artist.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="23">
+          <caret line="1" column="37" lean-forward="false" selection-start-line="1" selection-start-column="8" selection-end-line="1" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/App/Views/admin/artist.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="69">
+          <caret line="3" column="28" lean-forward="false" selection-start-line="3" selection-start-column="28" selection-end-line="3" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/App/Views/admin/expo-list-artist.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="414">
+          <caret line="18" column="108" lean-forward="false" selection-start-line="18" selection-start-column="108" selection-end-line="18" selection-end-column="108" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/App/Views/admin/listOeuvre.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/App/Views/admin/oeuvre.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="483">
+          <caret line="45" column="253" lean-forward="false" selection-start-line="45" selection-start-column="253" selection-end-line="45" selection-end-column="253" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/App/Views/admin/oeuvre-activity.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="10" column="12" lean-forward="true" selection-start-line="10" selection-start-column="12" selection-end-line="10" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
   </component>
 </project>

@@ -37,7 +37,7 @@ protected $x, $y;              // current position in user unit
 protected $lasth;              // height of last printed cell
 protected $LineWidth;          // line width in user unit
 protected $fontpath;           // path containing fonts
-protected $CoreFonts;          // array of core font names
+protected $CoreFonts;          // array of Core font names
 protected $fonts;              // array of used fonts
 protected $FontFiles;          // array of font files
 protected $encodings;          // array of encodings
@@ -495,7 +495,7 @@ function SetFont($family, $style='', $size=0)
 	$fontkey = $family.$style;
 	if(!isset($this->fonts[$fontkey]))
 	{
-		// Test if one of the core fonts
+		// Test if one of the Core fonts
 		if($family=='arial')
 			$family = 'helvetica';
 		if(in_array($family,$this->CoreFonts))

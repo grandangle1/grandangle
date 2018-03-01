@@ -68,7 +68,7 @@ var methodsList = {
 		var nextPage = parseInt(current) + parseInt(pagination);
 		if(nextPage > 0 && nextPage <= maxPage) {
             var id = url.searchParams.get("id");
-            window.location = "?p=admin.oeuvre.liste&page="+nextPage+"&id="+id;
+            window.location = "?p=Admin.oeuvre.liste&page="+nextPage+"&id="+id;
 		}
 
 	},

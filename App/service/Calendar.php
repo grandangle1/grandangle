@@ -27,7 +27,7 @@ class Calendar {
         $nowYearMonth = new DateTime();
         $nowYearMonth = $nowYearMonth->format('Y-m');
         intval($month) < 10 ? $month2 = "0".$month : $month2 = $month;
-        $currentYearMonth = implode("-", [$year, $month2]);
+        $currentYearMonth = implode("-", [$year, $month]);
 
 
         $currentLanguage = Utils::getLangue();
@@ -40,12 +40,15 @@ class Calendar {
         //------------------------------ recup artists name
         foreach ($expos as $expo) {
             $ids[] = $expo->idExpo;
-            $conditions[] = "idExpo = ?";
+            $conditions[] = "participation.idExpo = ?";
         }
 
         empty($conditions) ? false : $conditions = implode( "OR ", $conditions);
-        empty($conditions) ? false : count($ids) > 0 ? $artists = Utils::getTable('Artist')->query("SELECT nameArtist, surnameArtist, idExpo, idArtist FROM artist WHERE $conditions", $ids) : false;
-
+        empty($conditions) ? false : count($ids) > 0 ? $artists = Utils::getTable('Artist')->query("
+        SELECT participation.id, artist.idArtist, artist.surnameArtist, artist.nameArtist, participation.idExpo
+        FROM participation, artist
+        WHERE $conditions AND artist.idArtist = participation.idArtist"
+            , $ids) : false;
 
         //----------------------------- put all infos in an ordered array (name, surname, theme)
         $parts = explode("-", $startWeek);
@@ -61,7 +64,7 @@ class Calendar {
                 if(intval($parts[1]) == $week) {
                     foreach ($artists as $artist) {
                         if($artist->idExpo == $expo->idExpo){
-                            $existences[$week] = ["theme" => $expo->theme, "name" => $artist->nameArtist, "surname" => $artist->surnameArtist,
+                            $existences[$week][] = ["theme" => $expo->theme, "name" => $artist->nameArtist, "surname" => $artist->surnameArtist,
                                 "idExpo" => $expo->idExpo, "idArtist" => $artist->idArtist, "week" => $expo->week];
                         }
                     }
@@ -73,7 +76,7 @@ class Calendar {
         $dayFr = ["lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi", "dimanche"];
         $dayEn = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"];
 
-        $days = "<th>*</th>";
+        $days = "<th></th>";
         if($currentLanguage == "en") {
             foreach ($dayEn as $day) {
                 $days .= "<th>$day</th>";
@@ -89,9 +92,11 @@ class Calendar {
 
 
         if(!empty($existences[$startWeek])) {
-            $calendar .= ' expo"><td class="week"><p>Semaine '.$startWeek.'</p>';
-            $calendar .= '<p><a href="?p=guest.today&w='.$existences[$startWeek]["week"].'">'.$existences[$startWeek]["theme"].'</a></p>';
-            $calendar .= '<p><a href="?p=guest.artist&id='.$existences[$startWeek]["idArtist"].'"><span class="name">'.$existences[$startWeek]["name"].' </span><span class="name">'.$existences[$startWeek]["surname"].'</span></a></p>';
+            $calendar .= ' expo"><td class="week"><p>Semaine '.$startWeek.'</p><small>Artistes</small>';
+            foreach ($existences[$startWeek] as $artist) {
+                $calendar .= '<p><a href="?p=guest.artist&id='.$artist["idArtist"].'" class="badge badge-dark"><span class="name">'.$artist["name"].' </span><span class="name">'.$artist["surname"].'</span></a></p>';
+            }
+            $calendar .= '<p><small>Exposition</small><br><a href="?p=guest.today&w='.$existences[$startWeek][0]["week"].'" class="badge badge-secondary">'.$existences[$startWeek][0]["theme"].'</a></p>';
         } else {
             $calendar .= '"><td class="week">Semaine '.$startWeek.'</td>';
         }
@@ -123,9 +128,12 @@ class Calendar {
 
                 //if there is an expo
                 if(!empty($existences[$startWeek])) {
-                    $calendar .= ' expo"><td class="week"><p>Semaine '.$startWeek.'</p>';
-                    $calendar .= '<p><a href="?p=guest.today&w='.$existences[$startWeek]["week"].'">'.$existences[$startWeek]["theme"].'</a></p>';
-                    $calendar .= '<p><a href="?p=guest.artist&id='.$existences[$startWeek]["idArtist"].'"><span class="name">'.$existences[$startWeek]["name"].' </span><span class="name">'.$existences[$startWeek]["surname"].'</span></a></p>';
+                    $calendar .= ' expo"><td class="week"><p>Semaine '.$startWeek.'</p><small>Artiste(s)</small>';
+                    foreach ($existences[$startWeek] as $artist) {
+                        $calendar .= '<p><a href="?p=guest.artist&id='.$artist["idArtist"].'" class="badge badge-dark"><span class="name">'.$artist["name"].' </span><span class="name">'.$artist["surname"].'</span></a></p>';
+                    }
+                    $calendar .= '<p><small>Exposition</small><br><a href="?p=guest.today&w='.$existences[$startWeek][0]["week"].'" class="badge badge-secondary">'.$existences[$startWeek][0]["theme"].'</a></p>';
+
                 } else {
                     $calendar .= ' empty"><td class="week"><p>Semaine '.$startWeek.'</p>';
                 }

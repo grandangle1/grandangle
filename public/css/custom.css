@@ -25,6 +25,7 @@ body{
 }
 
 .drop-shadow{
+    z-index: 1000;
 	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 	border-radius: 5px;
 }
@@ -97,12 +98,30 @@ body{
 	color: rgb(124,125,124);
 }
 
+.custom-toggler .navbar-toggler-icon {
+	background-image: url("../img/home/menuicon.png");
+}
+
+.custom-toggler.navbar-toggler {
+	border-color: white;
+}
 /*----------------------------------------------home--------------------*/
 
-.imgaccueil{
-	max-height: 591px;
-	min-height: 591px;
-	border-radius: 5px;
+.home{
+    width: 100%;
+    height: 100%;
+    margin-top: -10px;
+	border-radius: 0px 0px 5px 5px;
+    z-index: 1;
+}
+
+.ht {
+    height: 100%;
+    background-color: #424242;
+}
+
+.fsize{
+    font-size: 200%;
 }
 
 /*----------------------------------------------------------------*\
@@ -128,8 +147,20 @@ body{
 	background-color: #FFA0A0;
 }
 
+.paginer{
+	display: flex;
+	justify-content: center;
+}
+
+ .link-activity {
+	 cursor: pointer;
+ }
+.link-activity:hover {
+	color: dodgerblue;
+}
+
 /*---------------------------------------------------------------
-						en ce moment
+						ACTUELLEMENT
 -----------------------------------------------------------------*/
 
 .salle {
@@ -143,3 +174,114 @@ body{
 .show-expo {
 	display: block;
 }
+
+/*----------------------------------------------------------------*\
+							ADMIN CALENDAR
+\*----------------------------------------------------------------*/
+
+.prenext {
+	margin-top: 5px;
+}
+
+.tdn{
+	text-decoration: none;
+}
+
+/*----------------------------------------------------------------*\
+							ADMIN ACCOUNT
+\*----------------------------------------------------------------*/
+
+.table-container {
+	width: 70%;
+	margin: auto;
+}
+
+.edit-form {
+	display: block;
+}
+.mdp-form {
+	display: none;
+}
+.badge-pill {
+	cursor: pointer;
+}
+
+/*----------------------------------------------------------------*\
+							CALENDAR GUEST
+\*----------------------------------------------------------------*/
+
+
+table {
+    width: 70%;
+    margin: auto;
+    overflow: scroll;
+    text-align: center;
+}
+td {
+    height: 40px;
+}
+
+td.week {
+    text-align: left;
+    padding: 15px;
+    padding-top: 20px;
+    background-color: #E3E3E3;
+    cursor: auto !important;
+}
+
+td.impossible {
+    background-color: #333333;
+}
+
+th {
+    background-color: #E3E3E3 !important;
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+
+tr {
+    background-color: #F4F4F4;
+}
+
+tr.expo {
+    background-color: #E8E8E8;
+    cursor: pointer;
+}
+
+td.impossible {
+    cursor: auto !important;
+}
+
+tr.expo:hover {
+    background-color: #22C146;
+}
+
+.noEmphasize {
+    background-color: lavender !important;
+}
+
+.changeMonth img {
+    padding: 0 20px;
+    cursor: pointer;
+}
+
+td.today {
+    background-color: #C82333 !important;
+}
+
+.name{
+	padding: 1;
+}
+
+
+/*----------------------------------------------------------------*\
+							TODAY
+\*----------------------------------------------------------------*/
+polygon.salle:hover{
+	fill: #8E8E8E !important;
+}
+
+rect.salle:hover{
+	fill: #8E8E8E !important;
+}
+

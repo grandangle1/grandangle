@@ -51,7 +51,7 @@ function saveExpo(e) {
 				alert("Erreur durant la connexion au serveur");
 			} else {
 				if(xhr.responseText == "success") {
-					window.location = "?p=admin.index.calendar";
+					window.location = "?p=Admin.index.calendar";
 				} else {
 					/*var data = JSON.parse(xhr.responseText);
 					methods.clearErrors();
@@ -64,10 +64,8 @@ function saveExpo(e) {
 	xhr.open('POST', '../App/Controller/ajax/saveExpo.php', true);
 
 	var form = document.querySelector('#form-expo');
-    var file = document.querySelector('#file-artist').files;
 
 	var data = new FormData(form);
-	data.append('file', file[0]);
 
 	var action = form.querySelector('button').getAttribute('action');
 	if(action == "edit") {

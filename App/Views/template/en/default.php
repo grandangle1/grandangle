@@ -67,8 +67,8 @@
 
                     <div class="dropdown-menu mt-2 bg-custom">
                         <form method="post" id="form-login">
-                            <label for="login" class="connex">Id</label><input type="text" name="identifiant" id="login" maxlength="50" autofocus value="dev" />
-                            <label for="mdp" class="connex">Password</label><input type="password" name="password" id="mdp" maxlength="50" value="testmdp">
+                            <label for="login" class="connex">Id</label><input type="text" name="identifiant" id="login" maxlength="50" autofocus value="theo" />
+                            <label for="mdp" class="connex">Password</label><input type="password" name="password" id="mdp" maxlength="50" value="letest">
                             <a href="#">Forgotten password?</a>
                             <input type="submit" name="valid-connexion" value="connexion" />
                         </form>

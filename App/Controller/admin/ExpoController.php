@@ -9,7 +9,9 @@ namespace App\Controller\Admin;
 
 
 use App\Entity\ExpositionEntity;
+use App\Table\ActivityTable;
 use App\Utils;
+use Core\Auth\Session;
 
 class ExpoController extends AdminController {
 
@@ -18,7 +20,7 @@ class ExpoController extends AdminController {
      * For adding a new exhibition
      */
     public function add() {
-        $this->render('admin.expo');
+        $this->render('Admin.expo');
     }
 
     /**
@@ -36,11 +38,35 @@ class ExpoController extends AdminController {
         $day =  $gendate->format('Y-m-d');
         $data['exposition']->week = $day;
 
-        $this->render('admin.expo', $data);
+        $this->render('Admin.expo', $data);
     }
 
     public function pdf() {
         ExpositionEntity::createPdf();
+    }
+
+
+    public function artist() {
+        $data["idExpo"] = $_GET['id'];
+        $data["artists"] = Utils::getTable("Artist")->query("
+        SELECT artist.surnameArtist, artist.nameArtist, artist.descrArtistFR, artist.urlImg, artist.idArtist
+        FROM artist, participation, exposition 
+        WHERE artist.idArtist = participation.idArtist AND participation.idExpo = ?
+        GROUP BY artist.idArtist", [$_GET['id']]);
+
+        $this->render('Admin.expo-list-artist', $data);
+    }
+
+    public function add_artist() {
+
+        $this->render('Admin.expo-artist');
+    }
+
+    public function remove_artist() {
+        Utils::getTable('Participation')->delete(["idExpo", "idArtist"], [$_GET['expo'], $_GET['artist']]);
+        Session::getSession()->setFlash("success", "L'artiste à été enlever de l'exposition");
+        Utils::getTable('Activity')->createAction("remove", ["artist%exposition" => $_GET['artist']."%".$_GET['expo']]);
+        header("location: index.php?p=Admin.expo.artist&id=".$_GET['expo']);
     }
 
 }

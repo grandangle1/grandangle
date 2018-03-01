@@ -17,12 +17,12 @@
                         <?php elseif($oeuvre->getFormat() == "video"): ?><video controls src="<?= $oeuvre->urlFile ?>" height="100px"><video >
                         <?php elseif ($oeuvre->getFormat() == "audio"): ?><audio controls src="<?= $oeuvre->urlFile ?>"></audio><?php endif; ?>
                     <?php else: ?>
-                        <span>Il n'y a pas de fichier associé à cette ouevre</span>
+                        <span>Il n'y a pas de fichier associé à cette oeuvre</span>
                     <?php endif; ?>
 				</div>
 			</li>
 		<?php endif; ?>
-		<li class="list-group-item">
+		<li class="list-group-item mb-5">
 			<form class="form-oeuvre">
 				<ul>
 					<li class="list-group bold"><label>Nom de l'oeuvre</label></li>
@@ -31,8 +31,8 @@
 							value="<?= $oeuvre->nomOeuvre ?>"
 						<?php endif; ?>
 							></li><br>
-                    <li class="list-group">
-                        <label>Type de l'oeuvre : </label>
+                    <li class="list-group pb-4">
+                        <label class="bold">Type de l'oeuvre : </label>
                         <select>
                             <option value="none"></option>
                             <?php foreach ($types as $type): ?>
@@ -43,16 +43,16 @@
 					<li class="list-group bold"><label>Emplacement de l'exposition :</label></li>
 					<li class="list-inline">
 						<div class="list-inline">
-						<input <?php if(isset($data["oeuvre"]) && $oeuvre->salle == "salle1"): ?>checked="checked"<?php endif; ?>  type="radio" name="salle" value="salle1" radio="1" class="list-inline-item" id="salle1"><label for="salle1">Salle 1</label>
+						<input <?php if(isset($data["oeuvre"]) && $oeuvre->salle == "salle1"): ?>checked="checked"<?php endif; ?>  type="radio" name="salle" value="salle1" radio="1" class="list-inline-item" id="salle1"><label for="salle1">Salle VAN GOGH</label>
 						</div>
 						<div class="list-inline">
-						<input <?php if(isset($data["oeuvre"]) && $oeuvre->salle == "salle2"): ?>checked="checked"<?php endif; ?> type="radio" name="salle" value="salle2" radio="2" class="list-inline-item" id="salle2"><label for="salle2">Salle 2</label>
+						<input <?php if(isset($data["oeuvre"]) && $oeuvre->salle == "salle2"): ?>checked="checked"<?php endif; ?> type="radio" name="salle" value="salle2" radio="2" class="list-inline-item" id="salle2"><label for="salle2">Salle DE VINCI</label>
 						</div>
 						<div class="list-inline">
-						<input <?php if(isset($data["oeuvre"]) && $oeuvre->salle == "hall"): ?>checked="checked"<?php endif; ?> type="radio" name="salle" value="hall" radio="3" class="list-inline-item" id="hallprinc"><label for="hallprinc">Hall principal</label>
+						<input <?php if(isset($data["oeuvre"]) && $oeuvre->salle == "hall"): ?>checked="checked"<?php endif; ?> type="radio" name="salle" value="hall" radio="3" class="list-inline-item" id="hallprinc"><label for="hallprinc">Salle PICASSO</label>
 						</div>
 						<div class="list-inline">
-						<input <?php if(isset($data["oeuvre"]) && $oeuvre->salle == "couloir"): ?>checked="checked"<?php endif; ?> type="radio" name="salle" value="couloir" radio="4" class="list-inline-item" id="Couloir"><label for="Couloir">Couloir</label>
+						<input <?php if(isset($data["oeuvre"]) && $oeuvre->salle == "couloir"): ?>checked="checked"<?php endif; ?> type="radio" name="salle" value="couloir" radio="4" class="list-inline-item" id="Couloir"><label for="Couloir">Salle RENOIR</label>
 					</div>
 					</li><br>
 					<li class="list-group bold"><label>Description de l'oeuvre en Français</label></li>

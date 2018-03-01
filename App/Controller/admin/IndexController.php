@@ -11,17 +11,17 @@ use App\Utils;
 class IndexController extends AdminController {
 
     /**
-     * Render the admin  calendar
+     * Render the Admin  calendar
      */
     public function calendar(){
         $data["fail"] = Utils::getTable('User')->query("SELECT nbFail FROM fail ", null, true);
         $data["types"] = Utils::getTable('User')->query("SELECT * FROM typeoeuvre ");
 
-        $this->render('admin.calendar', $data);
+        $this->render('Admin.calendar', $data);
     }
 
     /**
-     * Logout an admin
+     * Logout an Admin
      */
     public function logOut() {
         $this->auth->logOut();

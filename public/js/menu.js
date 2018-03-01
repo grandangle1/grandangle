@@ -31,7 +31,7 @@ var methods = {
 					alert("Erreur de connexion avec le serveur");
 				} else {
 					if(xhr.responseText == "success") {
-						window.location = "?p=admin.index.calendar";
+						window.location = "?p=Admin.index.calendar";
 					} else {
 						//console.log(xhr.responseText);
 						//utilsMenu.echoMessage(xhr.responseText);

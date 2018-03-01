@@ -44,7 +44,7 @@ class Controller {
     }
 
     /**
-     * Use when the user try to access an admin page while not connected
+     * Use when the user try to access an Admin page while not connected
      */
     protected function forbidden() {
         $this->session->setFlash('danger', 'Vous n\'avez pas les droits requis pour accéder à cette page');
@@ -57,7 +57,7 @@ class Controller {
      */
     protected function error() {
         $this->session->setFlash('info', "N'essayez pas de forcer les urls...");
-        header('location: ?p=admin.index.calendar');
+        header('location: ?p=Admin.index.calendar');
         exit();
     }
 }

@@ -72,16 +72,18 @@ var accountMethods = {
     },
     deleteAdmin: function (e) {
         if(confirm("Vous etes sur de vouloir supprimé cet administratauer??")) {
-            window.location = 'index.php?p=admin.account.delete&id=' + e.srcElement.parentElement.id;
+            window.location = 'index.php?p=Admin.account.delete&id=' + e.srcElement.parentElement.id;
         }
     },
     editAdmin: function (e) {
         document.querySelector('.edit-form').addEventListener('submit', this.checkExistence);
         document.querySelector('.mdp-form').removeEventListener('submit', this.saveNewPass);
         var infos = e.srcElement.parentElement.parentElement.querySelectorAll('.info');
-        var formInputs = document.querySelectorAll('form .info');
-
-        for(var io = 0; io < infos.length; io++) {
+        var formInputs = document.querySelectorAll('.edit-form .info');
+        console.log(formInputs);
+        console.log(infos);
+        for(var io = 0; io < infos.length; io++) {console.log(
+            infos[io].textContent);
             formInputs[io].value = infos[io].textContent;
         }
 
@@ -96,7 +98,7 @@ var accountMethods = {
     },
     checkExistence: function (e) {
         var action = utils.get('p');
-        if(action != "admin.account.add") {
+        if(action != "Admin.account.add") {
             e.preventDefault();
         }
 
@@ -126,7 +128,7 @@ var accountMethods = {
 
         var data = new FormData();
         var identifiant = document.querySelector('input[name="identifiant"]').value;
-        if(!action == "admin.account.add") {
+        if(!action == "Admin.account.add") {
             var id = document.querySelector('input[name="id"]').value;
             data.append("id", id);
         } else {
@@ -202,10 +204,10 @@ var accountMethods = {
     },
     launch: function () {
         var action = utils.get('p');
-        if(action != "admin.account.add") {
-            utils.listener(document.querySelectorAll('.delete-admin'), "click", this.deleteAdmin);
+        if(action != "Admin.account.add") {
+            utils.listener(document.querySelectorAll('.delete-Admin'), "click", this.deleteAdmin);
             document.querySelector('.close-form').addEventListener("click", this.closeForm);
-            utils.listener(document.querySelectorAll('.edit-admin'), "click", this.editAdmin);
+            utils.listener(document.querySelectorAll('.edit-Admin'), "click", this.editAdmin);
             document.querySelector('.change-password').addEventListener("click", this.changePass);
         } else {
             document.querySelector('.edit-form').addEventListener('submit', this.checkMdps);

@@ -1,7 +1,32 @@
+﻿27/02 reprise des sources de flav
+
+- pdf => attribut cel="..." erronée donc icapable de trouver id de l'expo
+- delete oeuvre => pas jours, essayer de supprimer artiste
+- delete type pas a jours
+- list oeuvre deniere modif pas a jours + oublie de classe
+- account => indentation  classe info oublier
+- integration de la page d'acceuil
+
+
+//------------------------------------------------------------------------
 
 To do :
 
+Flav :
+    - list oeuvre => hover de derniere modif dans une couleur pour montre que sa se clique??
+    - page account pour changer mdp/identifiants => form cacher par default
+    - admin calendrier => sytle de l'icone artiste + troyver legende correspondante (genre liste des artiste expo)
+    - style calendrier / actuelement si a l'inspi
+    - faufrait vraiement stylise la partie ou les visiteur voient les oeuvre / artistes /categories
+    - dans le back la liste des artiste des expo a stylise un minima
+
+
 remove CSS from html => admin.account.show, list oeuvre admin, todayfr
+ressortir liste des artistes par expo
+check form expo
+
+list artist + supprimer + enlever de l'expo
+
 
 
 
@@ -11,6 +36,7 @@ Done :
     - QR code
     - Generer une version PDF des oeuvres
     - planning visiteur
+    - editer artist
 
 Fait
 
@@ -44,6 +70,18 @@ Today, prise en compte du fait qu'il n'y ait pas d'expo a la date et du fait qu'
 account.show limite le count au action durant le mois précédent
 Amelioration de l'affichage des admins and admin.account.show
 Lors du visionnage des actions des d'un admin, un liens pour avoir accès la target en question
+rechercher artiste + ajouter a l'expo, creer + ajouter a l'expo, creer artiste
+
+
+
+tout le coté visiteur stylisé
+retouche du calendar coté admin
+
+
+
+//maj pour jeudi matin : dans la gestion des admin, les boutons concernant la modification, la suppression des admin ou le changement du passqord bugs ou fonctionnent pas. (probleme avec la prise en compte de toute la class
+//bouton des card ajouter des artistes ne fonctionnent pas
+
 
 
 

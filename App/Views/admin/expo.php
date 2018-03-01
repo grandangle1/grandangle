@@ -8,48 +8,6 @@
 	</div>
 	<form id="form-expo" class="form-group">
 		<ul class="col-lg-12 ">
-			<li class="list-group-item bold"><label>Informations sur l'artiste</label></li>
-				<ul class="list-group-item">
-					<li class="list-inline m-3">
-						<label class="list-inline-item">Nom : </label>
-						<input <?php if(!empty($data)): ?> value="<?= $data['artist']->nameArtist ?>" <?php endif; ?> class="list-inline-item form-control" type="text" name="nameArtist">
-						<span class="alert nameArtist"></span>
-					</li>
-				
-					<li class="list-inline m-3">
-						<label class="list-inline-item">Prenom : </label>
-						<input <?php if(!empty($data)): ?> value="<?= $data['artist']->surnameArtist ?>" <?php endif; ?> class="list-inline-item form-control" type="text" name="surnameArtist">
-						<span class="alert surnameArtist"></span>
-					</li>
-					<li class="list-inline m-3">
-						<label class="list-inline-item">Date de naissance : </label>
-						<input <?php if(!empty($data)): ?> value="<?= $data['artist']->birthDate ?>" <?php endif; ?> class="list-inline-item form-control" type="date" name="birthDate">
-						<span class="alert birthDate"></span>
-					</li>
-					<li class="list-inline m-3">
-						<label class="list-inline-item">Description en Français : </label>
-						<textarea class="list-inline-item form-control" name="descrArtistFr"><?php if(!empty($data)): ?><?= $data['artist']->descrArtistFR ?><?php endif; ?></textarea>
-						<span class="alert descrArtistFr"></span>
-					</li>
-					<li class="list-inline m-3">
-						<label class="list-inline-item">Description en Anglais: </label>
-						<textarea class="list-inline-item form-control" name="descrArtisteEn"><?php if(!empty($data)): ?><?= $data['artist']->descrArtistEN ?><?php endif; ?></textarea>
-						<span class="alert descrArtisteEn"></span>
-					</li>
-                    <li class="list-inline m-3">
-                        <label class="list-inline-item">Photo (facultatif):  </label>
-                        <input type="file" id="file-artist" class="list-inline-item form-control" name="urlImg">
-                        <span class="alert urlImg"></span>
-                    </li>
-                    <?php if(!empty($data) && isset($artist->urlImg)): ?>
-                        <li class="list-inline m-3">
-                            <p>Image courante</p>
-                            <img src="<?= $artist->urlImg; ?>" height="100">
-                        </li>
-
-                    <?php endif; ?>
-				</ul>
-			</li>
 			<li class="list-group-item bold mt-5"></label>Contact</label></li>
 				<ul class="list-group-item">
 					<li class="list-inline m-3">

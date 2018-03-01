@@ -12,6 +12,7 @@ class Session {
     private static $instance;
 
     public static function getSession() {
+
         if(is_null(self::$instance)) {
             self::$instance = new Session();
         }

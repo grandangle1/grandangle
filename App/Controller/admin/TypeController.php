@@ -8,6 +8,8 @@
 namespace App\Controller\Admin;
 
 use App\Entity\OeuvreEntity;
+use App\Table\ActivityTable;
+use App\Table\ArtistTable;
 use App\Utils;
 use Core\Auth\Session;
 
@@ -18,12 +20,12 @@ class TypeController extends AdminController {
         $type["type"] = Utils::getTable('Type')->query("SELECT * FROM typeoeuvre WHERE id = ?", [$_GET['id']], true);
         !empty($type['type']) ? true : $this->notFound("Ce type d'oeuvre n'existe plus");
 
-        $this->render('admin.type',  $type);
+        $this->render('Admin.type',  $type);
     }
 
 
     public function add() {
-        $this->render('admin.type');
+        $this->render('Admin.type');
     }
 
     /**
@@ -34,13 +36,13 @@ class TypeController extends AdminController {
             Utils::getTable('Type')->update($_POST, ["id" => $_GET['id']]);
             $this->session->setFlash('success', "Le type d'oeuvre à bien été modifié");
             Utils::getTable('Activity')->createAction("edit", ["type" => $_GET['id']]);
-            header("location: index.php?p=admin.index.calendar");
+            header("location: index.php?p=Admin.index.calendar");
             exit();
         } else {
             Utils::getTable('Type')->insert($_POST);
             $this->session->setFlash('success', "Le type d'oeuvre à bien été enregistrée");
             Utils::getTable('Activity')->createAction("create", ["type" => Utils::getDb()->getLastId()]);
-            header("location: index.php?p=admin.index.calendar");
+            header("location: index.php?p=Admin.index.calendar");
             exit();
         }
     }
@@ -50,8 +52,8 @@ class TypeController extends AdminController {
         Utils::getTable('Type')->delete(["id" ], [$_GET['id']]);
         $this->session->setFlash('success', "Le type d'oeuvre à bien été supprimé");
 
-        Utils::getTable('Activity')->createAction("delete", ["type" => $_GET['id']]);
-        header("location: index.php?p=admin.index.calendar");
+        Utils::getTable('Activity')->createAction("delte", ["type" => $_GET['id']]);
+        header("location: index.php?p=Admin.index.calendar");
         exit();
     }
 }

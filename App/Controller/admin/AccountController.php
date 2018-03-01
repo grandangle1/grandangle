@@ -21,17 +21,18 @@ class AccountController extends AdminController {
        FROM administrateur ", [$limitMonth]);
         $acts = Utils::getTable('Activity')->selOr(Utils::extractObj("id",$data["admins"]));
         $data["admins"] = Utils::fuseOnMatch([$data['admins'], $acts], ["id", "idAdmin"]);
-
-        $this->render('admin.account', $data);
+        $data["lastly"] = Utils::getTable('Activity')->query("SELECT id, libelle, heure, target, idTarget  FROM activity ORDER BY heure DESC LIMIT 10");
+        //var_dump($data["lastly"]);
+        $this->render('Admin.account', $data);
     }
 
     public function add() {
 
-        $this->render('admin.add-account');
+        $this->render('Admin.add-account');
     }
 
     /**
-     * Delete an admin accout
+     * Delete an Admin accout
      */
     public function delete() {
         $user = Utils::getTable('User')->query("SELECT id FROM administrateur WHERE id = ?", [$_GET['id']], true);
@@ -41,7 +42,7 @@ class AccountController extends AdminController {
         } else {
             $this->session->setFlash('warning', "Ne joue pas avec l'url s'il te plait!");
         }
-        header('location: index.php?p=admin.account.show');
+        header('location: index.php?p=Admin.account.show');
         exit();
     }
 
@@ -51,11 +52,11 @@ class AccountController extends AdminController {
     public function edit() {
         Utils::getTable('User')->update($_POST, ["id" => $_POST['id']]);
         Session::getSession()->setFlash('success', "Les modifications ont été enregistrées");
-        header('location: index.php?p=admin.account.show');
+        header('location: index.php?p=Admin.account.show');
     }
 
     /**
-     * create new admin
+     * create new Admin
      */
     public function create() {
         unset($_POST['passwordConfirm']);
@@ -63,11 +64,11 @@ class AccountController extends AdminController {
         Utils::getTable('User')->insert($_POST);
         Session::getSession()->setFlash('success', "Le compte à bien été créé");
         Utils::getTable('Activity')->createAction("create", ["administrateur" => Utils::getDb()->getLastId()]);
-        header('location: index.php?p=admin.account.show');
+        header('location: index.php?p=Admin.account.show');
     }
 
     public function activity() {
-        $pagination = 5;
+        $pagination = 50;
 
         $data["activities"] = Utils::getTable('Activity')->query("
         SELECT activity.id, activity.target, activity.idTarget, activity.libelle, activity.heure 
@@ -80,7 +81,6 @@ class AccountController extends AdminController {
         WHERE administrateur.id = ? AND activity.idAdmin = administrateur.id",
             [$_GET['id']], true);
         $data["pagination"] = ["current" => $_GET['page'], "max" => ceil(intval($data["admin"]->total)/$pagination)];
-
         !empty($data["admin"]->id) ? true : $this->notFound("Ce compte n'existe plus");
         $this->render('admin.account-activity', $data);
     }

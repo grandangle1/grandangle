@@ -22,7 +22,7 @@ class AdminController extends Controller {
 
     public function notFound($message) {
         $this->session->setFlash("warning", $message);
-        header('location: index.php?p=admin.index.calendar');
+        header('location: index.php?p=Admin.index.calendar');
         exit();
     }
 }

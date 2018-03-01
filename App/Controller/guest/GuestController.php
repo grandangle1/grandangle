@@ -15,7 +15,9 @@ use DateTime;
 class GuestController extends ParentGuestController {
 
     public function index(){
+        $data["artists"] = Utils::getTable('Artist')->query("SELECT COUNT(idArtist) AS nb FROM artist", null, true);
         Session::getSession()->read('langue') == 'fr' ? $this->render('guest.fr.index') : $this->render('guest.en.index');
+
     }
 
     public function langue() {
@@ -37,14 +39,17 @@ class GuestController extends ParentGuestController {
         if($idExpo) {
             $data["exist"] = true;
             $data["oeuvres"] = $oeuvreT->query("SELECT * FROM oeuvre WHERE idExpo = ?", [$idExpo->id]);
-            $data['artist'] = $oeuvreT->query("SELECT nameArtist, surnameArtist, idArtist FROM artist WHERE idExpo = ?", [$data["oeuvres"][0]->idExpo], true);
+            $data['artists'] = Utils::getTable('Participation')->query("
+            SELECT artist.idArtist, artist.surnameArtist, artist.nameArtist
+            FROM artist, participation 
+            WHERE participation.idExpo = ? AND participation.idArtist = artist.idArtist", [$idExpo->id]);
+
             $data["exposition"] = $expoT->query("SELECT idExpo, themeFr, themeEn, week, generalDescrFR, generalDescrEN FROM exposition WHERE idExpo = ?", [$idExpo->id], true);
             $data["types"] = Utils::getTable('Type')->query("SELECT typeoeuvre.type".ucfirst($this->curentLanguage).", typeoeuvre.id FROM typeoeuvre, oeuvre WHERE typeoeuvre.id = oeuvre.idType AND oeuvre.idExpo = ? GROUP BY typeoeuvre.id", [$idExpo->id]);
         } else {
             $data["exist"] = false;
         }
-
-
+    
         $this->render("guest.{$this->curentLanguage}.today", $data);
     }
 

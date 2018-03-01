@@ -60,7 +60,7 @@ class ActivityTable extends Table {
     }
 
     /**
-     * @param $vals array id-admin
+     * @param $vals array id-Admin
      */
     public function selOr($vals) {
         foreach ($vals as $val) {
