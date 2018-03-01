@@ -1,4 +1,4 @@
-﻿27/02 reprise des sources de flav
+27/02 reprise des sources de flav
 
 - pdf => attribut cel="..." erronée donc icapable de trouver id de l'expo
 - delete oeuvre => pas jours, essayer de supprimer artiste
@@ -71,16 +71,6 @@ account.show limite le count au action durant le mois précédent
 Amelioration de l'affichage des admins and admin.account.show
 Lors du visionnage des actions des d'un admin, un liens pour avoir accès la target en question
 rechercher artiste + ajouter a l'expo, creer + ajouter a l'expo, creer artiste
-
-
-
-tout le coté visiteur stylisé
-retouche du calendar coté admin
-
-
-
-//maj pour jeudi matin : dans la gestion des admin, les boutons concernant la modification, la suppression des admin ou le changement du passqord bugs ou fonctionnent pas. (probleme avec la prise en compte de toute la class
-//bouton des card ajouter des artistes ne fonctionnent pas
 
 
 

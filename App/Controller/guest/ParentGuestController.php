@@ -20,7 +20,7 @@ class ParentGuestController extends Controller {
      */
     public function __construct() {
         parent::__construct();
-        Session::getSession()->read('langue') == "fr" ? true : $this->template = "en/default";
+        Session::getSession()->read('langue') == "en" ? $this->template = "en/default" : $this->template = "fr/default";
         $this->curentLanguage = Session::getSession()->read('langue');
         is_null($this->curentLanguage) ? $this->curentLanguage = "fr" : true;
 

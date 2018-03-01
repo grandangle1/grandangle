@@ -7,7 +7,7 @@
  */
 namespace App\Controller\guest;
 use App\Controller\Controller;
-use App\service\Calendar;
+use App\Service\Calendar;
 use App\Utils;
 use Core\Auth\Session;
 use DateTime;
@@ -15,9 +15,10 @@ use DateTime;
 class GuestController extends ParentGuestController {
 
     public function index(){
-        $data["artists"] = Utils::getTable('Artist')->query("SELECT COUNT(idArtist) AS nb FROM artist", null, true);
-        Session::getSession()->read('langue') == 'fr' ? $this->render('guest.fr.index') : $this->render('guest.en.index');
+        $data["artist"] = Utils::getTable('Artist')->query("SELECT COUNT(idArtist) AS nbAr FROM artist;", null, true);
+        $data["oeuvres"] = Utils::getTable('Artist')->query("SELECT COUNT(idOeuvre) AS nbOeu FROM oeuvre;", null, true);
 
+        Session::getSession()->read('langue') == 'en' ? $this->render('guest.en.index', $data) : $this->render('guest.fr.index', $data);
     }
 
     public function langue() {
@@ -49,7 +50,8 @@ class GuestController extends ParentGuestController {
         } else {
             $data["exist"] = false;
         }
-    
+
+
         $this->render("guest.{$this->curentLanguage}.today", $data);
     }
 
@@ -95,4 +97,21 @@ class GuestController extends ParentGuestController {
         $data["calendar"] = Calendar::createCalendar($parts[1], $parts[0]);
         $this->render("guest.{$this->curentLanguage}.planning", $data);
     }
+
+    public function resetPassword() {
+        if(!empty($_POST)) {
+            Utils::getTable('User')->resetToken($_POST);
+        }
+        $this->render("guest.fr.password");
+    }
+
+    public function changePassword() {
+        if (!empty($_POST)) {
+            Utils::getTable('User')->saveAndConnect($_POST);
+        }
+        $data["id"] = Utils::getTable('User')->checkToken($_GET);
+
+        $this->render("guest.fr.changePassword", $data);
+    }
+
 }

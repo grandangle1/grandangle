@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/poo.iml" filepath="$PROJECT_DIR$/.idea/poo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../grandangle-master/.idea/poo.iml" filepath="$PROJECT_DIR$/../grandangle-master/.idea/poo.iml" />
     </modules>
   </component>
 </project>

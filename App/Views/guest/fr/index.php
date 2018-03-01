@@ -23,10 +23,10 @@
                     <h3 class="pb-4">Grand Angle on a year, it's: </h3>
                     <div class="float-left">
                         <div class="ml-5 pl-3"><p class="font-italic"><span class="fsize">22 500</span><br>visites</p></div>
-                        <div class="ml-5 pl-3"><p class="font-italic"><span class="fsize"><?= $artists->nb; ?></span><br>artistes</p></div>
+                        <div class="ml-5 pl-3"><p class="font-italic"><span class="fsize"><?= $artist->nbAr; ?></span><br>artistes</p></div>
                     </div>
                     <div class="float-right">
-                        <div class="mr-5 pr-3"><p class="font-italic"><span class="fsize">570</span><br>oeuvres</p></div>
+                        <div class="mr-5 pr-3"><p class="font-italic"><span class="fsize"><?= $oeuvres->nbOeu; ?></span><br>oeuvres</p></div>
                         <div class="mr-5 pr-3"><p class="font-italic"><span class="fsize">12917</span><br>m² d'exposition</p></div>
                     </div>
                 </div>

@@ -8,7 +8,7 @@
                 <a href="?p=guest.oeuvre&id=<?= $oeuvre->idOeuvre ?>" class="list-group-item list-group-item-action flex-column align-items-start">
                     <div class="d-flex w-100 justify-content-between">
                         <h5 class="m-2 mb-4"><?= $oeuvre->nomOeuvre; ?></h5>
-                        <small>Vues : <?= $oeuvre->vues; ?></small>
+                        <small>Views : <?= $oeuvre->vues; ?></small>
                     </div>
                     <p class="m-2"><?= $oeuvre->getExtrait(); ?></p>
                     <small class="text-info ml-2">More</small>
@@ -16,4 +16,4 @@
             </li>
         <?php endforeach; ?>
     </ul>
-</div>      
+</div>    

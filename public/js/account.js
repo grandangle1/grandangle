@@ -80,21 +80,20 @@ var accountMethods = {
         document.querySelector('.mdp-form').removeEventListener('submit', this.saveNewPass);
         var infos = e.srcElement.parentElement.parentElement.querySelectorAll('.info');
         var formInputs = document.querySelectorAll('.edit-form .info');
-        console.log(formInputs);
-        console.log(infos);
+
         for(var io = 0; io < infos.length; io++) {console.log(
             infos[io].textContent);
             formInputs[io].value = infos[io].textContent;
         }
 
-        var form =  document.querySelector('.edit-form');
-        form.style.display = "block";
+        document.querySelector('.edit-form').parentElement.classList.remove('d-none');
         document.querySelector('.mdp-form').style.display = "none";
-        window.scrollBy(0, form.getBoundingClientRect().top);
+        window.scrollBy(0, document.querySelector('.edit-form').getBoundingClientRect().top);
 
     },
     closeForm: function () {
-      document.querySelector('.edit-form').style.display = "none";
+        document.querySelector('.edit-form').parentElement.classList.add('d-none');
+        document.querySelector('.edit-form').removeEventListener('submit', this.checkExistence);
     },
     checkExistence: function (e) {
         var action = utils.get('p');
@@ -195,19 +194,18 @@ var accountMethods = {
         }
     },
     changePass: function()  {
-        document.querySelector('.edit-form').removeEventListener('submit', this.checkExistence);
+        accountMethods.closeForm();
         var form = document.querySelector('.mdp-form');
         window.scrollBy(0, form.getBoundingClientRect().top);
         form.addEventListener('submit', accountMethods.saveNewPass);
         form.style.display = "block";
-        document.querySelector(".edit-form").style.display = "none";
     },
     launch: function () {
         var action = utils.get('p');
         if(action != "Admin.account.add") {
-            utils.listener(document.querySelectorAll('.delete-Admin'), "click", this.deleteAdmin);
+            utils.listener(document.querySelectorAll('.delete-admin'), "click", this.deleteAdmin);
             document.querySelector('.close-form').addEventListener("click", this.closeForm);
-            utils.listener(document.querySelectorAll('.edit-Admin'), "click", this.editAdmin);
+            utils.listener(document.querySelectorAll('.edit-admin'), "click", this.editAdmin);
             document.querySelector('.change-password').addEventListener("click", this.changePass);
         } else {
             document.querySelector('.edit-form').addEventListener('submit', this.checkMdps);

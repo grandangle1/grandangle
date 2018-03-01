@@ -82,7 +82,7 @@ function checkEmpty(file) {
     var fine = true;
     var url = new URL(window.location.href);
     var page = url.searchParams.get("p");
-    if(file.length === 0 && page == "Admin.oeuvre.add"){ utils.echoMessage("Veuillez choisir un fichier!", "info"); fine = false;}
+    if(file.length === 0 && page == "admin.oeuvre.add"){ utils.echoMessage("Veuillez choisir un fichier!", "info"); fine = false;}
     if(document.querySelector('select').value === "none"){ utils.echoMessage("Veuillez renseigner un type d'oeuvre", "info"); fine = false;}
     if(document.querySelectorAll('[name="salle"]:checked').length === 0) {utils.echoMessage('Veuillez renseigner une salle', "info"); fine = false}
     return fine;
@@ -100,9 +100,9 @@ var test = {
                 } else {
                     var resp = JSON.parse(xhr.responseText);
                     if(resp.resp == "modified") {
-                        window.location = "?p=Admin.index.calendar";
+                        window.location = "?p=admin.index.calendar";
                     } else if(resp.resp == "added") {
-                        window.location = "?p=Admin.oeuvre.add&id=" + utils.get("id");
+                        window.location = "?p=admin.oeuvre.add&id=" + utils.get("id");
                     }
                 }
             }

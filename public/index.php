@@ -16,8 +16,6 @@ isset($_GET['p']) ? $page = $_GET['p'] : $page = "guest.index";
 
 $page = explode('.' ,$page);
 
-
-
 if($page[0] === "guest") {
     $controller = '\App\Controller\guest\GuestController';
     $action = $page[1];
@@ -27,8 +25,6 @@ if($page[0] === "guest") {
     $action = $page[2];
     $page[2] = "";
 }
-
-$page = implode('/', $page);
 
 $controller = new $controller();
 $controller->$action();

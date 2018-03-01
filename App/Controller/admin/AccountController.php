@@ -22,7 +22,7 @@ class AccountController extends AdminController {
         $acts = Utils::getTable('Activity')->selOr(Utils::extractObj("id",$data["admins"]));
         $data["admins"] = Utils::fuseOnMatch([$data['admins'], $acts], ["id", "idAdmin"]);
         $data["lastly"] = Utils::getTable('Activity')->query("SELECT id, libelle, heure, target, idTarget  FROM activity ORDER BY heure DESC LIMIT 10");
-        //var_dump($data["lastly"]);
+
         $this->render('Admin.account', $data);
     }
 
@@ -81,7 +81,8 @@ class AccountController extends AdminController {
         WHERE administrateur.id = ? AND activity.idAdmin = administrateur.id",
             [$_GET['id']], true);
         $data["pagination"] = ["current" => $_GET['page'], "max" => ceil(intval($data["admin"]->total)/$pagination)];
+
         !empty($data["admin"]->id) ? true : $this->notFound("Ce compte n'existe plus");
-        $this->render('admin.account-activity', $data);
+        $this->render('Admin.account-activity', $data);
     }
 }

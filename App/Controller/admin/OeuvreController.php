@@ -28,6 +28,11 @@ class OeuvreController extends AdminController {
         $oeuvreT = Utils::getTable('Oeuvre');
         $data["oeuvre"] = $oeuvreT->query("SELECT * FROM oeuvre WHERE idOeuvre = ?", [$_GET['id']], true);
         $data["types"] = Utils::getTable('Type')->query("SELECT id, typeFr FROM typeoeuvre");
+        if (empty($data['oeuvre'])) {
+            Session::getSession()->setFlash("warning", "Cette oeuvre n'existe plus");
+            header('location: index.php?p=admin.index.calendar');
+            exit();
+        }
 
         $this->render('Admin.oeuvre', $data);
     }

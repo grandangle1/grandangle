@@ -19,7 +19,7 @@ class Qr_code_generator {
 
         // generating
         if (!file_exists($pngAbsoluteFilePath)) {
-            QRcode::png($content, $pngAbsoluteFilePath);
+            QRcode::png("http://dev-theo.fr/poo/public/".$content, $pngAbsoluteFilePath);
         }
 
         // displaying

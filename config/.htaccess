@@ -1,0 +1,6 @@
+
+
+AuthName "Page d'administration protégée"
+AuthType Basic
+AuthUserFile "/home/devtheofsc/www/poo/config/.htpasswd"
+Require valid-user

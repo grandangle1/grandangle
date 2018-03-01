@@ -57,7 +57,7 @@ class Controller {
      */
     protected function error() {
         $this->session->setFlash('info', "N'essayez pas de forcer les urls...");
-        header('location: ?p=Admin.index.calendar');
+        header('location: ?p=admin.index.calendar');
         exit();
     }
 }

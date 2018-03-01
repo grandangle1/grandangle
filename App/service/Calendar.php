@@ -5,7 +5,7 @@
  * Date: 24/02/2018
  * Time: 20:15
  */
-namespace App\service;
+namespace App\Service;
 
 use App\Utils;
 use Core\Auth\Session;
@@ -28,7 +28,6 @@ class Calendar {
         $nowYearMonth = $nowYearMonth->format('Y-m');
         intval($month) < 10 ? $month2 = "0".$month : $month2 = $month;
         $currentYearMonth = implode("-", [$year, $month]);
-
 
         $currentLanguage = Utils::getLangue();
 
@@ -96,9 +95,11 @@ class Calendar {
             foreach ($existences[$startWeek] as $artist) {
                 $calendar .= '<p><a href="?p=guest.artist&id='.$artist["idArtist"].'" class="badge badge-dark"><span class="name">'.$artist["name"].' </span><span class="name">'.$artist["surname"].'</span></a></p>';
             }
-            $calendar .= '<p><small>Exposition</small><br><a href="?p=guest.today&w='.$existences[$startWeek][0]["week"].'" class="badge badge-secondary">'.$existences[$startWeek][0]["theme"].'</a></p>';
+            $calendar .= '<p><small>Exposition</small><br><a href="?p=guest.today&w='.$existences[$startWeek][0]["week"].'" class="badge badge-dark">'.$existences[$startWeek][0]["theme"].'</a></p>';
         } else {
-            $calendar .= '"><td class="week">Semaine '.$startWeek.'</td>';
+            Session::getSession()->read('langue') == "en" ?
+                $calendar .= '"><td class="week">Week '.$startWeek.'</td>' :
+                $calendar .= '"><td class="week">Semaine '.$startWeek.'</td>';
         }
 
 
@@ -130,12 +131,14 @@ class Calendar {
                 if(!empty($existences[$startWeek])) {
                     $calendar .= ' expo"><td class="week"><p>Semaine '.$startWeek.'</p><small>Artiste(s)</small>';
                     foreach ($existences[$startWeek] as $artist) {
-                        $calendar .= '<p><a href="?p=guest.artist&id='.$artist["idArtist"].'" class="badge badge-dark"><span class="name">'.$artist["name"].' </span><span class="name">'.$artist["surname"].'</span></a></p>';
+                        $calendar .= '<p><a href="?p=guest.artist&id='.$artist["idArtist"].'"><span class="name">'.$artist["name"].' </span><span class="name">'.$artist["surname"].'</span></a></p>';
                     }
-                    $calendar .= '<p><small>Exposition</small><br><a href="?p=guest.today&w='.$existences[$startWeek][0]["week"].'" class="badge badge-secondary">'.$existences[$startWeek][0]["theme"].'</a></p>';
+                    $calendar .= '<p><small>Exposition</small><br><a href="?p=guest.today&w='.$existences[$startWeek][0]["week"].'">'.$existences[$startWeek][0]["theme"].'</a></p>';
 
                 } else {
-                    $calendar .= ' empty"><td class="week"><p>Semaine '.$startWeek.'</p>';
+                    Session::getSession()->read('langue') == "en" ?
+                        $calendar .= '"><td class="week">Week '.$startWeek.'</td>' :
+                        $calendar .= '"><td class="week">Semaine '.$startWeek.'</td>';
                 }
 
                 $calendar .='</td>';

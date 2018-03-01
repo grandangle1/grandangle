@@ -2,6 +2,7 @@
     <h1 class="text-center mt-5 bold">Espace d'administration</h1>
     <div class="text-center">
         <a href="index.php?p=admin.artist.add"><button type="button" class="btn btn-dark m-5 btn-lg">Répertorier un artiste</button></a>
+        <a href="index.php?p=admin.artist.manage"><button type="button" class="btn btn-dark m-5 btn-lg">Gestion des artistes</button></a>
     </div>
     <div class="row border border-dark rounded p-3">
         <div class="col-lg-12">
@@ -26,7 +27,7 @@
                             <p class="info card-title">Vous pouvez contacter le gerant Mr/Mme <span class="contact"></span> au <span class="contact"></span> ou par mail : <span class="contact"></span></p>
                             <p class="info card-text">Cet(te) artiste expose <span class="nbOeuvre"></span> oeuvres</p>
                             <div class="text-center">
-                                <p class="newExpo"><img src="img/admin/ajoutExpo.png" class="salle pr-2">Ajouter une expo</p>
+                                <p><img src="img/admin/ajoutExpo.png" class="salle pr-2 newExpo">Ajouter une expo</p>
                             </div>
                             <div class="exist">
                                 <div class="float-left">
@@ -50,7 +51,7 @@
                             <p class="info card-title">Vous pouvez contacter le gerant Mr/Mme <span class="contact"></span> au <span class="contact"></span> ou par mail : <span class="contact"></span></p>
                             <p class="info card-text">Cet(te) artiste expose <span class="nbOeuvre"></span> oeuvres</p>
                             <div class="text-center">
-                                <p class="newExpo"><img src="img/admin/ajoutExpo.png" class="pr-2 salle">Ajouter une expo</p>
+                                <p><img src="img/admin/ajoutExpo.png" class="pr-2 salle newExpo">Ajouter une expo</p>
                             </div>
                             <div class="exist">
                                 <div class="float-left">
@@ -76,7 +77,7 @@
                             <p class="info card-title">Vous pouvez contacter le gerant Mr/Mme <span class="contact"></span> au <span class="contact"></span> ou par mail : <span class="contact"></span></p>
                             <p class="info card-text">Cet(te) artiste expose <span class="nbOeuvre"></span> oeuvres</p>
                             <div class="text-center">
-                                <p class="newExpo"><img src="img/admin/ajoutExpo.png" class="pr-2 salle">Ajouter une expo</p>
+                                <p><img src="img/admin/ajoutExpo.png" class="pr-2 salle newExpo">Ajouter une expo</p>
                             </div>
                             <div class="exist">
                                 <div class="float-left">
@@ -100,7 +101,7 @@
                             <p class="info card-title">Vous pouvez contacter le gerant Mr/Mme <span class="contact"></span> au <span class="contact"></span> ou par mail : <span class="contact"></span></p>
                             <p class="info card-text">Cet(te) artiste expose <span class="nbOeuvre"></span> oeuvres</p>
                             <div class="text-center">
-                                <p class="newExpo"><img src="img/admin/ajoutExpo.png" class="pr-2 salle">Ajouter une expo</p>
+                                <p><img src="img/admin/ajoutExpo.png" class="pr-2 salle newExpo">Ajouter une expo</p>
                             </div>
                             <div class="exist">
                                 <div class="float-left">

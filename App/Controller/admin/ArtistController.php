@@ -35,5 +35,13 @@ class ArtistController extends AdminController {
         exit();
     }
 
+    public function manage() {
+
+        $this->render('Admin.artist-manage');
+    }
+
+    public function delete() {
+        Utils::getTable('Artist')->deleteArtist($_GET['artist']);
+    }
 
 }

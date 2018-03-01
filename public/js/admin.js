@@ -50,8 +50,8 @@ var utils = {
 var adminMethods =  {
 	currentOffset: 0,
 	idExpos: ["" , "", "", ""],
-	newExpo: function() {
-		window.location = 'index.php?p=Admin.expo.add';
+	newExpo: function(e) {
+		window.location = 'index.php?p=Admin.expo.add&w=' + e.srcElement.id;
 	},
 	getIdExpo: function(e) {
 		var index = parseInt(e.srcElement.getAttribute('cell'), 10);
@@ -86,15 +86,15 @@ var adminMethods =  {
 	actionModif: function(e) {
         var idExpo = adminMethods.getIdExpo(e);
 		if(e.srcElement.classList.contains("editExpo")) {
-			window.location = "?p=Admin.expo.edit&id=" + idExpo;
+			window.location = "?p=admin.expo.edit&id=" + idExpo;
 		} else if(e.srcElement.classList.contains("addOeuvre")) {
-            window.location = "?p=Admin.oeuvre.add&id=" + idExpo;
+            window.location = "?p=admin.oeuvre.add&id=" + idExpo;
 		} else if(e.srcElement.classList.contains("listOeuvre")) {
-			window.location = "?p=Admin.oeuvre.liste&page=1&id=" + idExpo;
+			window.location = "?p=admin.oeuvre.liste&page=1&id=" + idExpo;
 		} else if(e.srcElement.classList.contains("pdfExpo")) {
-            window.open('?p=Admin.expo.pdf&id=' + idExpo, '_blank');
+            window.open('?p=admin.expo.pdf&id=' + idExpo, '_blank');
 		} else if(e.srcElement.classList.contains("artist")) {
-            window.location = 'index.php?p=Admin.expo.artist&id=' + idExpo;
+            window.location = 'index.php?p=admin.expo.artist&id=' + idExpo;
         }
 
 	},
@@ -139,6 +139,7 @@ var adminMethods =  {
 							cell.querySelector('.exist').style.display = "none";
 							cell.querySelector('.newExpo').style.display = "inline";
 							cell.querySelector('.newExpo').addEventListener('click', adminMethods.newExpo);
+							cell.querySelector('.newExpo').setAttribute('id', data.weeks[iu]);
 
 							var infos = cell.querySelectorAll('.info');
 							for(var io = 0; io < infos.length; io++) {
@@ -162,7 +163,7 @@ var adminMethods =  {
 	},
     deleteType: function (e) {
 		if(confirm("Voulez vous vraiment supprimer ce type d'eauvre?")) {
-            window.location = "?p=Admin.type.delete&id=" + e.srcElement.id;
+            window.location = "?p=admin.type.delete&id=" + e.srcElement.id;
 		}
     },
 	launch: function() {

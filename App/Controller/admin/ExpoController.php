@@ -20,7 +20,9 @@ class ExpoController extends AdminController {
      * For adding a new exhibition
      */
     public function add() {
-        $this->render('Admin.expo');
+        $data['day'] = Utils::weekToDay($_GET['w']);
+
+        $this->render('Admin.expo', $data);
     }
 
     /**
@@ -31,12 +33,7 @@ class ExpoController extends AdminController {
         $expoT = Utils::getTable('Exposition');
         $data = $expoT->getExpo($_GET['id']);
         !empty($data['exposition']) ? true : $this->notFound("Cette exposition n'existe plus");
-
-        $gendate = new \DateTime();
-        $parts = explode("-", $data['exposition']->week);
-        $gendate->setISODate($parts[0], $parts[1],1);
-        $day =  $gendate->format('Y-m-d');
-        $data['exposition']->week = $day;
+        $data['day'] = Utils::weekToDay($data["exposition"]->week);
 
         $this->render('Admin.expo', $data);
     }

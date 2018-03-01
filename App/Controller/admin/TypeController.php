@@ -52,7 +52,7 @@ class TypeController extends AdminController {
         Utils::getTable('Type')->delete(["id" ], [$_GET['id']]);
         $this->session->setFlash('success', "Le type d'oeuvre à bien été supprimé");
 
-        Utils::getTable('Activity')->createAction("delte", ["type" => $_GET['id']]);
+        Utils::getTable('Activity')->createAction("delete", ["type" => $_GET['id']]);
         header("location: index.php?p=Admin.index.calendar");
         exit();
     }

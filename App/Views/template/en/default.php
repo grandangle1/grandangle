@@ -57,7 +57,7 @@
                 </div>
                 <?php if($this->auth->logged()): ?>
                     <li class="nav-item dropdown">
-                        <a class="hover-link nav-link text-light pr-3 pl-3" href="?p=admin.index.calendar">ADMIN</a>
+                        <a class="hover-link nav-link text-light pr-3 pl-3" href="?p=Admin.index.calendar">ADMIN</a>
                     </li>
                 <?php endif; ?>
             </ul>
@@ -69,7 +69,7 @@
                         <form method="post" id="form-login">
                             <label for="login" class="connex">Id</label><input type="text" name="identifiant" id="login" maxlength="50" autofocus value="theo" />
                             <label for="mdp" class="connex">Password</label><input type="password" name="password" id="mdp" maxlength="50" value="letest">
-                            <a href="#">Forgotten password?</a>
+                            <a href="index.php?p=guest.resetPassword">Forgotten password?</a>
                             <input type="submit" name="valid-connexion" value="connexion" />
                         </form>
                     </div>
@@ -77,9 +77,9 @@
             <?php else: ?>
             <div class="nav-item">
                 <?php if (\Core\Auth\Session::getSession()->read('langue') == "en"): ?>
-                        <a class="nav-link text-light" href="?p=admin.index.logOut">Disconnect</a>
+                        <a class="nav-link text-light" href="?p=Admin.index.logOut">Disconnect</a>
                     <?php else: ?>
-                        <a class="nav-link text-light" href="?p=admin.index.logOut">Se deconnecter</a>
+                        <a class="nav-link text-light" href="?p=Admin.index.logOut">Se deconnecter</a>
                     <?php endif; ?>
                 <?php endif; ?>
             </div>

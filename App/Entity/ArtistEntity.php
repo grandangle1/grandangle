@@ -13,4 +13,10 @@ class ArtistEntity extends Entity {
     public function getResume() {
         return substr($this->descrArtistFR, 0, 100)."...";
     }
+
+    public function absolutePath() {
+        $this->urlImg =  "localhost/poo/public/".$this->urlImg;
+    }
+
+
 }

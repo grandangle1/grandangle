@@ -1,25 +1,25 @@
 <div class="container">
     <?php if ($exist): ?>
-        <h1 class="text-center m-5 bold">Currently: <?= $exposition->themeFr ?></h1>
+        <h1 class="text-center m-5 bold">Currently at Grand-angle : <?= $exposition->themeEn ?></h1>
 
 
-        <p class="text-center mb-5"><?= $exposition->generalDescrFR ?></p>
+        <p class="text-center mb-5"><?= $exposition->generalDescrEN ?></p>
 
         <ul class="list-inline-group">
-            <li class="list-inline-item mt-4"><h4>The types of works on display : </h4></li>
+            <li class="list-inline-item mt-4"><h4>Art work types currently on display : </h4></li>
             <?php foreach ($types as $type): ?>
-                <li class="list-inline-item"><h5><a href="?p=guest.type&id=<?= $type->id ?>&w=<?= $exposition->week; ?>" class="badge badge-pill badge-dark"><?= $type->typeEn ?></a></h5></li>
+            <li class="list-inline-item"><h5><a href="?p=guest.type&id=<?= $type->id ?>&w=<?= $exposition->week; ?>" class="badge badge-pill badge-dark"><?= $type->typeEn ?></a></h5></li>
             <?php endforeach; ?>
         </ul>
         <ul class="list-inline-group">
-            <li class="list-inline-item mt-4"><h4>Les artistes :</h4></li>
+            <li class="list-inline-item mt-4"><h4>Artists :</h4></li>
             <?php foreach ($artists as $ar): ?>
                 <li class="list-inline-item"><h5><a href="?p=guest.artist&id=<?= $ar->idArtist; ?>" class="badge badge-pill badge-secondary"><?= $ar->nameArtist;?> <?= $ar->surnameArtist; ?></a></h5>
                 </li>
             <?php endforeach; ?>
         </ul>
     <?php else: ?>
-        <h1>There is no exposition on this date</h1>
+        <h1>There's no exposure on this week</h1>
     <?php endif; ?>
 
     <div class="svg-container" style="width: 100%; display: flex; justify-content: center;">
@@ -28,20 +28,20 @@
             <rect x="3" y="4" style="fill:none;stroke:black;stroke-width:1px;" id="e1_rectangle" width="1066" height="466"/>
             <rect x="3" y="4" style="fill:black;stroke:black;stroke-width:1px;" id="e2_rectangle" width="216" height="124"/>
             <rect x="447" y="246" style="fill:black;stroke:black;stroke-width:1px;" id="e4_rectangle" width="206" height="156"/>
-            <polygon style="stroke:black;fill: #CECECE;stroke-width:1px;" class="salle" id="salle1" points="3 128 219 128 447 246 449 468 3 470"/>
+            <polygon style="stroke:black;fill:#CECECE;stroke-width:1px;" class="salle" id="salle1" points="3 128 219 128 447 246 449 468 3 470"/>
             <polygon style="stroke:black;fill:#CECECE;stroke-width:1px;" class="salle"  id="salle2" points="219 4 217 128 447 246 653 246 653 4" />
             <rect x="449" y="402" style="fill:#CECECE;stroke:black;stroke-width:1px;" class="salle"  id="couloir" width="204" height="68"/>
             <rect x="653" y="4" style="fill:#CECECE;stroke:black;stroke-width:1px;" class="salle"  id="hall" width="416" height="466"/>
-            <text style="fill:black;font-size:20px;" x="121" y="312" id="e10_texte" >Salle DE VINCI</text>
-            <text style="fill:black;font-size:20px;" x="389" y="72" id="e11_texte" >Salle VAN GOGH</text>
-            <text style="fill:black;font-size:20px;" x="785" y="160" id="e12_texte" >Salle PICASSO</text>
-            <text style="fill:black;font-size:20px;" x="509" y="432" id="e13_texte" >
+            <text style="fill:black;font-family:Arial;font-size:20px;" x="121" y="312" id="e10_texte" >Salle DE VINCI</text>
+            <text style="fill:black;font-family:Arial;font-size:20px;" x="389" y="72" id="e11_texte" >Salle VAN GOGH</text>
+            <text style="fill:black;font-family:Arial;font-size:20px;" x="785" y="160" id="e12_texte" >Salle PICASSO</text>
+            <text style="fill:black;font-family:Arial;font-size:20px;" x="509" y="432" id="e13_texte" >
                 <tspan x="509">Salle RENOIR</tspan></text>
         </svg>
     </div>
     <?php if(!empty($oeuvres)) : ?>
         <div class="oeuvre-container salle1">
-            <h2 class="text-center m-5">Salle DE VINCI</h2>
+        <h2 class="text-center m-5">Salle DE VINCI</h2>
             <ul style="display: flex; flex-wrap: wrap; list-style: none; justify-content: space-around;">
 
                 <?php foreach ($oeuvres as $oeuvre): ?>
@@ -53,7 +53,7 @@
                                     <small>Vues : <?= $oeuvre->vues; ?></small>
                                 </div>
                                 <p class="m-2"><?= $oeuvre->getExtrait(); ?></p>
-                                <small class="text-info ml-2">Voir la suite</small>
+                                <small class="text-info ml-2">More</small>
                             </a>
                         </li>
                     <?php endif; ?>
@@ -73,7 +73,7 @@
                                     <small>Vues : <?= $oeuvre->vues; ?></small>
                                 </div>
                                 <p class="m-2"><?= $oeuvre->getExtrait(); ?></p>
-                                <small class="text-info ml-2">Voir la suite</small>
+                                <small class="text-info ml-2">More</small>
                             </a>
                         </li>
                     <?php endif; ?>
@@ -93,7 +93,7 @@
                                     <small>Vues : <?= $oeuvre->vues; ?></small>
                                 </div>
                                 <p class="m-2"><?= $oeuvre->getExtrait(); ?></p>
-                                <small class="text-info ml-2">Voir la suite</small>
+                                <small class="text-info ml-2">More</small>
                             </a>
                         </li>
                     <?php endif; ?>
@@ -113,7 +113,7 @@
                                     <small>Vues : <?= $oeuvre->vues; ?></small>
                                 </div>
                                 <p class="m-2"><?= $oeuvre->getExtrait(); ?></p>
-                                <small class="text-info ml-2">Voir la suite</small>
+                                <small class="text-info ml-2">More</small>
                             </a>
                         </li>
                     <?php endif; ?>
@@ -122,7 +122,7 @@
         </div>
     <?php else: ?>
         <?php if ($exist): ?>
-            <h1>No work has been completed for this exhibition</h1>
+            <h1>Aucune oeuvre n'a encore été renseigner pour cette exposition</h1>
         <?php endif; ?>
     <?php endif; ?>
 </div>

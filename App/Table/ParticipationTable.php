@@ -15,6 +15,7 @@ class ParticipationTable extends Table {
 
     public function create($idExpo, $idArt) {
         $exist = $this->query("SELECT idExpo FROM participation WHERE idExpo = ? AND idArtist = ?", [$idExpo, $idArt], true);
+
         if(!isset($exist->idExpo)) {
             $this->insert(["idExpo" => $idExpo, "idArtist" => $idArt]);
             Utils::getTable('Activity')->createAction("participate", ["artist%exposition" => $idArt."%".$idExpo]);
